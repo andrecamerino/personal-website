@@ -22,18 +22,17 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const variantClasses = {
     primary: `
-      bg-(--color-primary) text-(--color-secondary) border-2 border-transparent
+      bg-(--color-primary) text-(--color-secondary) border-1 border-transparent
     `,
     secondary: `
+      bg-transparent text-(--color-primary) border-1 border-(--color-primary)
     `,
   };
 
   const baseClasses = `
-    inline-flex h-10 px-7 py-1 rounded-3xl
+    inline-flex h-10 px-8 py-1 rounded-3xl
     items-center justify-center select-none
-
     cursor-pointer transition-colors duration-100
-
     text-sm font-semibold
     ${variantClasses[variant]}
     ${disabled ? "opacity-50 cursor-not-allowed" : ""}
