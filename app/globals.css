@@ -2,23 +2,34 @@
 
 /* default dark */
 :root {
-  --color-black: #222222; /* Carbon Black*/
+  --color-black: #222222;
   ---color-white: #fdfdfd;
 
-  --color-bg: var(--color-black);
-  --color-primary: var(---color-white);
+  --color-bg: #141414; /* fallback bg color */
+  --color-primary: var(--color-white);
   --color-secondary: var(--color-black);
+
+  --bg-image: url('/dark-background.png'); /* <-- dark mode background */
 }
 
 [data-theme='light'] {
   --color-bg: var(--color-white);
-  --color-primary: var(---color-black);
+  --color-primary: var(--color-black);
   --color-secondary: var(--color-white);
+
+  --bg-image: url('/light-background.png'); /* <-- light mode background */
 }
 
 body {
   margin: 0;
   padding: 0;
+  
+  color: var(--color-primary);
+  background-image: var(--bg-image);
+  background-size: cover;     /* make it cover entire viewport */
+  background-position: center; /* center the image */
+  background-repeat: no-repeat;
+  /* transition: background-image 0.3s ease, color 0.3s ease; smooth theme change */
 }
 
 /* NOTE: Let's try use @layer so we can reuse style
@@ -34,3 +45,52 @@ Example:
   }
 }
 */
+
+.wave {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  /* pivot near bottom-left */
+  animation: wave 1.5s ease-in-out infinite;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  /* Make it wave every 5 seconds */
+  animation-name: wave;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/* Keyframes: rotate + slight scale */
+@keyframes wave {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  5% {
+    transform: rotate(14deg) scale(1.1);
+  }
+
+  10% {
+    transform: rotate(-8deg) scale(1.05);
+  }
+
+  15% {
+    transform: rotate(14deg) scale(1.1);
+  }
+
+  20% {
+    transform: rotate(-4deg) scale(1.05);
+  }
+
+  25% {
+    transform: rotate(10deg) scale(1.1);
+  }
+
+  30% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  35% {
+    transform: rotate(0deg) scale(1);
+  }
+}
