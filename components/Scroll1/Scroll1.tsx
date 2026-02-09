@@ -22,7 +22,7 @@ const Scroll1 = () => {
   const content = currentTheme === 'dark' ? techStacks : creativeDeliverables;
 
   return (
-    <div className="flex flex-col items-center mt-50">
+    <div className="flex flex-col items-center mt-80">
       <SectionTitle>
         {currentTheme === "dark" ? "Tech Stack" : "Common Deliverables"}
       </SectionTitle>
