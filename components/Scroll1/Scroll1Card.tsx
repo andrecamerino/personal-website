@@ -11,7 +11,7 @@ interface Scroll1CardProps {
 const Scroll1Card: React.FC<Scroll1CardProps> = ({text, alt, imgSrc,}) => {
   return (
     <div
-      className={`${glass} flex flex-row gap-8 items-center rounded-2xl px-12 py-2 mr-10`}
+      className={`${glass} flex flex-row gap-8 items-center rounded-2xl mb-5 px-12 py-2 mr-10`}
     >
       {imgSrc ? <Image
         src={imgSrc}
