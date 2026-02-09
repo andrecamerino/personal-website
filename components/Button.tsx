@@ -52,14 +52,14 @@ const Button: React.FC<ButtonProps> = ({
   if (link) {
     return (
       <Link href={link} className={baseClasses} onClick={handleClick}>
-        <h1>{children}</h1>
+        {children}
       </Link>
     );
   }
 
   return (
     <div className={baseClasses} onClick={handleClick}>
-      <h1>{children}</h1>
+      {children}
     </div>
   );
 };

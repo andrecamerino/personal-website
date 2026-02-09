@@ -3,16 +3,23 @@
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import { useTypewriter } from "@/hooks/useTypewriter";
-import { useTheme } from "@/hooks/useTheme";
+import { useTheme } from "@/context/ThemeContext";
 
 const Hero = () => {
-  const { currentTheme, setTheme } = useTheme()
+  const { currentTheme, setTheme } = useTheme();
   const [words, setWords] = useState<string[]>([]);
 
   useEffect(() => {
     fetch("/words.txt")
       .then((res) => res.text())
-      .then((data) => setWords(data.split("\n").map((w) => w.trim()).filter(Boolean)))
+      .then((data) =>
+        setWords(
+          data
+            .split("\n")
+            .map((w) => w.trim())
+            .filter(Boolean)
+        )
+      )
       .catch(() => setWords(["a student"])); // fallback
   }, []);
 
@@ -37,8 +44,12 @@ const Hero = () => {
       </div>
 
       <div className="flex gap-16">
-        <Button onClick={() => setTheme('dark')}>I&apos;m looking for a developer</Button>
-        <Button onClick={() => setTheme('light')} variant="secondary">I&apos;m looking for a creative</Button>
+        <Button onClick={() => setTheme("dark")}>
+          I&apos;m looking for a developer
+        </Button>
+        <Button onClick={() => setTheme("light")} variant="secondary">
+          I&apos;m looking for a creative
+        </Button>
       </div>
     </div>
   );

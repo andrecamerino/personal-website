@@ -5,11 +5,13 @@
   --color-black: #222222;
   ---color-white: #fdfdfd;
 
-  --color-bg: #141414; /* fallback bg color */
+  --color-bg: #141414;
+  /* fallback bg color */
   --color-primary: var(--color-white);
   --color-secondary: var(--color-black);
 
-  --bg-image: url('/dark-background.png'); /* <-- dark mode background */
+  --bg-image: url('/dark-background.png');
+  /* <-- dark mode background */
 }
 
 [data-theme='light'] {
@@ -17,34 +19,47 @@
   --color-primary: var(--color-black);
   --color-secondary: var(--color-white);
 
-  --bg-image: url('/light-background.png'); /* <-- light mode background */
+  --bg-image: url('/light-background.png');
+  /* <-- light mode background */
+}
+
+* {
+  margin: 1px dotted red;
 }
 
 body {
   margin: 0;
   padding: 0;
-  
+
   color: var(--color-primary);
   background-image: var(--bg-image);
-  background-size: cover;     /* make it cover entire viewport */
-  background-position: center; /* center the image */
+  background-size: cover;
+  /* make it cover entire viewport */
+  background-position: center;
+  /* center the image */
   background-repeat: no-repeat;
   /* transition: background-image 0.3s ease, color 0.3s ease; smooth theme change */
 }
 
-/* NOTE: Let's try use @layer so we can reuse style
-
-Example:
+/* NOTE: Let's try use @layer so we can reuse style */
 
 @layer components {
-  .card {
-    background-color: var(--color-white);
-    border-radius: var(--radius-lg);
-    padding: --spacing(6);
-    box-shadow: var(--shadow-xl);
+  .glass {
+    background-color: color-mix(in srgb, var(--color-primary) 5%, transparent);
+
+    background-image:
+      linear-gradient(to bottom,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0.12) 80%,
+        rgba(255, 255, 255, 0) 90%),
+      linear-gradient(to bottom,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0) 70%);
+
+    backdrop-filter: blur(1px);
+    border: 1px solid rgb(245 245 245 / 0.1);
   }
 }
-*/
 
 .wave {
   display: inline-block;
