@@ -1,20 +1,27 @@
-'use client'
+"use client";
 
+import ParallaxWrapper from "@/components/ParallaxWrapper";
+import { useTheme } from "@/context/ThemeContext";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ProjectSection from "@/components/Projects/ProjectSection";
-import ParallaxWrapper from "@/components/ParallaxWrapper";
-import { useTheme } from "@/context/ThemeContext";
+import Scroll1 from "@/components/Scroll1/Scroll1";
 
 const Page = () => {
   const { currentTheme } = useTheme();
   return (
-    <ParallaxWrapper background={currentTheme === 'dark' ? '/dark-background.png' : '/light-background.png'} speed={0.5}>
-      <div>
-        <Navbar />
-        <Hero />
-        <ProjectSection />
-      </div>
+    <ParallaxWrapper
+      background={
+        currentTheme === "dark"
+          ? "/dark-background.png"
+          : "/light-background.png"
+      }
+      speed={0.5}
+    >
+      <Navbar />
+      <Hero />
+      <ProjectSection />
+      <Scroll1 />
     </ParallaxWrapper>
   );
 };

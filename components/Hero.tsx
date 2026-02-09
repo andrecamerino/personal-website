@@ -44,10 +44,10 @@ const Hero = () => {
       </div>
 
       <div className="flex gap-16">
-        <Button onClick={() => setTheme("dark")}>
+        <Button onClick={() => setTheme("dark")} variant={(currentTheme === 'light' ? 'secondary' : 'primary')}>
           I&apos;m looking for a developer
         </Button>
-        <Button onClick={() => setTheme("light")} variant="secondary">
+        <Button onClick={() => setTheme("light")} variant={(currentTheme === 'dark' ? 'secondary' : 'primary')}>
           I&apos;m looking for a creative
         </Button>
       </div>
