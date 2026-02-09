@@ -39,7 +39,7 @@ const Hero = () => {
         </h1>
         <p className="text-right pr-16 m-0 -mt-6">
           and I&apos;m <span className="font-bold">{typedText}</span> based in New
-          Zealand
+          Zealand 🇳🇿
         </p>
       </div>
 
