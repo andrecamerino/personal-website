@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
@@ -17,8 +17,8 @@ const Hero = () => {
           data
             .split("\n")
             .map((w) => w.trim())
-            .filter(Boolean)
-        )
+            .filter(Boolean),
+        ),
       )
       .catch(() => setWords(["a student"])); // fallback
   }, []);
@@ -38,17 +38,29 @@ const Hero = () => {
           ANDRE CAMERINO
         </h1>
         <p className="text-right pr-16 m-0 -mt-6">
-          and I&apos;m <span className="font-bold">{typedText}</span> based in New
-          Zealand
+          and I&apos;m <span className="font-bold">{typedText}</span> based in
+          New Zealand 🇳🇿
         </p>
       </div>
 
       <div className="flex gap-16">
-        <Button onClick={() => setTheme("dark")} variant={(currentTheme === 'light' ? 'secondary' : 'primary')}>
-          I&apos;m looking for a developer
+        <Button
+          className="group"
+          onClick={() => setTheme("dark")}
+          variant={currentTheme === "light" ? "secondary" : "primary"}
+        >
+          I&apos;m looking for a developer &nbsp;
+          <span className="hidden group-hover:inline">🔋</span>
+          <span className="inline group-hover:hidden">🪫</span>
         </Button>
-        <Button onClick={() => setTheme("light")} variant={(currentTheme === 'dark' ? 'secondary' : 'primary')}>
-          I&apos;m looking for a creative
+        <Button
+          className="group"
+          onClick={() => setTheme("light")}
+          variant={currentTheme === "dark" ? "secondary" : "primary"}
+        >
+          I&apos;m looking for a creative &nbsp;
+          <span className="hidden group-hover:inline">📸</span>
+          <span className="inline group-hover:hidden">📷</span>
         </Button>
       </div>
     </div>
