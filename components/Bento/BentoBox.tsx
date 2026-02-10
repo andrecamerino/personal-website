@@ -36,7 +36,7 @@ const BentoBox: React.FC<BentoBoxProps> = ({
     >
       {/* Background image with reduced opacity */}
       <div
-        className="absolute inset-0 bg-cover bg-center transition-opacity duration-300 opacity-20 group-hover:opacity-30"
+        className="absolute inset-0 bg-cover bg-center transition-opacity duration-300 opacity-60 group-hover:opacity-30"
         style={{ backgroundImage: `url(${imgSrc})` }}
       />
 
