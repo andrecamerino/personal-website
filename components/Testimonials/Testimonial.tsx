@@ -28,7 +28,7 @@ const Testimonial: React.FC<TestimonialProps> = ({
   );
 
   return (
-    <div className={`${glass} p-6 w-80 flex flex-col rounded-3xl mr-10`}>
+    <div className={`${glass} p-6 w-80 flex flex-col rounded-3xl mr-10 mb-3`}>
       {/* Header */}
       <div className="flex flex-row items-center gap-4 mb-4">
         {/* Forced circular image */}
