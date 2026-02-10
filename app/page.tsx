@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 import ProjectSection from "@/components/Projects/ProjectSection";
 import Scroll1 from "@/components/Scroll1/Scroll1";
 import BentoGrid from "@/components/Bento/BentoGrid";
+import TestimonalSection from "@/components/Testimonials/TestimonialsSection";
 
 const Page = () => {
   const { currentTheme } = useTheme();
@@ -24,6 +25,7 @@ const Page = () => {
       <ProjectSection />
       <Scroll1 />
       <BentoGrid />
+      <TestimonalSection/>
     </ParallaxWrapper>
   );
 };
