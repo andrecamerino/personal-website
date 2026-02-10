@@ -11,23 +11,36 @@ interface TestimonialProps {
   imgSrc: string;
 }
 
-const Testimonial: React.FC<TestimonialProps> = ({ name, role, rating, text, imgSrc }) => {
+const Testimonial: React.FC<TestimonialProps> = ({
+  name,
+  role,
+  rating,
+  text,
+  imgSrc,
+}) => {
   // Generate stars
   const stars = Array.from({ length: 5 }, (_, i) =>
-    i < rating ? <FaStar key={i} className="text-(--color-primary)" /> : <FaRegStar key={i} className="text-(--color-primary)" />
+    i < rating ? (
+      <FaStar key={i} className="text-(--color-primary)" />
+    ) : (
+      <FaRegStar key={i} className="text-(--color-primary)" />
+    )
   );
 
   return (
     <div className={`${glass} p-6 w-80 flex flex-col rounded-3xl mr-10`}>
       {/* Header */}
       <div className="flex flex-row items-center gap-4 mb-4">
-        <Image
-          src={imgSrc}
-          alt={name}
-          width={60}
-          height={60}
-          className="rounded-full object-cover"
-        />
+        {/* Forced circular image */}
+        <div className="relative w-15 h-15 rounded-full overflow-hidden">
+          <Image
+            src={imgSrc}
+            alt={name}
+            fill
+            className="object-cover"
+          />
+        </div>
+
         <div className="flex flex-col">
           <h1 className="font-bold">{name}</h1>
           <h2 className="text-sm text-gray-500">{role}</h2>
