@@ -9,6 +9,7 @@ import Scroll1 from "@/components/Scroll1/Scroll1";
 import BentoGrid from "@/components/Bento/BentoGrid";
 import TestimonalSection from "@/components/Testimonials/TestimonialsSection";
 import ResumeSection from "@/components/ResumeSection";
+import ContactSection from "@/components/Contact/ContactSection";
 
 const Page = () => {
   const { currentTheme } = useTheme();
@@ -28,6 +29,7 @@ const Page = () => {
       <BentoGrid />
       <TestimonalSection />
       <ResumeSection />
+      <ContactSection />
     </ParallaxWrapper>
   );
 };
