@@ -20,7 +20,7 @@ const TestimonalSection = () => {
       role: "CTO, Stackify",
       rating: 4,
       text: "Super reliable and fast. Would 100% work together again.",
-      imgSrc: "/placeholders/gasp.png",
+      imgSrc: "/placeholders/cris.png",
     },
     {
       name: "Chris Patel",
@@ -34,7 +34,7 @@ const TestimonalSection = () => {
       role: "Engineering Manager, Flux",
       rating: 4,
       text: "Great balance of technical skill and product thinking.",
-      imgSrc: "/placeholders/gasp.png",
+      imgSrc: "/placeholders/cris.png",
     },
   ];
 
@@ -51,7 +51,7 @@ const TestimonalSection = () => {
       role: "Brand Strategist",
       rating: 4,
       text: "Strong creative instincts and super easy to collaborate with.",
-      imgSrc: "/placeholders/gasp.png",
+      imgSrc: "/placeholders/cris.png",
     },
     {
       name: "Ava Collins",
@@ -65,7 +65,7 @@ const TestimonalSection = () => {
       role: "Marketing Manager",
       rating: 4,
       text: "Fast turnaround and great storytelling through design.",
-      imgSrc: "/placeholders/gasp.png",
+      imgSrc: "/placeholders/cris.png",
     },
   ];
 

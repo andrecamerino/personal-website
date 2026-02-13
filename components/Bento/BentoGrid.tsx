@@ -12,7 +12,7 @@ const BentoGrid = () => {
     {
       title: "WEB3 Hackathon Prize Winner",
       desc: "We won 1st place in the Kiwiana Prize winner, receiving $2,000!",
-      imgSrc: "/placeholders/gasp.png",
+      imgSrc: "/placeholders/cris.png",
     },
     {
       title: "Community Innovation Award",
@@ -22,7 +22,7 @@ const BentoGrid = () => {
     {
       title: "Best Coding Challenge",
       desc: "Our team excelled in a nationwide coding challenge.",
-      imgSrc: "/placeholders/gasp.png",
+      imgSrc: "/placeholders/cris.png",
     },
     {
       title: "Open Source Contributor",
@@ -35,7 +35,7 @@ const BentoGrid = () => {
     {
       title: "Best Design Sprint",
       desc: "Our team’s design sprint was awarded best design by the judges.",
-      imgSrc: "/placeholders/gasp.png",
+      imgSrc: "/placeholders/cris.png",
     },
     {
       title: "Top Creative Pitch",
@@ -45,7 +45,7 @@ const BentoGrid = () => {
     {
       title: "Visual Storytelling Award",
       desc: "Recognized for exceptional visual storytelling in our campaign.",
-      imgSrc: "/placeholders/gasp.png",
+      imgSrc: "/placeholders/cris.png",
     },
     {
       title: "Innovation in UX",
