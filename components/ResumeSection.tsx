@@ -8,7 +8,7 @@ const ResumeSection = () => {
   return (
     <div className="mt-80 flex flex-col items-center gap-6">
       <SectionTitle>Resume / CV</SectionTitle>
-      <div className="flex gap-16">
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-16 items-center">
         <a href="/resume/andre-developer-resume.pdf" target="_blank">
           <Button
             className="group"
