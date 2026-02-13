@@ -34,7 +34,7 @@ const Testimonial: React.FC<TestimonialProps> = ({
         {/* Forced circular image */}
         <div className="relative w-15 h-15 rounded-full overflow-hidden">
           <Image
-            src={imgSrc}
+            src={"/placeholders/cris.png"}
             alt={name}
             fill
             className="object-cover"
