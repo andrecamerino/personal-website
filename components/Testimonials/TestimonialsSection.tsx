@@ -1,3 +1,4 @@
+import React, { useMemo } from "react";
 import Testimonial from "./Testimonial";
 import SectionTitle from "../SectionTitle";
 import Marquee from "react-fast-marquee";
@@ -5,7 +6,7 @@ import { useTheme } from "@/context/ThemeContext";
 
 const TestimonalSection = () => {
   const { currentTheme } = useTheme();
-  
+
   const developerTestimonials = [
     {
       name: "Alex Morgan",
@@ -71,19 +72,33 @@ const TestimonalSection = () => {
   const testimonials =
     currentTheme === "dark" ? developerTestimonials : creativeTestimonials;
 
+  // Shuffle helper
+  const shuffle = <T,>(array: T[]): T[] => {
+    return [...array]
+      .map((value) => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value);
+  };
+
+  // Two independent shuffled lists
+  const row1 = useMemo(() => shuffle(testimonials), [testimonials]);
+  const row2 = useMemo(() => shuffle(testimonials), [testimonials]);
+
   return (
-    <div className="flex flex-col items-center mt-80">
+    <div className="flex flex-col items-center mt-80 gap-6 lg:gap-8">
       <SectionTitle>Testimonials</SectionTitle>
+
+      {/* Top marquee */}
       <Marquee direction="left" speed={20} autoFill pauseOnHover>
-        {testimonials.map((t, i) => (
-          <Testimonial
-            key={i}
-            name={t.name}
-            role={t.role}
-            rating={t.rating}
-            text={t.text}
-            imgSrc={t.imgSrc}
-          />
+        {row1.map((t, i) => (
+          <Testimonial key={`row1-${i}`} {...t} />
+        ))}
+      </Marquee>
+
+      {/* Bottom marquee */}
+      <Marquee direction="right" speed={17} autoFill pauseOnHover>
+        {row2.map((t, i) => (
+          <Testimonial key={`row2-${i}`} {...t} />
         ))}
       </Marquee>
     </div>
