@@ -57,31 +57,32 @@ const BentoGrid = () => {
   ];
 
   // Choose which array to display based on theme
-  const awardsToShow = currentTheme === "dark" ? developerAwards : creativeAchievements;
+  const awardsToShow =
+    currentTheme === "dark" ? developerAwards : creativeAchievements;
 
   return (
     <div className="flex flex-col items-center mt-80">
       <SectionTitle>Achievements & Awards</SectionTitle>
 
-      <div className={`w-[70vw] h-[60vh] min-h-125 flex ${GAP}`}>
-        {/* LEFT */}
-        <div className="w-1/2">
+      <div className="flex flex-col sm:flex-row w-[90vw] sm:w-[70vw] h-auto sm:h-[60vh] min-h-[500px] gap-6 box-border">
+        {/* LEFT / TOP */}
+        <div className="w-full sm:w-1/2 flex-shrink-0 min-h-0">
           <BentoBox {...awardsToShow[0]} />
         </div>
 
-        {/* RIGHT */}
-        <div className={`w-1/2 flex flex-col ${GAP}`}>
-          {/* Top */}
-          <div className="flex-1">
+        {/* RIGHT / OTHER */}
+        <div className="w-full sm:w-1/2 flex flex-col gap-6 min-h-0">
+          {/* Second box */}
+          <div className="w-full min-h-0">
             <BentoBox {...awardsToShow[1]} />
           </div>
 
-          {/* Bottom */}
-          <div className={`flex flex-1 ${GAP}`}>
-            <div className="flex-1">
+          {/* Last two boxes side by side on small devices */}
+          <div className="flex flex-row gap-6 w-full min-h-0">
+            <div className="flex-1 min-h-0">
               <BentoBox {...awardsToShow[2]} />
             </div>
-            <div className="flex-1">
+            <div className="flex-1 min-h-0">
               <BentoBox {...awardsToShow[3]} />
             </div>
           </div>

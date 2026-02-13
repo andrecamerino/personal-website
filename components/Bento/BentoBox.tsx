@@ -41,10 +41,10 @@ const BentoBox: React.FC<BentoBoxProps> = ({
       />
 
       {/* Glass overlay content */}
-      <a className="relative flex flex-col justify-start items-start w-full h-full p-8">
+      <a className="relative flex flex-col justify-start items-start w-full h-full p-4 sm:p-8">
         {/* Title */}
         <h1
-          className="text-4xl font-medium tracking-tighter"
+          className="text-2xl sm:text-4xl font-medium tracking-tighter"
           style={{ textShadow: titleShadow }}
         >
           {truncatedTitle}
@@ -52,7 +52,7 @@ const BentoBox: React.FC<BentoBoxProps> = ({
 
         {/* Description */}
         <h1
-          className="text-lg transform -translate-y-20 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 mt-2"
+          className="text-sm sm:text-lg transform -translate-y-12 sm:-translate-y-20 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 mt-1 sm:mt-2"
           style={{ textShadow: titleShadow }}
         >
           {truncatedDesc}
