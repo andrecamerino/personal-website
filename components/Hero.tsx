@@ -32,11 +32,16 @@ const Hero = () => {
           <span className="wave">👋</span>, my name is
         </p>
         <h1
-          className="font-black text-center m-0"
+          className="font-black m-0 flex flex-col lg:flex-row items-center justify-center"
           style={{ transform: "scaleY(0.8)" }}
         >
-          <span className="lg:text-9xl lg:tracking-[-8] text-8xl tracking-[-8]">ANDRE</span>{" "}
-          <span className="lg:text-9xl lg:tracking-[-8] text-7xl tracking-[-6]">CAMERINO</span>
+          <div className="lg:text-9xl lg:tracking-[-8] text-8xl tracking-[-8] text-center">
+            ANDRE
+          </div>
+
+          <div className="lg:text-9xl lg:tracking-[-8] text-7xl tracking-[-6] text-center lg:ml-4">
+            CAMERINO
+          </div>
         </h1>
         <p className="lg:text-right lg:pr-16 pl-10 m-0 lg:-mt-6 -mt-4">
           and I&apos;m <span className="font-bold">{typedText}</span>
