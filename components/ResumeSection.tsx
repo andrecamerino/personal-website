@@ -6,7 +6,7 @@ import SectionTitle from "./SectionTitle";
 const ResumeSection = () => {
   const { currentTheme } = useTheme();
   return (
-    <div className="mt-80 flex flex-col items-center gap-6">
+    <div className="mt-60 lg:mt-80 flex flex-col items-center gap-6">
       <SectionTitle>Resume / CV</SectionTitle>
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-16 items-center">
         <a href="/resume/andre-developer-resume.pdf" target="_blank">
