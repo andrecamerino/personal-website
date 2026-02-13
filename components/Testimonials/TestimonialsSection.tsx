@@ -85,7 +85,7 @@ const TestimonalSection = () => {
   const row2 = useMemo(() => shuffle(testimonials), [testimonials]);
 
   return (
-    <div className="flex flex-col items-center mt-80 gap-6 lg:gap-8">
+    <div className="flex flex-col items-center mt-60 lg:mt-80 gap-6 lg:gap-8">
       <SectionTitle>Testimonials</SectionTitle>
 
       {/* Top marquee */}
