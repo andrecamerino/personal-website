@@ -12,8 +12,8 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, reverse = false }) => {
   return (
     <div
-      className={`${glass} rounded-4xl w-[80vw] flex ${
-        reverse ? "flex-row-reverse" : "flex-row"
+      className={`${glass} rounded-4xl w-[80vw] flex flex-col ${
+        reverse ? "lg:flex-row-reverse" : "lg:flex-row"
       } p-10 gap-10`}
     >
       <div className="shrink-0">
@@ -26,7 +26,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, reverse = false }) =
         />
       </div>
 
-      <div className="flex flex-col flex-1 gap-2 justify-center pl-10">
+      <div className="flex flex-col flex-1 gap-2 justify-center lg:pl-10">
         <h1 className="text-2xl font-bold">{project.title}</h1>
         <p className="mb-4">{project.description}</p>
         <a href={project.link} target="_blank" rel="noopener noreferrer">
