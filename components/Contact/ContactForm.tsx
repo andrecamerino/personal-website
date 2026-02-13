@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { glass } from "@/styles/glass";
 import Button from "../Button";
+import { useTheme } from "@/context/ThemeContext";
 
 const ContactForm = () => {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const { currentTheme } = useTheme();
 
   return (
     <form
@@ -64,7 +66,11 @@ const ContactForm = () => {
           id="subject"
           name="subject"
           type="text"
-          placeholder="e.g. Software Inquiry"
+          placeholder={
+            currentTheme === "dark"
+              ? "e.g. Software Inquiry"
+              : "e.g. Creative Inquiry"
+          }
         />
       </div>
 
@@ -82,7 +88,11 @@ const ContactForm = () => {
           "
           id="message"
           name="message"
-          placeholder="Describe your upcoming project or idea..."
+          placeholder={
+            currentTheme === "dark"
+              ? "Describe your upcoming project or idea..."
+              : "What would you like to bring to life?"
+          }
         />
       </div>
 
@@ -101,7 +111,10 @@ const ContactForm = () => {
         </div>
 
         <button type="submit">
-          <Button>Submit</Button>
+          <Button className="group">
+            Submit&nbsp;<span className="hidden group-hover:block"> 📬</span>
+            <span className="block group-hover:hidden"> 📭</span>
+          </Button>
         </button>
       </div>
     </form>
