@@ -89,18 +89,26 @@ const TestimonalSection = () => {
       <SectionTitle>Testimonials</SectionTitle>
 
       {/* Top marquee */}
-      <Marquee direction="left" speed={20} autoFill pauseOnHover>
+      <Marquee direction="left" speed={26} autoFill pauseOnHover>
         {row1.map((t, i) => (
           <Testimonial key={`row1-${i}`} {...t} />
         ))}
       </Marquee>
 
       {/* Bottom marquee */}
-      <Marquee direction="right" speed={17} autoFill pauseOnHover>
-        {row2.map((t, i) => (
-          <Testimonial key={`row2-${i}`} {...t} />
-        ))}
-      </Marquee>
+      <div className="block lg:hidden">
+        <Marquee
+          className="block lg:hidden"
+          direction="right"
+          speed={22}
+          autoFill
+          pauseOnHover
+        >
+          {row2.map((t, i) => (
+            <Testimonial key={`row2-${i}`} {...t} />
+          ))}
+        </Marquee>
+      </div>
     </div>
   );
 };

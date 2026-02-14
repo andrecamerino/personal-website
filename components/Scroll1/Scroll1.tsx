@@ -1,4 +1,3 @@
-import React from "react";
 import Scroll1Card from "./Scroll1Card";
 import Marquee from "react-fast-marquee";
 import SectionTitle from "../SectionTitle";
@@ -31,7 +30,7 @@ const Scroll1 = () => {
       </SectionTitle>
 
       {/* Top marquee - always visible */}
-      <Marquee direction="right" speed={20} autoFill pauseOnHover>
+      <Marquee direction="right" speed={26} autoFill pauseOnHover>
         {content.map((e, i) => (
           <Scroll1Card key={i} text={e.text} imgSrc={e.imgSrc} />
         ))}
@@ -39,7 +38,7 @@ const Scroll1 = () => {
 
       {/* Bottom marquee - small screens only */}
       <div className="block lg:hidden w-full">
-        <Marquee direction="left" speed={18} autoFill pauseOnHover>
+        <Marquee direction="left" speed={22} autoFill pauseOnHover>
           {offsetContent.map((e, i) => (
             <Scroll1Card key={i} text={e.text} imgSrc={e.imgSrc} />
           ))}
