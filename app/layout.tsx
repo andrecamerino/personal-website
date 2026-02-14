@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} antialiased scroll-smooth`}>
+      <body className={`${montserrat.variable} antialiased scroll-smooth bg-(--color-secondary)`}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
