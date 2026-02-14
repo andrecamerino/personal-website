@@ -153,7 +153,14 @@ const ContactForm = () => {
       </div>
 
       {/* Submit */}
-      <div className="flex items-center justify-between mt-2 min-h-7">
+      <div className="flex flex-row-reverse items-center justify-between mt-2 min-h-7">
+        <button type="submit" disabled={loading}>
+          <Button className="group">
+            {loading ? "Sending..." : "Submit"}&nbsp;
+            <span className="hidden group-hover:block">📬</span>
+            <span className="block group-hover:hidden">📭</span>
+          </Button>
+        </button>
         {apiMessage && (
           <div className="text-sm font-medium mb-2">
             <span
@@ -165,14 +172,6 @@ const ContactForm = () => {
             </span>
           </div>
         )}
-
-        <button type="submit" disabled={loading}>
-          <Button className="group">
-            {loading ? "Sending..." : "Submit"}&nbsp;
-            <span className="hidden group-hover:block">📬</span>
-            <span className="block group-hover:hidden">📭</span>
-          </Button>
-        </button>
       </div>
     </form>
   );
