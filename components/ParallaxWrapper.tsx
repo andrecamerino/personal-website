@@ -1,51 +1,33 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 interface ParallaxWrapperProps {
   background: string; // URL of background image
   children: React.ReactNode;
   speed?: number; // 0.1 - 0.5 recommended
-  fallbackColor?: string; // optional fallback color while loading
 }
 
 const ParallaxWrapper: React.FC<ParallaxWrapperProps> = ({
   background,
   children,
   speed = 0.3,
-  fallbackColor = "#111", // dark fallback by default
 }) => {
-  const bgRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
-  // Preload the background image to prevent white flashes
-  useEffect(() => {
-    const img = new Image();
-    img.src = background;
-  }, [background]);
+  // Track scroll progress relative to this section
+  const { scrollYProgress } = useScroll({ target: ref });
 
-  // Parallax scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      if (bgRef.current) {
-        const scrollY = window.scrollY;
-        // Use translate3d for GPU acceleration
-        bgRef.current.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [speed]);
+  // Map scroll progress [0,1] → translateY value
+  const y = useTransform(scrollYProgress, [0, 1], [0, 200 * speed]);
 
   return (
-    <div className="relative overflow-hidden">
-      <div
-        ref={bgRef}
+    <div ref={ref} className="relative overflow-hidden">
+      <motion.div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-center will-change-transform"
-        style={{
-          backgroundImage: `url(${background})`,
-          backgroundColor: fallbackColor,
-        }}
+        // Use background image
+        style={{ backgroundImage: `url(${background})`, y }}
       />
       <div className="relative z-10">{children}</div>
     </div>
