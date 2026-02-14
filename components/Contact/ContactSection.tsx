@@ -1,9 +1,10 @@
 import ContactLink from "@/components/Contact/ContactLink";
 import ContactForm from "./ContactForm";
 import { useTheme } from "@/context/ThemeContext";
+import Button from "../Button";
 
 const ContactSection = () => {
-  const { currentTheme } = useTheme()
+  const { currentTheme, setTheme } = useTheme()
   return (
     <div className="mt-80 flex flex-col items-center pb-20">
       <h1
@@ -18,6 +19,26 @@ const ContactSection = () => {
       >
         Let&apos;s Get in Touch
       </h1>
+      <div className="flex lg:flex-row flex-col lg:gap-16 gap-4 pt-18">
+        <Button
+          className="group"
+          onClick={() => setTheme("dark")}
+          variant={currentTheme === "light" ? "secondary" : "primary"}
+        >
+          I&apos;m looking for a developer &nbsp;
+          <span className="hidden group-hover:inline">🔋</span>
+          <span className="inline group-hover:hidden">🪫</span>
+        </Button>
+        <Button
+          className="group"
+          onClick={() => setTheme("light")}
+          variant={currentTheme === "dark" ? "secondary" : "primary"}
+        >
+          I&apos;m looking for a creative &nbsp;
+          <span className="hidden group-hover:inline">📸</span>
+          <span className="inline group-hover:hidden">📷</span>
+        </Button>
+      </div>
       <div className="w-[80%] mt-20 flex lg:flex-row flex-col-reverse gap-10">
         <div>
           <h1
