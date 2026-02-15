@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Marquee from "react-fast-marquee";
 import Testimonial from "./Testimonial";
 import SectionTitle from "../SectionTitle";
 import { useTheme } from "@/context/ThemeContext";
+import { testimonials } from "@/data/testimonials";
 
 const TestimonialSection = () => {
   const { currentTheme } = useTheme();
@@ -18,70 +19,8 @@ const TestimonialSection = () => {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const developerTestimonials = [
-    {
-      name: "Alex Morgan",
-      role: "Founder, DevWorks",
-      rating: 5,
-      text: "Andre absolutely smashed this project. Clean code, great communication.",
-      imgSrc: "/projects/lebron.webp",
-    },
-    {
-      name: "Jamie Lee",
-      role: "CTO, Stackify",
-      rating: 4,
-      text: "Super reliable and fast. Would 100% work together again.",
-      imgSrc: "/placeholders/cris.png",
-    },
-    {
-      name: "Chris Patel",
-      role: "Product Lead, Launchpad",
-      rating: 5,
-      text: "Attention to detail was next level. Everything just felt polished.",
-      imgSrc: "/projects/lebron.webp",
-    },
-    {
-      name: "Sam Rivers",
-      role: "Engineering Manager, Flux",
-      rating: 4,
-      text: "Great balance of technical skill and product thinking.",
-      imgSrc: "/placeholders/cris.png",
-    },
-  ];
-
-  const creativeTestimonials = [
-    {
-      name: "Mia Thompson",
-      role: "Creative Director, Bloom",
-      rating: 5,
-      text: "The visuals and motion were unreal. Exactly the vibe we wanted.",
-      imgSrc: "/projects/lebron.webp",
-    },
-    {
-      name: "Leo Fernandez",
-      role: "Brand Strategist",
-      rating: 4,
-      text: "Strong creative instincts and super easy to collaborate with.",
-      imgSrc: "/placeholders/cris.png",
-    },
-    {
-      name: "Ava Collins",
-      role: "Content Lead, Studio Nine",
-      rating: 5,
-      text: "Everything felt intentional and premium. Loved the end result.",
-      imgSrc: "/projects/lebron.webp",
-    },
-    {
-      name: "Noah Kim",
-      role: "Marketing Manager",
-      rating: 4,
-      text: "Fast turnaround and great storytelling through design.",
-      imgSrc: "/placeholders/cris.png",
-    },
-  ];
-
-  const testimonials =
-    currentTheme === "dark" ? developerTestimonials : creativeTestimonials;
+  const testimonialContent =
+    currentTheme === "dark" ? testimonials.developer : testimonials.creative;
 
   // Shuffle helper
   const shuffle = <T,>(array: T[]): T[] =>
@@ -91,16 +30,19 @@ const TestimonialSection = () => {
       .map(({ value }) => value);
 
   // Shuffle ONCE per theme for max stability
-  const shuffledTestimonials = useMemo(() => shuffle(testimonials), [testimonials]);
+  const shuffledTestimonials = useMemo(
+    () => shuffle(testimonialContent),
+    [testimonialContent],
+  );
 
   // Duplicate manually for marquee
   const row1 = useMemo(
     () => [...shuffledTestimonials, ...shuffledTestimonials],
-    [shuffledTestimonials]
+    [shuffledTestimonials],
   );
   const row2 = useMemo(
     () => [...shuffledTestimonials, ...shuffledTestimonials],
-    [shuffledTestimonials]
+    [shuffledTestimonials],
   );
 
   return (
