@@ -6,7 +6,7 @@ import Button from "../Button";
 const ContactSection = () => {
   const { currentTheme, setTheme } = useTheme()
   return (
-    <div className="mt-80 flex flex-col items-center pb-20">
+    <div id="contact" className="mt-80 flex flex-col items-center pb-20">
       <h1
         className="font-black text-5xl lg:text-7xl tracking-[-4] text-center m-0"
         style={{ transform: "scaleY(0.8)" }}
