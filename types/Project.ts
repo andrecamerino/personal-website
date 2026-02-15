@@ -1,7 +1,6 @@
-export interface ProjectData {
+export interface Project {
   title: string;
   description: string;
   imageSrc: string;
   link?: string;
-  maxDescriptionLength?: number; // optional override
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { glass } from "@/styles/glass";
 import { useTheme } from "@/context/ThemeContext";
+import { truncateText } from "@/utils/truncateText";
 
 interface BentoBoxProps {
   title: string;
@@ -19,12 +20,6 @@ const BentoBox: React.FC<BentoBoxProps> = ({
 }) => {
   const { currentTheme } = useTheme();
   const [active, setActive] = useState(false); // mobile click state
-
-  const truncatedTitle =
-    title.length > maxTitleLength ? title.slice(0, maxTitleLength) + "..." : title;
-
-  const truncatedDesc =
-    desc.length > maxDescLength ? desc.slice(0, maxDescLength) + "..." : desc;
 
   const titleShadow = currentTheme === "light"
     ? "2px 2px 8px rgba(255,255,255,0.9)"
@@ -48,7 +43,7 @@ const BentoBox: React.FC<BentoBoxProps> = ({
           className="text-2xl sm:text-4xl font-medium tracking-tighter"
           style={{ textShadow: titleShadow }}
         >
-          {truncatedTitle}
+          {truncateText(title, maxTitleLength)}
         </h1>
 
         {/* Description */}
@@ -65,7 +60,7 @@ const BentoBox: React.FC<BentoBoxProps> = ({
           `}
           style={{ textShadow: titleShadow }}
         >
-          {truncatedDesc}
+          {truncateText(desc, maxDescLength)}
         </h1>
       </a>
     </div>

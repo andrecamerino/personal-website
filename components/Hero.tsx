@@ -1,28 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { descriptiveWords as words } from "@/data/descriptiveWords";
 import Button from "./Button";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { useTheme } from "@/context/ThemeContext";
 
 const Hero = () => {
   const { currentTheme, setTheme } = useTheme();
-  const [words, setWords] = useState<string[]>([]);
-
-  useEffect(() => {
-    fetch("/words.txt")
-      .then((res) => res.text())
-      .then((data) =>
-        setWords(
-          data
-            .split("\n")
-            .map((w) => w.trim())
-            .filter(Boolean),
-        ),
-      )
-      .catch(() => setWords(["a student"])); // fallback
-  }, []);
-
   const typedText = useTypewriter(words, 100, 3000);
 
   return (
