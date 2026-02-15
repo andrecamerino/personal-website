@@ -1,11 +1,22 @@
-import React, { useMemo } from "react";
+"use client";
+
+import React, { useMemo, useState, useEffect } from "react";
+import Marquee from "react-fast-marquee";
 import Testimonial from "./Testimonial";
 import SectionTitle from "../SectionTitle";
-import Marquee from "react-fast-marquee";
 import { useTheme } from "@/context/ThemeContext";
 
-const TestimonalSection = () => {
+const TestimonialSection = () => {
   const { currentTheme } = useTheme();
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile width
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const developerTestimonials = [
     {
@@ -73,44 +84,50 @@ const TestimonalSection = () => {
     currentTheme === "dark" ? developerTestimonials : creativeTestimonials;
 
   // Shuffle helper
-  const shuffle = <T,>(array: T[]): T[] => {
-    return [...array]
+  const shuffle = <T,>(array: T[]): T[] =>
+    [...array]
       .map((value) => ({ value, sort: Math.random() }))
       .sort((a, b) => a.sort - b.sort)
       .map(({ value }) => value);
-  };
 
-  // Two independent shuffled lists
-  const row1 = useMemo(() => shuffle(testimonials), [testimonials]);
-  const row2 = useMemo(() => shuffle(testimonials), [testimonials]);
+  // Shuffle ONCE per theme for max stability
+  const shuffledTestimonials = useMemo(() => shuffle(testimonials), [testimonials]);
+
+  // Duplicate manually for marquee
+  const row1 = useMemo(
+    () => [...shuffledTestimonials, ...shuffledTestimonials],
+    [shuffledTestimonials]
+  );
+  const row2 = useMemo(
+    () => [...shuffledTestimonials, ...shuffledTestimonials],
+    [shuffledTestimonials]
+  );
 
   return (
     <div className="flex flex-col items-center mt-60 lg:mt-80 gap-6 lg:gap-8">
       <SectionTitle>Testimonials</SectionTitle>
 
       {/* Top marquee */}
-      <Marquee direction="left" speed={26} autoFill pauseOnHover>
-        {row1.map((t, i) => (
-          <Testimonial key={`row1-${i}`} {...t} />
-        ))}
-      </Marquee>
-
-      {/* Bottom marquee */}
-      <div className="block lg:hidden">
-        <Marquee
-          className="block lg:hidden"
-          direction="right"
-          speed={22}
-          autoFill
-          pauseOnHover
-        >
-          {row2.map((t, i) => (
-            <Testimonial key={`row2-${i}`} {...t} />
+      <div className="w-full overflow-hidden">
+        <Marquee direction="left" speed={26} pauseOnHover gradient={false}>
+          {row1.map((t, i) => (
+            <Testimonial key={`${t.name}-desktop-${i}`} {...t} />
           ))}
         </Marquee>
       </div>
+
+      {/* Bottom marquee (mobile only, mounted conditionally) */}
+      {isMobile && (
+        <div className="w-full overflow-hidden">
+          <Marquee direction="right" speed={22} pauseOnHover gradient={false}>
+            {row2.map((t, i) => (
+              <Testimonial key={`${t.name}-mobile-${i}`} {...t} />
+            ))}
+          </Marquee>
+        </div>
+      )}
     </div>
   );
 };
 
-export default TestimonalSection;
+export default TestimonialSection;
