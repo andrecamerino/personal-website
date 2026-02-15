@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { descriptiveWords as words } from "@/data/descriptiveWords";
 import Button from "./Button";
 import { useTypewriter } from "@/hooks/useTypewriter";
@@ -11,13 +12,45 @@ const Hero = () => {
   const { currentTheme, setTheme } = useTheme();
   const typedText = useTypewriter(words, 100, 3000);
 
+  const [showScrollHint, setShowScrollHint] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
   const smoothEase: Transition = {
     duration: 0.8,
     ease: [0.16, 1, 0.3, 1],
   };
 
+  // Show arrow after 3 seconds if no scroll
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!hasScrolled) setShowScrollHint(true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [hasScrolled]);
+
+  // Hide arrow once user scrolls
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setHasScrolled(true);
+        setShowScrollHint(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToNextSection = () => {
+    const nextSection = document.getElementById("next-section");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className="lg:my-60 my-40 flex flex-col items-center gap-30 text-xl">
+    <div className="relative lg:my-60 my-40 flex flex-col items-center gap-15 lg:gap-30 text-xl">
       <div className="w-full max-w-6xl">
 
         {/* Top line */}
@@ -97,6 +130,35 @@ const Hero = () => {
         </div>
       </RevealWrapper>
 
+      {/* Scroll Hint Arrow BELOW buttons */}
+      {showScrollHint && (
+        <RevealWrapper
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div
+            onClick={scrollToNextSection}
+            className="mt-2 lg:mt-8 cursor-pointer opacity-70 hover:opacity-100 transition-opacity duration-300 animate-float"
+          >
+            <svg
+              width="100"
+              height="40"
+              viewBox="0 0 100 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 10 L50 32 L90 10"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+        </RevealWrapper>
+      )}
     </div>
   );
 };

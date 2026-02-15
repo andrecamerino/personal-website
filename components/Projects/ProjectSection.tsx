@@ -12,7 +12,7 @@ const ProjectSection = () => {
     ? projects.developer : projects.creative
 
   return (
-    <div className="flex flex-col justify-center items-center gap-10">
+    <div id="next-section" className="flex flex-col justify-center items-center gap-10">
       <SectionTitle>FEATURED PROJECTS</SectionTitle>
 
       {currentProjects.map((p, index) => (
