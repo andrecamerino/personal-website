@@ -15,12 +15,11 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  // Start with defaults
   const [currentTheme, setCurrentTheme] = useState<Theme>('dark')
   const [formData, setFormData] = useState<Record<string, string>>({})
-  const [hydrated, setHydrated] = useState(false) // only true after reading localStorage
+  const [hydrated, setHydrated] = useState(false) // true after reading localStorage
 
-  // Load persisted state **after first render**
+  // Load persisted state after first render
   useEffect(() => {
     try {
       const savedTheme = localStorage.getItem('currentView') as Theme
@@ -50,7 +49,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light')
   }
 
-  // **Render immediately** with defaults to avoid blocking
+  // Render children immediately, using defaults; hydration will update state
   return (
     <ThemeContext.Provider
       value={{
