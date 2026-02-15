@@ -1,8 +1,7 @@
 "use client";
 
-import { ReactNode, use } from "react";
+import { ReactNode } from "react";
 import { motion, TargetAndTransition, Transition } from "motion/react";
-import { useTheme } from "@/context/ThemeContext";
 
 interface RevealWrapperProps {
   children: ReactNode;
@@ -11,9 +10,10 @@ interface RevealWrapperProps {
   whileInView?: TargetAndTransition;
   transition?: Transition;
   delay?: number;
+  key?: string;
 }
 
-const RevealWrapper: React.FC<RevealWrapperProps> = ({
+export const RevealWrapper: React.FC<RevealWrapperProps> = ({
   children,
   className,
   initial = { opacity: 0, y: 50, scale: 0.95 },
@@ -21,10 +21,8 @@ const RevealWrapper: React.FC<RevealWrapperProps> = ({
   transition = { type: "spring", stiffness: 60, damping: 12 },
   delay = 0,
 }) => {
-  const { currentTheme } = useTheme();
   return (
     <motion.div
-      key={currentTheme}
       initial={initial}
       whileInView={whileInView}
       viewport={{ once: true, amount: 0.15 }}
@@ -35,5 +33,3 @@ const RevealWrapper: React.FC<RevealWrapperProps> = ({
     </motion.div>
   );
 };
-
-export default RevealWrapper;
