@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@/components/Button";
 import { useTheme } from "@/context/ThemeContext";
 import SectionTitle from "./SectionTitle";
-import RevealWrapper from "./RevealWrapper";
+import { RevealWrapper } from "./RevealWrapper";
 
 const ResumeSection = () => {
   const { currentTheme } = useTheme();

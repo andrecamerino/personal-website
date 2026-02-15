@@ -2,7 +2,7 @@ import ContactLink from "@/components/Contact/ContactLink";
 import ContactForm from "./ContactForm";
 import { useTheme } from "@/context/ThemeContext";
 import Button from "../Button";
-import RevealWrapper from "../RevealWrapper";
+import { RevealWrapper } from "../RevealWrapper";
 
 const ContactSection = () => {
   const { currentTheme, setTheme } = useTheme();

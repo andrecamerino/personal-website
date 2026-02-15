@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { glass } from "@/styles/glass";
 import { useTheme } from "@/context/ThemeContext";
 import { truncateText } from "@/utils/truncateText";
-import RevealWrapper from "../RevealWrapper";
+import { RevealWrapper } from "../RevealWrapper";
 
 interface BentoBoxProps {
   title: string;
