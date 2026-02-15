@@ -1,7 +1,4 @@
-import {
-  developerAchievements,
-  creativeAchievements,
-} from "@/data/Bento/achievements";
+import { achievements } from "@/data/achievements";
 import { useTheme } from "@/context/ThemeContext";
 import BentoBox from "@/components/Bento/BentoBox";
 import SectionTitle from "@/components/SectionTitle";
@@ -9,8 +6,8 @@ import SectionTitle from "@/components/SectionTitle";
 const BentoGrid = () => {
   const GAP = "gap-6"; // your gap variable
   const { currentTheme } = useTheme();
-  const awardsToShow =
-    currentTheme === "dark" ? developerAchievements : creativeAchievements;
+  const achievementsToShow =
+    currentTheme === "dark" ? achievements.developer : achievements.creative;
 
   return (
     <div className="flex flex-col items-center mt-80">
@@ -21,23 +18,23 @@ const BentoGrid = () => {
       >
         {/* LEFT / TOP */}
         <div className="w-full sm:w-1/2 shrink-0 min-h-0">
-          <BentoBox {...awardsToShow[0]} />
+          <BentoBox {...achievementsToShow[0]} />
         </div>
 
         {/* RIGHT / OTHER */}
         <div className={`w-full sm:w-1/2 flex flex-col min-h-0 ${GAP}`}>
           {/* Second box */}
           <div className="w-full min-h-0">
-            <BentoBox {...awardsToShow[1]} />
+            <BentoBox {...achievementsToShow[1]} />
           </div>
 
           {/* Last two boxes side by side on small devices */}
           <div className={`flex flex-row w-full min-h-0 ${GAP}`}>
             <div className="flex-1 min-h-0">
-              <BentoBox {...awardsToShow[2]} />
+              <BentoBox {...achievementsToShow[2]} />
             </div>
             <div className="flex-1 min-h-0">
-              <BentoBox {...awardsToShow[3]} />
+              <BentoBox {...achievementsToShow[3]} />
             </div>
           </div>
         </div>
