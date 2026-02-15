@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 interface ParallaxWrapperProps {
   background: string; // URL of background image
@@ -13,26 +14,20 @@ const ParallaxWrapper: React.FC<ParallaxWrapperProps> = ({
   children,
   speed = 0.3,
 }) => {
-  const bgRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (bgRef.current) {
-        const scrollY = window.scrollY;
-        bgRef.current.style.transform = `translateY(${scrollY * speed}px)`;
-      }
-    };
+  // Track scroll progress relative to this section
+  const { scrollYProgress } = useScroll({ target: ref });
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [speed]);
+  // Map scroll progress [0,1] → translateY value
+  const y = useTransform(scrollYProgress, [0, 1], [0, 200 * speed]);
 
   return (
-    <div className="relative overflow-hidden">
-      <div
-        ref={bgRef}
+    <div ref={ref} className="relative overflow-hidden">
+      <motion.div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-center will-change-transform"
-        style={{ backgroundImage: `url(${background})` }}
+        // Use background image
+        style={{ backgroundImage: `url(${background})`, y }}
       />
       <div className="relative z-10">{children}</div>
     </div>

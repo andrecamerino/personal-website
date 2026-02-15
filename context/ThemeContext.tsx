@@ -8,19 +8,38 @@ interface ThemeContextType {
   currentTheme: Theme
   setTheme: (theme: Theme) => void
   toggleTheme: () => void
+  formData: Record<string, string>
+  setFormData: (data: Record<string, string>) => void
 }
 
-// Create the context (initial value undefined)
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
-// Provider component
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [currentTheme, setCurrentTheme] = useState<Theme>('dark')
+  const [formData, setFormData] = useState<Record<string, string>>({})
+  const [hydrated, setHydrated] = useState(false) // true after reading localStorage
 
-  // Keep <html> data-theme in sync
+  // Load persisted state after first render
   useEffect(() => {
+    try {
+      const savedTheme = localStorage.getItem('currentView') as Theme
+      const savedForm = localStorage.getItem('formData')
+      if (savedTheme) setCurrentTheme(savedTheme)
+      if (savedForm) setFormData(JSON.parse(savedForm))
+    } catch (err) {
+      console.error('Failed to read from localStorage', err)
+    } finally {
+      setHydrated(true)
+    }
+  }, [])
+
+  // Sync to localStorage whenever state changes, only after hydration
+  useEffect(() => {
+    if (!hydrated) return
     document.documentElement.setAttribute('data-theme', currentTheme)
-  }, [currentTheme])
+    localStorage.setItem('currentView', currentTheme)
+    localStorage.setItem('formData', JSON.stringify(formData))
+  }, [currentTheme, formData, hydrated])
 
   const setThemeIfNotCurrent = (theme: Theme) => {
     if (theme !== currentTheme) setCurrentTheme(theme)
@@ -30,20 +49,24 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light')
   }
 
+  // Render children immediately, using defaults; hydration will update state
   return (
     <ThemeContext.Provider
-      value={{ currentTheme, setTheme: setThemeIfNotCurrent, toggleTheme }}
+      value={{
+        currentTheme,
+        setTheme: setThemeIfNotCurrent,
+        toggleTheme,
+        formData,
+        setFormData,
+      }}
     >
       {children}
     </ThemeContext.Provider>
   )
 }
 
-// Custom hook to use the context
 export const useTheme = () => {
   const context = useContext(ThemeContext)
-  if (!context) {
-    throw new Error('useTheme must be used within ThemeProvider')
-  }
+  if (!context) throw new Error('useTheme must be used within ThemeProvider')
   return context
 }

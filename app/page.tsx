@@ -20,7 +20,7 @@ const Page = () => {
           ? "/dark-background.png"
           : "/light-background.png"
       }
-      speed={0.5}
+      speed={10}
     >
       <Navbar />
       <Hero />
