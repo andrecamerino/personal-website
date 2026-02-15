@@ -1,6 +1,6 @@
 // MAX: 4 ACHIEVEMENTS FOR EACH (DEV AND CREATIVE)
 
-import { achievement } from "./achievementTypes";
+import { achievement } from "../../types/achievement";
 
 export const developerAchievements: achievement[] = [
   {
