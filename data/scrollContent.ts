@@ -9,7 +9,7 @@ export const scrollContent: Record<ScrollContentCategory, ScrollContent[]> = {
     { text: "LeGlaze", imgSrc: "/projects/lebron.webp" },
   ],
   creative: [
-    { text: "Lebron", imgSrc: "/projects/lebron.webp" },
+    { text: "Lebron" },
     { text: "Lebron", imgSrc: "/projects/lebron.webp" },
     { text: "Lebron", imgSrc: "/projects/lebron.webp" },
   ],

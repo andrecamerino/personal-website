@@ -10,6 +10,11 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Andre Camerino's Website",
   description: "Andre Camerino's Personal Website",
+  icons: {
+    icon: "/icons/icon.png",
+    shortcut: "/icons/favicon.ico",
+    apple: "/icons/apple-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -19,7 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} antialiased scroll-smooth bg-(--color-secondary)`}>
+      <body
+        className={`${montserrat.variable} antialiased scroll-smooth bg-(--color-secondary)`}
+      >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

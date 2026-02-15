@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { glass } from "@/styles/glass";
 import { useTheme } from "@/context/ThemeContext";
 import { truncateText } from "@/utils/truncateText";
+import RevealWrapper from "../RevealWrapper";
 
 interface BentoBoxProps {
   title: string;
@@ -12,8 +13,8 @@ interface BentoBoxProps {
 }
 
 const BentoBox: React.FC<BentoBoxProps> = ({
-  title = '',
-  desc = '',
+  title = "",
+  desc = "",
   imgSrc,
   maxTitleLength = 50,
   maxDescLength = 100,
@@ -21,9 +22,10 @@ const BentoBox: React.FC<BentoBoxProps> = ({
   const { currentTheme } = useTheme();
   const [active, setActive] = useState(false); // mobile click state
 
-  const titleShadow = currentTheme === "light"
-    ? "2px 2px 8px rgba(255,255,255,0.9)"
-    : "2px 2px 8px rgba(0,0,0,0.8)";
+  const titleShadow =
+    currentTheme === "light"
+      ? "2px 2px 8px rgba(255,255,255,0.9)"
+      : "2px 2px 8px rgba(0,0,0,0.8)";
 
   return (
     <div
@@ -39,12 +41,14 @@ const BentoBox: React.FC<BentoBoxProps> = ({
       {/* Content */}
       <a className="relative flex flex-col justify-start items-start w-full h-full p-4 sm:p-8 cursor-pointer">
         {/* Title */}
-        <h1
-          className="text-2xl sm:text-4xl font-medium tracking-tighter"
-          style={{ textShadow: titleShadow }}
-        >
-          {truncateText(title, maxTitleLength)}
-        </h1>
+        <RevealWrapper>
+          <h1
+            className="text-2xl sm:text-4xl font-medium tracking-tighter"
+            style={{ textShadow: titleShadow }}
+          >
+            {truncateText(title, maxTitleLength)}
+          </h1>
+        </RevealWrapper>
 
         {/* Description */}
         <h1

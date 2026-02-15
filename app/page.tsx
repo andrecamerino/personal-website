@@ -21,6 +21,7 @@ const Page = () => {
           : "/light-background.png"
       }
       speed={10}
+      fadeDuration={0.4}
     >
       <Navbar />
       <Hero />
