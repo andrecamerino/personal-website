@@ -4,6 +4,7 @@ import { descriptiveWords as words } from "@/data/descriptiveWords";
 import Button from "./Button";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { useTheme } from "@/context/ThemeContext";
+import RevealWrapper from "./RevealWrapper";
 
 const Hero = () => {
   const { currentTheme, setTheme } = useTheme();
@@ -33,26 +34,28 @@ const Hero = () => {
         </p>
       </div>
 
-      <div className="flex lg:flex-row flex-col lg:gap-16 gap-4">
-        <Button
-          className="group"
-          onClick={() => setTheme("dark")}
-          variant={currentTheme === "light" ? "secondary" : "primary"}
-        >
-          I&apos;m looking for a developer &nbsp;
-          <span className="hidden group-hover:inline">🔋</span>
-          <span className="inline group-hover:hidden">🪫</span>
-        </Button>
-        <Button
-          className="group"
-          onClick={() => setTheme("light")}
-          variant={currentTheme === "dark" ? "secondary" : "primary"}
-        >
-          I&apos;m looking for a creative &nbsp;
-          <span className="hidden group-hover:inline">📸</span>
-          <span className="inline group-hover:hidden">📷</span>
-        </Button>
-      </div>
+      <RevealWrapper delay={0.4}>
+        <div className="flex lg:flex-row flex-col lg:gap-16 gap-4">
+          <Button
+            className="group"
+            onClick={() => setTheme("dark")}
+            variant={currentTheme === "light" ? "secondary" : "primary"}
+          >
+            I&apos;m looking for a developer &nbsp;
+            <span className="hidden group-hover:inline">🔋</span>
+            <span className="inline group-hover:hidden">🪫</span>
+          </Button>
+          <Button
+            className="group"
+            onClick={() => setTheme("light")}
+            variant={currentTheme === "dark" ? "secondary" : "primary"}
+          >
+            I&apos;m looking for a creative &nbsp;
+            <span className="hidden group-hover:inline">📸</span>
+            <span className="inline group-hover:hidden">📷</span>
+          </Button>
+        </div>
+      </RevealWrapper>
     </div>
   );
 };
