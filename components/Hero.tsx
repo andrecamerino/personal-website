@@ -5,7 +5,7 @@ import { descriptiveWords as words } from "@/data/descriptiveWords";
 import Button from "./Button";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { useTheme } from "@/context/ThemeContext";
-import RevealWrapper from "./RevealWrapper";
+import { RevealWrapper } from "./RevealWrapper";
 import { Transition } from "framer-motion";
 
 const Hero = () => {
@@ -52,7 +52,6 @@ const Hero = () => {
   return (
     <div className="relative lg:my-60 my-40 flex flex-col items-center gap-15 lg:gap-30 text-xl">
       <div className="w-full max-w-6xl">
-
         {/* Top line */}
         <RevealWrapper
           initial={{ opacity: 0, y: 40 }}
@@ -97,7 +96,6 @@ const Hero = () => {
             <br className="lg:hidden" /> based in New Zealand 🇳🇿
           </p>
         </RevealWrapper>
-
       </div>
 
       {/* Buttons */}
