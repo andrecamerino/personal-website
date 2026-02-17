@@ -22,7 +22,6 @@ export const projects: Projects = {
       description:
         "A real-time weather dashboard that integrates regional forecasts with live UI transitions and responsive design optimised for mobile devices.",
       imageSrc: "/projects/weather.webp",
-      link: "https://yourdomain.com/weathercast",
     },
     {
       title: "Connect 4 AI",
