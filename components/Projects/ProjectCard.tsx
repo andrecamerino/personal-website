@@ -16,7 +16,7 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
       } p-10 gap-10`}
     >
       <div className="shrink-0">
-        <ProjectMedia/>
+        <ProjectMedia />
       </div>
 
       <div className="flex flex-col flex-1 gap-2 justify-center lg:pl-10">
@@ -24,9 +24,11 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
           {truncateText(project.title, 30)}
         </h1>
         <p className="mb-4">{truncateText(project.description, 300)}</p>
-        <a href={project.link} target="_blank" rel="noopener noreferrer">
-          <Button variant="secondary">Check it out</Button>
-        </a>
+        {project.link && (
+          <a href={project.link} target="_blank" rel="noopener noreferrer">
+            <Button variant="secondary">Check it out</Button>
+          </a>
+        )}
       </div>
     </div>
   );
