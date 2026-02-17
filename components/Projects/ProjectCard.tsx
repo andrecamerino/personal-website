@@ -3,6 +3,7 @@ import { glass } from "@/styles/glass";
 import Image from "next/image";
 import Button from "../Button";
 import { truncateText } from "@/utils/truncateText";
+import { ProjectMedia } from "./ProjectMedia";
 interface ProjectCardProps {
   project: Project;
   reverse?: boolean; // optional prop for zig-zag layout
@@ -16,13 +17,14 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
       } p-10 gap-10`}
     >
       <div className="shrink-0">
-        <Image
+        {/* <Image
           src={project.imageSrc}
           alt={project.title}
           width={400}
           height={400}
           className="rounded-2xl object-cover"
-        />
+        /> */}
+        <ProjectMedia/>
       </div>
 
       <div className="flex flex-col flex-1 gap-2 justify-center lg:pl-10">
