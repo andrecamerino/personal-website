@@ -1,6 +1,6 @@
 "use client";
 
-import { FullscreenPopup } from "@/components/Testimonials/FullscreenPopup";
+import { FullscreenPopup } from "@/components/Fullscreen/FullscreenPopup";
 import {
   createContext,
   ReactElement,
