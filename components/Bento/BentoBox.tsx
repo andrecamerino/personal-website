@@ -8,6 +8,7 @@ interface BentoBoxProps {
   title: string;
   desc: string;
   imgSrc: string;
+  link?: string;
   maxTitleLength?: number;
   maxDescLength?: number;
 }
@@ -16,6 +17,7 @@ const BentoBox: React.FC<BentoBoxProps> = ({
   title = "",
   desc = "",
   imgSrc,
+  link,
   maxTitleLength = 50,
   maxDescLength = 100,
 }) => {
@@ -33,13 +35,19 @@ const BentoBox: React.FC<BentoBoxProps> = ({
       onClick={() => setActive(!active)} // toggle on mobile
     >
       {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-opacity duration-300 opacity-60 group-hover:opacity-30"
-        style={{ backgroundImage: `url(${imgSrc})` }}
-      />
+      {imgSrc && (
+        <div
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-300 ${currentTheme === "dark" ? "opacity-60 group-hover:opacity-30" : "opacity-70 group-hover:opacity-30"}`}
+          style={{ backgroundImage: `url(/achievements${imgSrc})` }}
+        />
+      )}
 
       {/* Content */}
-      <a className="relative flex flex-col justify-start items-start w-full h-full p-4 sm:p-8 cursor-pointer">
+      <a
+        href={link}
+        target="_blank"
+        className="relative flex flex-col justify-start items-start w-full h-full p-4 sm:p-8 cursor-pointer"
+      >
         {/* Title */}
         <RevealWrapper>
           <h1
