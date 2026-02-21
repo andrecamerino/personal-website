@@ -2,6 +2,7 @@
 
 import { useFullscreen } from "@/context/FullscreenContext";
 import { glass } from "@/styles/glass";
+import XIcon from "../AnimatedIcons/XIcon";
 
 export const FullscreenPopup = () => {
   const { currentStatus, setCurrentStatus, currentContent } = useFullscreen();
@@ -20,10 +21,10 @@ export const FullscreenPopup = () => {
         {currentContent || "Popup content"}
 
         <button
-          className="absolute top-2 right-2 text-black text-2xl font-bold"
+          className="absolute top-10 right-10 text-(--color-white)"
           onClick={() => setCurrentStatus("inactive")}
         >
-          x
+          <XIcon />
         </button>
       </div>
     </div>
