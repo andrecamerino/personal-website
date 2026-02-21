@@ -26,6 +26,21 @@ export const projects: Projects = {
       link: "https://wdcc.co.nz/projects/uaic/2025",
     },
     {
+      title: "Bindr",
+      description:
+        "Bindr is a recipe web app developed for CS235 with Evan & Sam, built with Python, Flask, Pytest, and SQLite. The platform features a homepage highlighting featured recipes, a browse page with search and filter functionality, and detailed recipe pages including ingredients, instructions, and nutritional information.",
+      images: [
+        "/developer/bindr/bindr-1.png",
+        "/developer/bindr/bindr-2.png",
+        "/developer/bindr/bindr-3.png",
+        "/developer/bindr/bindr-4.png",
+        "/developer/bindr/bindr-5.png",
+        "/developer/bindr/bindr-6.png",
+        "/developer/bindr/bindr-7.png",
+      ],
+      link: "https://github.com/UoA-CS-Sindhwani-CS235-S2-2025/cs235-s2-2025-recipeswebapp-scho616-eau465-rcam301",
+    },
+    {
       title: "Personal Portfolio Website",
       description:
         "Designed and built this full-stack portfolio using Next.js, React, TypeScript, and Tailwind. Powered by Framer Motion animations, Redis with Upstash, and Resend for email handling, dynamically showcasing both my developer and creative work.",
