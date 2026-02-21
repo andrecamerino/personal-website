@@ -15,7 +15,7 @@ interface ProjectMediaProps {
 }
 
 export const ProjectMedia = ({
-  images = ["/projects/lebron.webp", "/placeholders/cris.png"],
+  images,
   video,
   alt = "",
   className,
@@ -58,7 +58,7 @@ export const ProjectMedia = ({
   const alwaysShow = isMobile;
 
   if (video) {
-    return <ProjectVideo src={video} width={width} height={height} className={className} />;
+    return <ProjectVideo src={`/projects${video}`} width={width} height={height} className={className} />;
   }
 
   if (images && images.length > 0) {
@@ -67,7 +67,7 @@ export const ProjectMedia = ({
         <AnimatePresence mode="wait">
           <motion.img
             key={currentIndex}
-            src={images[currentIndex]}
+            src={`/projects${images[currentIndex]}`}
             alt={alt}
             initial={{ opacity: 0, x: direction * 20 }}
             animate={{ opacity: 1, x: 0 }}

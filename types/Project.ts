@@ -1,6 +1,7 @@
 export interface Project {
   title: string;
   description: string;
-  imageSrc: string;
+  images?: string[];
+  video?: string;
   link?: string;
 }

@@ -8,26 +8,22 @@ interface Scroll1CardProps {
   imgSrc?: string;
 }
 
-const Scroll1Card: React.FC<Scroll1CardProps> = ({
-  text,
-  alt,
-  imgSrc,
-}) => {
+const Scroll1Card = ({ text, alt, imgSrc }: Scroll1CardProps) => {
   return (
     <div
       className={`${glass} flex flex-row gap-4 lg:gap-8 items-center rounded-3xl lg:rounded-2xl mb-5 px-6 lg:px-12 py-1.5 lg:py-2 mr-6 lg:mr-10`}
     >
-      {imgSrc ? (
+      {imgSrc && (
         <Image
-          src={imgSrc}
+          src={`/scroll-content/techs${imgSrc}`}
           alt={alt ?? "image"}
-          width={50}
-          height={50}
-          className="lg:w-15 lg:h-15 w-11.25 h-11.25 object-cover"
+          width={30}
+          height={30}
+          className="lg:w-13 lg:h-13 p-2 w-11.25 h-11.25 object-cover"
         />
-      ) : null}
+      )}
 
-      <p className="font-bold text-base lg:text-lg">{text}</p>
+      <p className="font-bold text-base lg:text-lg" autoCapitalize="words">{text}</p>
     </div>
   );
 };
