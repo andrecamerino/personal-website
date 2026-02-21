@@ -4,8 +4,12 @@ import { render } from "@react-email/render";
 import { ratelimit } from "@/utils/ratelimit";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const SENDER_EMAIL = process.env.SENDER_EMAIL;
-const RECEIVER_EMAIL = process.env.RECEIVER_EMAIL;
+const SENDER_EMAIL = process.env.SENDER_EMAIL as string;
+const RECEIVER_EMAIL = process.env.RECEIVER_EMAIL as string;
+
+if (!SENDER_EMAIL || !RECEIVER_EMAIL) {
+  throw new Error("Missing env email vars");
+}
 
 export async function POST(req: Request) {
   const ip = req.headers.get("x-forwarded-for") ?? "anonymous";

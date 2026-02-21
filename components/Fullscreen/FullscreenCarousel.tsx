@@ -1,6 +1,6 @@
 "use client";
 
-import { Project } from "@/types/project";
+import { Project } from "@/types/Project";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -19,14 +19,11 @@ const FullscreenCarousel = ({ project }: { project: Project }) => {
   };
 
   const prev = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? images.length - 1 : prev - 1
-    );
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
   return (
     <div className="w-full flex flex-col gap-6">
-
       {/* Main Image */}
       <div className="relative w-full h-[40vh] sm:h-[50vh] lg:h-[60vh] overflow-hidden rounded-3xl">
         <AnimatePresence mode="wait">
@@ -54,11 +51,10 @@ const FullscreenCarousel = ({ project }: { project: Project }) => {
 
       {/* Desktop Layout */}
       <div className="hidden lg:flex items-center gap-6">
-        <button
-          onClick={prev}
-          className="px-4 py-2 rounded-xl shrink-0"
-        >
-          <Button variant="secondary"><ArrowNarrowLeftIcon/></Button>
+        <button onClick={prev} className="px-4 py-2 rounded-xl shrink-0">
+          <Button variant="secondary">
+            <ArrowNarrowLeftIcon />
+          </Button>
         </button>
 
         <div className="flex gap-4 overflow-x-auto flex-1 p-0.5">
@@ -83,11 +79,10 @@ const FullscreenCarousel = ({ project }: { project: Project }) => {
           ))}
         </div>
 
-        <button
-          onClick={next}
-          className="px-4 py-2 rounded-xl shrink-0"
-        >
-          <Button variant="secondary"><ArrowNarrowRightIcon/></Button>
+        <button onClick={next} className="px-4 py-2 rounded-xl shrink-0">
+          <Button variant="secondary">
+            <ArrowNarrowRightIcon />
+          </Button>
         </button>
       </div>
 
@@ -116,18 +111,16 @@ const FullscreenCarousel = ({ project }: { project: Project }) => {
         </div>
 
         <div className="flex justify-center gap-6">
-          <button
-            onClick={prev}
-            className="px-6 py-2 rounded-xl"
-          >
-            <Button variant="secondary"><ArrowNarrowLeftIcon/></Button>
+          <button onClick={prev} className="px-6 py-2 rounded-xl">
+            <Button variant="secondary">
+              <ArrowNarrowLeftIcon />
+            </Button>
           </button>
 
-          <button
-            onClick={next}
-            className="px-6 py-2 rounded-x"
-          >
-            <Button variant="secondary"><ArrowNarrowRightIcon/></Button>
+          <button onClick={next} className="px-6 py-2 rounded-x">
+            <Button variant="secondary">
+              <ArrowNarrowRightIcon />
+            </Button>
           </button>
         </div>
       </div>

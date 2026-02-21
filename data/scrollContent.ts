@@ -6,7 +6,7 @@ export const scrollContent: Record<ScrollContentCategory, ScrollContent[]> = {
   developer: [
     { text: "Python", imgSrc: "/python.png" },
     { text: "Flask", imgSrc: "/flask.png" },
-    { text: "Pytest", imgSrc: "/PYTEST.png" },
+    { text: "Pytest", imgSrc: "/pytest.png" },
     { text: "Sqlite", imgSrc: "/sqlite.png" },
     { text: "C", imgSrc: "/c.png" },
     { text: "Javascript", imgSrc: "/javascript.png" },

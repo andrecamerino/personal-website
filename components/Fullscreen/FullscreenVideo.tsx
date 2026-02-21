@@ -1,9 +1,14 @@
-import { Project } from "@/types/project";
+import { Project } from "@/types/Project";
 
 const FullscreenVideo = ({ project }: { project: Project }) => {
   return (
     <div className="flex flex-col gap-4 items-center">
-      <h1 className="text-(--color-primary) text-2xl font-bold" autoCapitalize="characters">{project.title}</h1>
+      <h1
+        className="text-(--color-primary) text-2xl font-bold"
+        autoCapitalize="characters"
+      >
+        {project.title}
+      </h1>
       <video
         src={`projects/${project.video}`}
         loop

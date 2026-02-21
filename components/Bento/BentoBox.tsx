@@ -7,20 +7,20 @@ import { RevealWrapper } from "../RevealWrapper";
 interface BentoBoxProps {
   title: string;
   desc: string;
-  imgSrc: string;
+  imgSrc?: string;
   link?: string;
   maxTitleLength?: number;
   maxDescLength?: number;
 }
 
-const BentoBox: React.FC<BentoBoxProps> = ({
+const BentoBox = ({
   title = "",
   desc = "",
   imgSrc,
   link,
   maxTitleLength = 50,
   maxDescLength = 100,
-}) => {
+}: BentoBoxProps) => {
   const { currentTheme } = useTheme();
   const [active, setActive] = useState(false); // mobile click state
 
