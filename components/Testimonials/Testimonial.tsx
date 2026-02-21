@@ -2,13 +2,14 @@ import React from "react";
 import { glass } from "@/styles/glass";
 import Image from "next/image";
 import { FaStar, FaRegStar } from "react-icons/fa";
+import { truncateText } from "@/utils/truncateText";
 
 interface TestimonialProps {
   name: string;
   role: string;
   rating: number; // 0-5
   text: string;
-  imgSrc: string;
+  imgSrc?: string;
 }
 
 const Testimonial: React.FC<TestimonialProps> = ({
@@ -16,7 +17,7 @@ const Testimonial: React.FC<TestimonialProps> = ({
   role,
   rating,
   text,
-  imgSrc,
+  imgSrc = "/testimonials/default-profile.png",
 }) => {
   // Generate stars
   const stars = Array.from({ length: 5 }, (_, i) =>
@@ -34,7 +35,7 @@ const Testimonial: React.FC<TestimonialProps> = ({
         {/* Forced circular image */}
         <div className="relative w-15 h-15 rounded-full overflow-hidden">
           <Image
-            src={"/placeholders/cris.png"}
+            src={imgSrc}
             alt={name}
             fill
             className="object-cover"
@@ -49,7 +50,7 @@ const Testimonial: React.FC<TestimonialProps> = ({
       </div>
 
       {/* Text content */}
-      <p className="text-sm">{text}</p>
+      <p className="text-sm">{truncateText(text, 200)}</p>
     </div>
   );
 };
