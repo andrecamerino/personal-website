@@ -2,7 +2,7 @@ import { Project } from "@/types/project";
 import { glass } from "@/styles/glass";
 import Button from "../Button";
 import { truncateText } from "@/utils/truncateText";
-import { ProjectMedia } from "./ProjectMedia";
+import { ProjectThumbnail } from "./ProjectThumbnail";
 import { useFullscreen } from "@/context/FullscreenContext";
 import FullscreenVideo from "../Fullscreen/FullscreenVideo";
 import FullscreenCarousel from "../Fullscreen/FullscreenCarousel";
@@ -31,7 +31,7 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
         }
         className="shrink-0"
       >
-        <ProjectMedia images={project.images} video={project.video} />
+        <ProjectThumbnail images={project.images} video={project.video} />
       </div>
 
       <div className="flex flex-col flex-1 gap-2 justify-center lg:pl-10">
