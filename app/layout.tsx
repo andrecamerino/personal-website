@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { FullscreenProvider } from "@/context/FullscreenContext";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -27,7 +28,9 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} antialiased scroll-smooth bg-(--color-secondary)`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <FullscreenProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </FullscreenProvider>
       </body>
     </html>
   );
