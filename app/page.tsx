@@ -17,8 +17,8 @@ const Page = () => {
     <ParallaxWrapper
       background={
         currentTheme === "dark"
-          ? "/dark-background.png"
-          : "/light-background.png"
+          ? "/dark-background.jpg"
+          : "/light-background.jpg"
       }
       speed={10}
       fadeDuration={0.4}
@@ -29,7 +29,7 @@ const Page = () => {
       <Scroll1 />
       <BentoGrid />
       <TestimonalSection />
-      <ResumeSection />
+      {currentTheme === "dark" && <ResumeSection />}
       <ContactSection />
     </ParallaxWrapper>
   );
