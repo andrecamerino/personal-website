@@ -11,97 +11,111 @@ export type Projects = {
 export const projects: Projects = {
   developer: [
     {
-      title: "FocusFlow",
+      title: "UOA Investment Club Website",
       description:
-        "A task management web app built with Next.js and TypeScript, designed to help students organise deep work sessions with theme switching and smooth UI animations.",
-      imageSrc: "/projects/focusflow.webp",
-      link: "https://yourdomain.com/focusflow",
+        "Built as part of WDCC (Web Development Consulting Club), where I worked as a developer and co-designer. Delivered a modern platform featuring live stock data integration, Stripe payments, and a Payload CMS-powered admin system.",
+      images: [
+        "/developer/uaic/uaic-1.png",
+        "/developer/uaic/uaic-2.png",
+        "/developer/uaic/uaic-3.png",
+        "/developer/uaic/uaic-4.png",
+        "/developer/uaic/uaic-5.png",
+        "/developer/uaic/uaic-6.png",
+        "/developer/uaic/uaic-7.png",
+      ],
+      link: "https://wdcc.co.nz/projects/uaic/2025",
     },
     {
-      title: "WeatherCast NZ",
+      title: "Personal Portfolio Website",
       description:
-        "A real-time weather dashboard that integrates regional forecasts with live UI transitions and responsive design optimised for mobile devices.",
-      imageSrc: "/projects/weather.webp",
-    },
-    {
-      title: "Connect 4 AI",
-      description:
-        "A Python-based Connect 4 game featuring heuristic evaluation and recursive search logic for competitive AI gameplay.",
-      imageSrc: "/projects/connect4.webp",
-      link: "https://github.com/yourusername/connect4-ai",
+        "Designed and built this full-stack portfolio using Next.js, React, TypeScript, and Tailwind. Powered by Framer Motion animations, Redis with Upstash, and Resend for email handling, dynamically showcasing both my developer and creative work.",
+      images: [
+        "/developer/website/website-light.png",
+        "/developer/website/website-dark.png",
+      ],
+      link: "https://github.com/andrecamerino/personal-website",
     },
   ],
 
   creative: {
     videography: [
       {
-        title: "Savais Freaky Friday Aftermovie",
+        title: "Night Events Videography",
         description:
-          "A high-energy nightclub recap capturing wide-angle crowd shots, dynamic lighting, and rhythmic pacing aligned with house and Afrobeat tracks.",
-        imageSrc: "/projects/savais.webp",
-        link: "https://youtube.com/yourvideo1",
+          "A high-energy nightlife recap capturing immersive wide-angle crowd shots, dynamic lighting transitions, and tightly paced edits. Designed to amplify atmosphere and show off your events.",
+        video: "/creative/videos/night_events_V1.mp4",
+        link: "https://www.instagram.com/savais.apparel/?hl=en",
       },
       {
-        title: "Summer Recap 2025",
+        title: "Brand Promo Videography",
         description:
-          "Cinematic montage featuring drone transitions, slow-motion beach sequences, and colour-graded golden hour aesthetics.",
-        imageSrc: "/projects/summer.webp",
-        link: "https://youtube.com/yourvideo2",
+          "Short-form commercial content combining motion typography, clean transitions, and polished framing. Produced for UOACS (UoA Computer Science Society) to drive engagement, strengthen brand identity, and deliver clear messaging across social platforms.",
+        video: "/creative/videos/uoacs_V1.mp4",
+        link: "https://uoacs.co.nz/",
       },
       {
-        title: "Brand Promo Reel",
+        title: "Music Videography",
         description:
-          "Short-form promotional video combining motion typography, clean transitions, and commercial-style framing.",
-        imageSrc: "/projects/promo.webp",
-        link: "https://youtube.com/yourvideo3",
+          "Cinematic music visuals blending slow-motion beach sequences, golden-hour colour grading, and intentional composition. Crafted to elevate the artist's presence through rhythm-aware cuts and atmospheric storytelling. Featuring artist Joseph Pod.",
+        video: "/creative/videos/music_videos_V1.mp4",
+        link: "https://www.youtube.com/@josephpodd",
+      },
+      {
+        title: "Hype Videography",
+        description:
+          "High-impact event and sports edits capturing crowd energy and chant build-ups. Fast-paced cuts, punchy sound design, and dynamic framing create an emotionally driven highlight experience. Proudly featuring my 2023 leavers video!",
+        video: "/creative/videos/spc_V1.mp4",
+        link: "https://www.youtube.com/watch?v=rTSX71Q9Kso",
       },
     ],
 
     photography: [
       {
-        title: "Urban Night Series",
+        title: "Corporate Event Photography",
         description:
-          "Low-light street photography exploring neon reflections, motion blur, and high-contrast composition.",
-        imageSrc: "/projects/urban.webp",
-        link: "https://yourdomain.com/urban-series",
+          "Professional coverage of UOACS Elective Nights and company collaborations, including Potentia. Capturing keynote moments, networking interactions, and brand presence through clean composition and natural, polished imagery optimised for marketing and sponsor showcases.",
+        images: [
+          "/creative/uoacs-photos/elective-1.jpg",
+          "/creative/uoacs-photos/elective-2.jpg",
+          "/creative/uoacs-photos/elective-3.jpg",
+          "/creative/uoacs-photos/potentia-1.jpg",
+          "/creative/uoacs-photos/potentia-2.jpg",
+          "/creative/uoacs-photos/potentia-3.jpg",
+        ],
+        link: "https://uoacs.co.nz/",
       },
       {
-        title: "Portrait Collection",
+        title: "Corporate Competition Photography",
         description:
-          "Minimalist portrait series focusing on soft shadows, natural light, and expressive framing.",
-        imageSrc: "/projects/portraits.webp",
-        link: "https://yourdomain.com/portraits",
+          "Dynamic coverage of the UOACS Hackathon, documenting focused coding sessions, team collaboration, and final pitches. Story-driven imagery highlighting innovation, intensity, and achievement.",
+        images: [
+          "/creative/uoacs-photos/hackathon-1.jpg",
+          "/creative/uoacs-photos/hackathon-2.jpg",
+          "/creative/uoacs-photos/hackathon-3.jpg",
+        ],
+        link: "https://uoacs.co.nz/",
       },
       {
-        title: "Coastal Landscapes",
+        title: "Elegant Event Photography",
         description:
-          "Wide-frame landscape photography capturing New Zealand’s coastline with long exposure techniques.",
-        imageSrc: "/projects/coast.webp",
-        link: "https://yourdomain.com/coastal",
+          "Refined coverage of milestone celebrations such as debut birthdays, capturing candid emotion, thoughtful detail, and timeless elegance.",
       },
     ],
 
     editing: [
       {
-        title: "Motion Typography Reel",
+        title: "Podcast Editing",
         description:
-          "A collection of kinetic text animations built using Premiere Pro and After Effects, focusing on smooth easing and timing precision.",
-        imageSrc: "/projects/typography.webp",
-        link: "https://youtube.com/yourvideo4",
+          "6K multicam podcast editing with dynamic angle switching, clean audio balancing, and fast-paced one-minute intro sequences designed to maximise viewer retention. Featuring The Morning Marketer podcast, optimised for both long-form and short-form platforms.",
+        video: "/creative/videos/podcasts_V1.mp4",
+        link: "https://www.instagram.com/burstdigitalnz/",
       },
       {
-        title: "Colour Grading Showcase",
+        title: "Short Documentary Editing",
         description:
-          "Before-and-after grading comparisons demonstrating cinematic LUT workflows and tonal balancing.",
-        imageSrc: "/projects/grading.webp",
-        link: "https://youtube.com/yourvideo5",
-      },
-      {
-        title: "Transition Pack Demo",
-        description:
-          "Custom seamless transitions designed for creators, optimised for speed ramps and social media formats.",
-        imageSrc: "/projects/transitions.webp",
-        link: "https://youtube.com/yourvideo6",
+          "Short-form documentary edits focused on strong storytelling, cinematic B-roll integration, and intentional pacing to create cohesive, emotionally engaging narratives.",
+        video: "/creative/videos/rpm.mov",
+        link: "http://youtube.com/channel/UCsLRWiu_gpB45TGxFRskADQ",
       },
     ],
   },

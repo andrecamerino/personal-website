@@ -3,5 +3,5 @@ export interface Testimonial {
     role: string,
     rating: 0 | 1 | 2 | 3 | 4 | 5,
     text: string,
-    imgSrc: string,
+    imgSrc?: string,
 }
