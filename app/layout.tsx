@@ -28,9 +28,9 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} antialiased scroll-smooth bg-(--color-secondary)`}
       >
-        <FullscreenProvider>
-          <ThemeProvider>{children}</ThemeProvider>
-        </FullscreenProvider>
+        <ThemeProvider>
+          <FullscreenProvider>{children}</FullscreenProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
