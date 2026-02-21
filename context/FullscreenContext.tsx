@@ -23,7 +23,7 @@ const FullscreenContext = createContext<FullscreenContextType | undefined>(
 );
 
 export const FullscreenProvider = ({ children }: { children: ReactNode }) => {
-  const [currentStatus, setCurrentStatus] = useState<Status>("active");
+  const [currentStatus, setCurrentStatus] = useState<Status>("inactive");
   const [currentContent, setCurrentContent] = useState<ReactElement | null>(
     null,
   );
