@@ -6,9 +6,11 @@ import Testimonial from "./Testimonial";
 import SectionTitle from "../SectionTitle";
 import { useTheme } from "@/context/ThemeContext";
 import { testimonials } from "@/data/testimonials";
+import { useFullscreen } from "@/context/FullscreenContext";
 
 const TestimonialSection = () => {
   const { currentTheme } = useTheme();
+  const { setContent } = useFullscreen();
   const [isMobile, setIsMobile] = useState(false);
 
   // Detect mobile width
@@ -53,7 +55,7 @@ const TestimonialSection = () => {
       <div className="w-full overflow-hidden">
         <Marquee direction="left" speed={26} pauseOnHover gradient={false}>
           {row1.map((t, i) => (
-            <Testimonial key={`${t.name}-desktop-${i}`} {...t} />
+            <Testimonial canExpand key={`${t.name}-desktop-${i}`} {...t} />
           ))}
         </Marquee>
       </div>
@@ -63,7 +65,7 @@ const TestimonialSection = () => {
         <div className="w-full overflow-hidden">
           <Marquee direction="right" speed={22} pauseOnHover gradient={false}>
             {row2.map((t, i) => (
-              <Testimonial key={`${t.name}-mobile-${i}`} {...t} />
+              <Testimonial canExpand key={`${t.name}-mobile-${i}`} {...t} />
             ))}
           </Marquee>
         </div>

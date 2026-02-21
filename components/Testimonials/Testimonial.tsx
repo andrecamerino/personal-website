@@ -1,8 +1,8 @@
-import React from "react";
 import { glass } from "@/styles/glass";
 import Image from "next/image";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { truncateText } from "@/utils/truncateText";
+import { useFullscreen } from "@/context/FullscreenContext";
 
 interface TestimonialProps {
   name: string;
@@ -10,16 +10,19 @@ interface TestimonialProps {
   rating: number; // 0-5
   text: string;
   imgSrc?: string;
+  canExpand?: boolean;
 }
 
-const Testimonial: React.FC<TestimonialProps> = ({
+const Testimonial = ({
   name,
   role,
   rating,
   text,
   imgSrc = "/testimonials/default-profile.png",
-}) => {
-  // Generate stars
+  canExpand = false,
+}: TestimonialProps) => {
+  const { setContent } = useFullscreen();
+
   const stars = Array.from({ length: 5 }, (_, i) =>
     i < rating ? (
       <FaStar key={i} className="text-(--color-primary)" />
@@ -28,20 +31,36 @@ const Testimonial: React.FC<TestimonialProps> = ({
     )
   );
 
-  return (
-    <div className={`${glass} p-6 w-80 flex flex-col rounded-3xl mr-10 mb-3`}>
-      {/* Header */}
-      <div className="flex flex-row items-center gap-4 mb-4">
-        {/* Forced circular image */}
-        <div className="relative w-15 h-15 rounded-full overflow-hidden">
-          <Image
-            src={imgSrc}
-            alt={name}
-            fill
-            className="object-cover"
-          />
+  const handleClick = () => {
+    if (canExpand) {
+      setContent(
+        <div className={`${glass} p-6 rounded-3xl max-w-xl`}>
+          <div className="flex items-center gap-4 mb-4">
+            <div className="relative w-16 h-16 rounded-full overflow-hidden">
+              <Image src={imgSrc} alt={name} fill className="object-cover" />
+            </div>
+            <div>
+              <h1 className="font-bold text-lg">{name}</h1>
+              <h2 className="text-sm text-gray-500">{role}</h2>
+              <div className="flex mt-1">{stars}</div>
+            </div>
+          </div>
+          <p className="text-sm">{text}</p>
         </div>
+      );
+    }
+  };
 
+  return (
+    <div
+      onClick={handleClick}
+      className={`${glass} p-6 w-80 flex flex-col rounded-3xl mr-10 mb-3 cursor-pointer`}
+    >
+      {/* Header */}
+      <div className="flex items-center gap-4 mb-4">
+        <div className="relative w-16 h-16 rounded-full overflow-hidden">
+          <Image src={imgSrc} alt={name} fill className="object-cover" />
+        </div>
         <div className="flex flex-col">
           <h1 className="font-bold">{name}</h1>
           <h2 className="text-sm text-gray-500">{role}</h2>
@@ -50,7 +69,7 @@ const Testimonial: React.FC<TestimonialProps> = ({
       </div>
 
       {/* Text content */}
-      <p className="text-sm">{truncateText(text, 200)}</p>
+      <p className="text-sm">{truncateText(text, 300)}</p>
     </div>
   );
 };
