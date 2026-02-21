@@ -1,7 +1,7 @@
 "use client";
 
 import { scrollContent } from "@/data/scrollContent";
-import { useMemo, useState, useEffect } from "react";
+import { useMemo } from "react";
 import Marquee from "react-fast-marquee";
 import Scroll1Card from "./Scroll1Card";
 import SectionTitle from "../SectionTitle";
@@ -9,23 +9,14 @@ import { useTheme } from "@/context/ThemeContext";
 
 const Scroll1 = () => {
   const { currentTheme } = useTheme();
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Detect mobile width
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 1024);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
 
   const content =
     currentTheme === "dark" ? scrollContent.developer : scrollContent.creative;
 
-  // Optional: shuffle once per theme (stable)
+  // shuffle once per theme (stable)
   const shuffledContent = useMemo(() => [...content], [content]);
 
-  // Duplicate manually for marquee instead of autoFill
+  // Duplicate manually for marquee instead of autoFill for optimisation
   const row1 = useMemo(
     () => [...shuffledContent, ...shuffledContent],
     [shuffledContent],
@@ -54,8 +45,8 @@ const Scroll1 = () => {
         </Marquee>
       </div>
 
-      {/* Bottom marquee - mobile only */}
-      {isMobile && (
+      {/* Bottom marquee */}
+      {currentTheme === "light" && (
         <div className="w-full overflow-hidden">
           <Marquee direction="left" speed={22} pauseOnHover gradient={false}>
             {row2.map((e, i) => (
