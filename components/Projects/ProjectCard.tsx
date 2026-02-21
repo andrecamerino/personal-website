@@ -16,12 +16,12 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
       } p-10 gap-10`}
     >
       <div className="shrink-0">
-        <ProjectMedia />
+        <ProjectMedia images={project.images} video={project.video}/>
       </div>
 
       <div className="flex flex-col flex-1 gap-2 justify-center lg:pl-10">
         <h1 className="text-2xl font-bold">
-          {truncateText(project.title, 30)}
+          {truncateText(project.title, 50)}
         </h1>
         <p className="mb-4">{truncateText(project.description, 300)}</p>
         {project.link && (
