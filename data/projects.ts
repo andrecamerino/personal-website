@@ -1,4 +1,4 @@
-import type { Project } from "@/types/project";
+import type { Project } from "@/types/Project";
 
 export type ProjectCategory = "developer" | "creative";
 export type CreativeCategory = "videography" | "photography" | "editing";

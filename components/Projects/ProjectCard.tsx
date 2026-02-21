@@ -1,4 +1,4 @@
-import { Project } from "@/types/project";
+import { Project } from "@/types/Project";
 import { glass } from "@/styles/glass";
 import Button from "../Button";
 import { truncateText } from "@/utils/truncateText";
