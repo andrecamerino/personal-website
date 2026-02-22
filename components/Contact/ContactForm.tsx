@@ -81,7 +81,7 @@ const ContactForm = () => {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className={`${glass} w-full h-full rounded-3xl p-8 flex flex-col gap-4`}
+      className={`${glass} w-full h-full rounded-3xl p-4 lg:p-8 flex flex-col gap-4`}
     >
       {/* Name + Phone */}
       <div className="flex flex-col lg:flex-row gap-4">
