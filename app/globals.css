@@ -10,7 +10,7 @@
   --color-primary: var(--color-white);
   --color-secondary: var(--color-black);
 
-  --bg-image: url('/dark-background.jpg');
+  --bg-image: url('/backgrounds/lg-dark.jpg');
   /* <-- dark mode background */
 }
 
@@ -19,7 +19,7 @@
   --color-primary: var(--color-black);
   --color-secondary: var(--color-white);
 
-  --bg-image: url('/light-background.jpg');
+  --bg-image: url('/backgrounds/lg-light.jpg');
   /* <-- light mode background */
 }
 
