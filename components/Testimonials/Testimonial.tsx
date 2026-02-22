@@ -28,25 +28,30 @@ const Testimonial = ({
       <FaStar key={i} className="text-(--color-primary)" />
     ) : (
       <FaRegStar key={i} className="text-(--color-primary)" />
-    )
+    ),
   );
 
   const handleClick = () => {
     if (canExpand) {
       setContent(
-        <div className={`${glass} p-6 rounded-3xl max-w-xl`}>
-          <div className="flex items-center gap-4 mb-4">
-            <div className="relative w-16 h-16 rounded-full overflow-hidden">
+        <div className="flex flex-col lg:flex-row p-2 lg:px-20 gap-4">
+          {/* Profile */}
+          <div className="flex items-center gap-4 mb-4 lg:mb-0 lg:flex-1">
+            <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0">
               <Image src={imgSrc} alt={name} fill className="object-cover" />
             </div>
-            <div>
+            <div className="flex flex-col">
               <h1 className="font-bold text-lg">{name}</h1>
               <h2 className="text-sm text-gray-500">{role}</h2>
               <div className="flex mt-1">{stars}</div>
             </div>
           </div>
-          <p className="text-sm">{text}</p>
-        </div>
+
+          {/* Text */}
+          <div className="lg:flex-2">
+            <p className="text-sm">{text}</p>
+          </div>
+        </div>,
       );
     }
   };
@@ -58,10 +63,10 @@ const Testimonial = ({
     >
       {/* Header */}
       <div className="flex items-center gap-4 mb-4">
-        <div className="relative w-16 h-16 rounded-full overflow-hidden">
+        <div className="flex-1 relative w-16 h-16 rounded-full overflow-hidden">
           <Image src={imgSrc} alt={name} fill className="object-cover" />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col flex-3">
           <h1 className="font-bold">{name}</h1>
           <h2 className="text-sm text-gray-500">{role}</h2>
           <div className="flex mt-1">{stars}</div>
