@@ -43,7 +43,7 @@ const ProjectSection = () => {
       <SectionTitle>FEATURED PROJECTS</SectionTitle>
 
       {currentTheme === "light" && (
-        <>
+        <div className="flex flex-col items-center w-[80%]">
           {/* Mobile Custom Dropdown */}
           <div
             className="w-full max-w-xs lg:hidden flex flex-col justify-center relative"
@@ -62,6 +62,7 @@ const ProjectSection = () => {
                 🔽
               </span>
             </Button>
+            <p className="font-extralight text-xs text-center mt-1">Click for more options</p>
 
             <AnimatePresence>
               {dropdownOpen && (
@@ -114,7 +115,7 @@ const ProjectSection = () => {
               Editing
             </Button>
           </div>
-        </>
+        </div>
       )}
 
       {/* Project Cards */}
