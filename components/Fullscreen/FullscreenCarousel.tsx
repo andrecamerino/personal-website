@@ -23,9 +23,9 @@ const FullscreenCarousel = ({ project }: { project: Project }) => {
   };
 
   return (
-    <div className="w-full flex flex-col gap-6">
+    <div className="w-full flex flex-col items-center gap-6">
       {/* Main Image */}
-      <div className="relative w-full h-[40vh] sm:h-[50vh] lg:h-[60vh] overflow-hidden rounded-3xl">
+      <div className="relative w-[90%] h-[40vh] sm:h-[50vh] lg:h-[60vh] overflow-hidden rounded-3xl">
         <AnimatePresence mode="wait">
           <motion.div
             key={images[currentIndex]}
@@ -87,8 +87,9 @@ const FullscreenCarousel = ({ project }: { project: Project }) => {
       </div>
 
       {/* Mobile Layout */}
-      <div className="flex flex-col gap-4 lg:hidden">
-        <div className="flex gap-4 overflow-x-auto p-0.5">
+      <div className="flex flex-col gap-4 lg:hidden w-full">
+        {/* Scrollable Thumbnails */}
+        <div className="flex gap-4 overflow-x-auto flex-nowrap w-full p-0.5">
           {images.map((img, index) => (
             <button
               key={img}
@@ -110,6 +111,7 @@ const FullscreenCarousel = ({ project }: { project: Project }) => {
           ))}
         </div>
 
+        {/* Prev/Next Buttons */}
         <div className="flex justify-center gap-6">
           <button onClick={prev} className="px-6 py-2 rounded-xl">
             <Button variant="secondary">
@@ -117,7 +119,7 @@ const FullscreenCarousel = ({ project }: { project: Project }) => {
             </Button>
           </button>
 
-          <button onClick={next} className="px-6 py-2 rounded-x">
+          <button onClick={next} className="px-6 py-2 rounded-xl">
             <Button variant="secondary">
               <ArrowNarrowRightIcon />
             </Button>
