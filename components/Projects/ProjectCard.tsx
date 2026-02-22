@@ -36,16 +36,22 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
         </div>
       )}
 
-      <div className="flex flex-col flex-1 items-center gap-2 justify-center lg:pl-10">
+      <div className="flex flex-col flex-1 gap-2 lg:pl-10 items-start justify-center">
         <h1 className="text-2xl font-bold">
           {truncateText(project.title, 50)}
         </h1>
         <p className="mb-4">{truncateText(project.description, 300)}</p>
-        {project.link && (
-          <a href={project.link} target="_blank" rel="noopener noreferrer">
-            <Button variant="secondary">Check it out</Button>
-          </a>
-        )}
+
+        {/* Bottom div aligned based on reverse */}
+        <div
+          className={`flex w-full justify-center lg:justify-${reverse ? "end" : "start"}`}
+        >
+          {project.link && (
+            <a href={project.link} target="_blank" rel="noopener noreferrer">
+              <Button variant="secondary">Check it out</Button>
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
