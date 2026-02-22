@@ -44,7 +44,7 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
 
         {/* Bottom div aligned based on reverse */}
         <div
-          className={`flex w-full justify-center lg:justify-${reverse ? "end" : "start"}`}
+          className="flex w-full justify-center lg:justify-start"
         >
           {project.link && (
             <a href={project.link} target="_blank" rel="noopener noreferrer">
