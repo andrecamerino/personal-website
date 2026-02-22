@@ -34,7 +34,7 @@ const ParallaxWrapper = ({ children }: ParallaxWrapperProps) => {
 
   // Two-layer stack for fade
   const [bgLayers, setBgLayers] = useState([background, background]);
-  const [layerIndex, setLayerIndex] = useState<0 | 1>(0); // 0 or 1
+  const [layerIndex, setLayerIndex] = useState(0); // 0 or 1
 
   // Update the next layer safely using functional updater
   useEffect(() => {
