@@ -14,15 +14,7 @@ import ContactSection from "@/components/Contact/ContactSection";
 const Page = () => {
   const { currentTheme } = useTheme();
   return (
-    <ParallaxWrapper
-      background={
-        currentTheme === "dark"
-          ? "/dark-background.jpg"
-          : "/light-background.jpg"
-      }
-      speed={10}
-      fadeDuration={0.4}
-    >
+    <ParallaxWrapper>
       <Navbar />
       <Hero />
       <ProjectSection />
