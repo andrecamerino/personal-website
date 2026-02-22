@@ -2,27 +2,39 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { useTheme } from "@/context/ThemeContext";
+import { useIsMobile } from "@/hooks/isMobile";
 
 interface ParallaxWrapperProps {
-  background: string;
   children: React.ReactNode;
   speed?: number;
   fadeDuration?: number;
 }
 
-const ParallaxWrapper: React.FC<ParallaxWrapperProps> = ({
-  background,
-  children,
-  speed = 0.3,
-  fadeDuration = 0.5,
-}) => {
+const SPEED = 10;
+const FADE_DURATION = 0.4;
+
+const ParallaxWrapper = ({ children }: ParallaxWrapperProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200 * speed]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 200 * SPEED]);
+  const { currentTheme } = useTheme();
+  
+  let darkBackground: string, lightBackground: string;
+
+  if (useIsMobile()) {
+    darkBackground = "/backgrounds/sm-dark.jpg"
+    lightBackground = "/backgrounds/sm-light.jpg"
+  } else {
+    darkBackground = "/backgrounds/lg-dark.jpg"
+    lightBackground = "/backgrounds/lg-light.jpg"
+  }
+
+  const background = currentTheme == 'dark' ? darkBackground : lightBackground;
 
   // Two-layer stack for fade
   const [bgLayers, setBgLayers] = useState([background, background]);
-  const [layerIndex, setLayerIndex] = useState(0); // 0 or 1
+  const [layerIndex, setLayerIndex] = useState<0 | 1>(0); // 0 or 1
 
   // Update the next layer safely using functional updater
   useEffect(() => {
@@ -46,7 +58,7 @@ const ParallaxWrapper: React.FC<ParallaxWrapperProps> = ({
           style={{ backgroundImage: `url(${bg})`, y }}
           initial={{ opacity: index === layerIndex ? 0 : 1 }}
           animate={{ opacity: index === layerIndex ? 1 : 0 }}
-          transition={{ duration: fadeDuration }}
+          transition={{ duration: FADE_DURATION }}
         />
       ))}
 
