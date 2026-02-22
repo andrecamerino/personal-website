@@ -85,7 +85,7 @@ export const testimonials: Record<TestimonialCategory, Testimonial[]> = {
       text: "",
     },
     {
-      name: "",
+      name: "Mikhaeel Chengan",
       role: "Founder of Savais Apparel",
       rating: 5,
       text: "",
