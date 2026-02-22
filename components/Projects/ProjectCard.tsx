@@ -15,9 +15,9 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
   const { setContent } = useFullscreen();
   return (
     <div
-      className={`${glass} rounded-4xl w-[80vw] flex flex-col ${
+      className={`${glass} rounded-4xl w-[95vw] lg:w-[80vw] flex flex-col ${
         reverse ? "lg:flex-row-reverse" : "lg:flex-row"
-      } p-10 gap-10`}
+      } p-6 lg:p-10 gap-10`}
     >
       {(project.images || project.video) && (
         <div
@@ -36,7 +36,7 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
         </div>
       )}
 
-      <div className="flex flex-col flex-1 gap-2 justify-center lg:pl-10">
+      <div className="flex flex-col flex-1 items-center gap-2 justify-center lg:pl-10">
         <h1 className="text-2xl font-bold">
           {truncateText(project.title, 50)}
         </h1>

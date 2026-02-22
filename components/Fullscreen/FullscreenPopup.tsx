@@ -25,7 +25,7 @@ export const FullscreenPopup = () => {
       }}
     >
       <motion.div
-        className={`${glass} relative w-11/12 lg:max-w-6xl lg:max-h-[90vh] bg-(--color-secondary)/40 rounded-3xl p-10 overflow-auto`}
+        className={`${glass} relative w-11/12 lg:max-w-6xl lg:max-h-[90vh] bg-(--color-secondary)/40 rounded-3xl p-3 pt-10 lg:p-10 lg:pt-20 overflow-auto`}
         onClick={(e) => e.stopPropagation()}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ export const FullscreenPopup = () => {
         {currentContent || "Popup content"}
 
         <button
-          className="absolute top-10 right-10 text-(--color-white)"
+          className="absolute top-4 right-4 lg:top-10 lg:right-10 text-(--color-white)"
           onClick={() => setCurrentStatus("inactive")}
         >
           <XIcon strokeWidth={4} className="text-(--color-primary)"/>
