@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { FullscreenProvider } from "@/context/FullscreenContext";
+import { Analytics } from "@vercel/analytics/next";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -31,6 +32,7 @@ export default function RootLayout({
         <ThemeProvider>
           <FullscreenProvider>{children}</FullscreenProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
