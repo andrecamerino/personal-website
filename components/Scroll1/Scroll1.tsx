@@ -6,9 +6,11 @@ import Marquee from "react-fast-marquee";
 import Scroll1Card from "./Scroll1Card";
 import SectionTitle from "../SectionTitle";
 import { useTheme } from "@/context/ThemeContext";
+import { useIsMobile } from "@/hooks/isMobile";
 
 const Scroll1 = () => {
   const { currentTheme } = useTheme();
+  const isMobile = useIsMobile();
 
   const content =
     currentTheme === "dark" ? scrollContent.developer : scrollContent.creative;
@@ -46,7 +48,7 @@ const Scroll1 = () => {
       </div>
 
       {/* Bottom marquee */}
-      {currentTheme === "light" && (
+      {(currentTheme === "light" || isMobile) && (
         <div className="w-full overflow-hidden">
           <Marquee direction="left" speed={22} pauseOnHover gradient={false}>
             {row2.map((e, i) => (
