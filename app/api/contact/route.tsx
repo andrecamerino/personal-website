@@ -1,7 +1,8 @@
-import { EmailTemplate } from "@/components/EmailTemplate";
+import { EmailTemplate } from "@/components/Contact/EmailTemplate";
 import { Resend } from "resend";
 import { render } from "@react-email/render";
 import { ratelimit } from "@/utils/ratelimit";
+import { ConfirmationEmail } from "@/components/Contact/ConfirmationEmail";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const SENDER_EMAIL = process.env.SENDER_EMAIL as string;
@@ -39,7 +40,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const html = await render(
+    const adminHtml = await render(
       <EmailTemplate
         name={name}
         kind={kind}
@@ -49,18 +50,35 @@ export async function POST(req: Request) {
       />,
     );
 
-    const data = await resend.emails.send({
+    const adminEmailData = await resend.emails.send({
       from: SENDER_EMAIL,
       to: RECEIVER_EMAIL,
-      subject,
-      html,
+      subject: subject || `New enquiry from ${name}`,
+      html: adminHtml,
+    });
+
+    const confirmationHtml = await render(
+      <ConfirmationEmail
+        name={name}
+        kind={kind}
+        text={text}
+        phone={phone}
+        email={email}
+      />,
+    );
+
+    const clientEmailData = await resend.emails.send({
+      from: SENDER_EMAIL,
+      to: email,
+      subject: "Thanks for reaching out 👋",
+      html: confirmationHtml,
     });
 
     return new Response(
       JSON.stringify({
         status: "success",
         message: "Email sent successfully!",
-        details: data,
+        details: { adminEmailData, clientEmailData},
       }),
       { status: 200 },
     );
