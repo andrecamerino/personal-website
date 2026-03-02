@@ -35,7 +35,7 @@ export const testimonials: Record<TestimonialCategory, Testimonial[]> = {
       text: "I’ve had the privilege of working with Andre both in class and in hackathons throughout our Computer Science degree at the University of Auckland. In every hackathon we’ve participated in, he naturally takes charge of our team, dedicating a huge amount of time and effort to ensure everyone is on the same page and performing at their best. Andre is incredibly hardworking and reliable, he balances his academic work and club commitments with good time management. He’s always willing to help classmates and share his knowledge, making him a supportive classmate. I’ve always admired his passion for learning, his drive to excel in everything he does, and his ability to build strong connections with people while keeping conversations engaging.",
     },
     {
-      name: "Nick ",
+      name: "Nicholas Garcia-Scholtz",
       role: "Developer @ UAIC",
       rating: 5,
       text: "Andre is an excellent developer who is always eager to learn, collaborate, and support the team. When we worked together on the University of Auckland Investment Club project, he consistently showed real initiative, even stepping into a hybrid UI/UX role to help with designs and layouts when the team needed it. His versatility and team‑first mindset made a noticeable difference to the project’s momentum. It was a pleasure to have worked with him.",
