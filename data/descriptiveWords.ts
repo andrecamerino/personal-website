@@ -21,4 +21,5 @@ export const descriptiveWords: string[] = [
   "a D1 muncher",
   "a life noob",
   "a proud shower singer",
+  "a project lead 😱",
 ];

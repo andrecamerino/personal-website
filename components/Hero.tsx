@@ -54,6 +54,7 @@ const Hero = () => {
       <div className="w-full max-w-6xl">
         {/* Top line */}
         <RevealWrapper
+          key={`top-${currentTheme}`}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={smoothEase}
@@ -65,6 +66,7 @@ const Hero = () => {
 
         {/* Name */}
         <RevealWrapper
+          key={`name-${currentTheme}`}
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           delay={0.15}
@@ -86,6 +88,7 @@ const Hero = () => {
 
         {/* Bottom line */}
         <RevealWrapper
+          key={`bottom-${currentTheme}`}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           delay={0.3}
@@ -93,7 +96,8 @@ const Hero = () => {
         >
           <p className="lg:text-right lg:pr-16 pl-10 m-0 lg:-mt-6 -mt-4">
             and I&apos;m <span className="font-bold">{typedText}</span>
-            <br className="lg:hidden"/><span className="pl-2 lg:pl-0"> based in New Zealand 🇳🇿</span>
+            <br className="lg:hidden" />
+            <span className="pl-2 lg:pl-0"> based in New Zealand 🇳🇿</span>
           </p>
         </RevealWrapper>
       </div>
