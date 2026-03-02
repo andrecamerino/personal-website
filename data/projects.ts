@@ -16,14 +16,14 @@ export const projects: Projects = {
         "Lead the development of the UOA Investment Club platform as Project Lead within WDCC. Direct a cross-functional team to deliver a modern web application featuring live stock data integration, secure Stripe payments, and a Payload CMS-powered admin system. Oversee technical architecture, feature prioritisation, and deployment to ensure scalability and long-term maintainability.",
       images: [
         "/developer/uaic/uaic-1.png",
-        "/developer/uaic/uaic-2.png",
-        "/developer/uaic/uaic-3.png",
         "/developer/uaic/uaic-4.png",
-        "/developer/uaic/uaic-5.png",
         "/developer/uaic/uaic-6.png",
         "/developer/uaic/uaic-7.png",
+        "/developer/uaic/uaic-2.png",
+        "/developer/uaic/uaic-3.png",
+        "/developer/uaic/uaic-5.png",
       ],
-      link: "https://wdcc.co.nz/projects/uaic/2025",
+      // link: "https://wdcc.co.nz/projects/uaic/2025",
     },
     {
       title: "UOA Investment Club Website as Developer",
