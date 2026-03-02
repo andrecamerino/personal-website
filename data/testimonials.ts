@@ -70,7 +70,7 @@ export const testimonials: Record<TestimonialCategory, Testimonial[]> = {
       name: "Roimata Wilkey",
       role: "Founder of Burst Digital & The Morning Marketer",
       rating: 5,
-      text: "",
+      text: "Andre absolutely nails our podcast edits. He turns raw conversations about top business and marketing minds into super engaging episodes, and his intros hook you straight away. He just gets pacing and storytelling in a way that keeps people watching.",
     },
     {
       name: "Lukas Halikias",
