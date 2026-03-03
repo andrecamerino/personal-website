@@ -14,6 +14,23 @@ export const projects: Projects = {
       title: "UOA Investment Club Website as Project Lead",
       description:
         "Lead the development of the UOA Investment Club platform as Project Lead within WDCC. Direct a cross-functional team to deliver a modern web application featuring live stock data integration, secure Stripe payments, and a Payload CMS-powered admin system. Oversee technical architecture, feature prioritisation, and deployment to ensure scalability and long-term maintainability.",
+      tags: [
+        {
+          name: "NextJS",
+        },
+        {
+          name: "Tailwind",
+        },
+        {
+          name: "Stripe",
+        },
+        {
+          name: "MongoDB",
+        },
+        {
+          name: "Payload CMS",
+        },
+      ],
       images: [
         "/developer/uaic/uaic-1.png",
         "/developer/uaic/uaic-4.png",
@@ -29,6 +46,17 @@ export const projects: Projects = {
       title: "UOA Investment Club Website as Developer",
       description:
         "Built as part of WDCC (Web Development Consulting Club), where I worked as a developer and co-designer. Delivered a modern platform featuring live stock data integration, Stripe payments, and a Payload CMS-powered admin system.",
+      tags: [
+        {
+          name: "NextJS",
+        },
+        {
+          name: "Tailwind",
+        },
+        {
+          name: "Payload CMS",
+        },
+      ],
       images: [
         "/developer/uaic/uaic-1.png",
         "/developer/uaic/uaic-2.png",
@@ -44,6 +72,20 @@ export const projects: Projects = {
       title: "Bindr",
       description:
         "Bindr is a recipe web app developed for CS235 with Evan & Sam, built with Python, Flask, Pytest, and SQLite. The platform features a homepage highlighting featured recipes, a browse page with search and filter functionality, and detailed recipe pages including ingredients, instructions, and nutritional information.",
+      tags: [
+        {
+          name: "Python",
+        },
+        {
+          name: "Flask",
+        },
+        {
+          name: "SQLite",
+        },
+        {
+          name: "Pytest",
+        },
+      ],
       images: [
         "/developer/bindr/bindr-1.png",
         "/developer/bindr/bindr-2.png",
@@ -59,6 +101,20 @@ export const projects: Projects = {
       title: "Personal Portfolio Website",
       description:
         "Designed and built this full-stack portfolio using Next.js, React, TypeScript, and Tailwind. Powered by Framer Motion animations, Redis with Upstash, and Resend for email handling, dynamically showcasing both my developer and creative work.",
+      tags: [
+        {
+          name: "NextJS",
+        },
+        {
+          name: "Tailwind",
+        },
+        {
+          name: "Redis",
+        },
+        {
+          name: "Resend",
+        },
+      ],
       images: [
         "/developer/website/website-light.png",
         "/developer/website/website-dark.png",
@@ -75,6 +131,11 @@ export const projects: Projects = {
           "A high-energy nightlife recap capturing immersive wide-angle crowd shots, dynamic lighting transitions, and tightly paced edits. Designed to amplify atmosphere and show off your events.",
         video: "/creative/videos/night_events_V1.mp4",
         link: "https://www.instagram.com/savais.apparel/?hl=en",
+        tags: [
+          { name: "Event", color: "bg-green-400/50" },
+          { name: "Nightlife", color: "bg-purple-400/50" },
+          { name: "Cinematic", color: "bg-purple-400/50" },
+        ],
       },
       {
         title: "Brand Promo Videography",
@@ -82,6 +143,11 @@ export const projects: Projects = {
           "Short-form commercial content combining motion typography, clean transitions, and polished framing. Produced for UOACS (UoA Computer Science Society) to drive engagement, strengthen brand identity, and deliver clear messaging across social platforms.",
         video: "/creative/videos/uoacs_V1.mp4",
         link: "https://uoacs.co.nz/",
+        tags: [
+          { name: "Commercial", color: "bg-blue-400/50" },
+          { name: "Short Form", color: "bg-blue-400/50" },
+          { name: "Motion Graphics", color: "bg-red-400/50" },
+        ],
       },
       {
         title: "Music Videography",
@@ -89,6 +155,11 @@ export const projects: Projects = {
           "Cinematic music visuals blending slow-motion beach sequences, golden-hour colour grading, and intentional composition. Crafted to elevate the artist's presence through rhythm-aware cuts and atmospheric storytelling. Featuring artist Joseph Pod.",
         video: "/creative/videos/music_videos_V1.mp4",
         link: "https://www.youtube.com/@josephpodd",
+        tags: [
+          { name: "Music Video", color: "bg-purple-400/50" },
+          { name: "Cinematic", color: "bg-purple-400/50" },
+          { name: "Slow Motion", color: "bg-red-400/50" },
+        ],
       },
       {
         title: "Hype Videography",
@@ -96,6 +167,11 @@ export const projects: Projects = {
           "High-impact event and sports edits capturing crowd energy and chant build-ups. Fast-paced cuts, punchy sound design, and dynamic framing create an emotionally driven highlight experience. Proudly featuring my 2023 leavers video!",
         video: "/creative/videos/spc_V1.mp4",
         link: "https://www.youtube.com/watch?v=rTSX71Q9Kso",
+        tags: [
+          { name: "Event", color: "bg-green-400/50" },
+          { name: "Sports", color: "bg-green-400/50" },
+          { name: "Fast Cuts", color: "bg-red-400/50" },
+        ],
       },
     ],
 
@@ -113,6 +189,11 @@ export const projects: Projects = {
           "/creative/uoacs-photos/potentia-3.jpg",
         ],
         link: "https://uoacs.co.nz/",
+        tags: [
+          { name: "Event", color: "bg-green-400/50" },
+          { name: "Corporate", color: "bg-blue-400/50" },
+          { name: "Editorial", color: "bg-purple-400/50" },
+        ],
       },
       {
         title: "Corporate Competition Photography",
@@ -124,11 +205,21 @@ export const projects: Projects = {
           "/creative/uoacs-photos/hackathon-3.jpg",
         ],
         link: "https://uoacs.co.nz/",
+        tags: [
+          { name: "Event", color: "bg-green-400/50" },
+          { name: "Corporate", color: "bg-blue-400/50" },
+          { name: "Competition", color: "bg-red-400/50" },
+        ],
       },
       {
         title: "Elegant Event Photography",
         description:
           "Refined coverage of milestone celebrations such as debut birthdays, capturing candid emotion, thoughtful detail, and timeless elegance.",
+        tags: [
+          { name: "Event", color: "bg-green-400/50" },
+          { name: "Elegant", color: "bg-purple-400/50" },
+          { name: "Portrait", color: "bg-yellow-400/50" },
+        ],
       },
     ],
 
@@ -139,6 +230,11 @@ export const projects: Projects = {
           "6K multicam podcast editing with dynamic angle switching, clean audio balancing, and fast-paced one-minute intro sequences designed to maximise viewer retention. Featuring The Morning Marketer podcast, optimised for both long-form and short-form platforms.",
         video: "/creative/videos/podcasts_V1.mp4",
         link: "https://www.instagram.com/burstdigitalnz/",
+        tags: [
+          { name: "Podcast", color: "bg-blue-400/50" },
+          { name: "Multicam", color: "bg-purple-400/50" },
+          { name: "Audio", color: "bg-red-400/50" },
+        ],
       },
       {
         title: "Short Documentary Editing",
@@ -146,6 +242,11 @@ export const projects: Projects = {
           "Short-form documentary edits focused on strong storytelling, cinematic B-roll integration, and intentional pacing to create cohesive, emotionally engaging narratives.",
         video: "/creative/videos/rpm.mov",
         link: "http://youtube.com/channel/UCsLRWiu_gpB45TGxFRskADQ",
+        tags: [
+          { name: "Documentary", color: "bg-purple-400/50" },
+          { name: "Cinematic", color: "bg-purple-400/50" },
+          { name: "Storytelling", color: "bg-yellow-400/50" },
+        ],
       },
     ],
   },

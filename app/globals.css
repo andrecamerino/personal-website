@@ -111,10 +111,44 @@ body {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
 }
 
 .animate-float {
   animation: float 2.8s ease-in-out infinite;
+}
+
+@keyframes tag-shake {
+  0% {
+    transform: rotate(0deg) translateX(0);
+  }
+
+  25% {
+    transform: rotate(-1.2deg) translateX(-0.5px);
+  }
+
+  50% {
+    transform: rotate(1.2deg) translateX(0.5px);
+  }
+
+  75% {
+    transform: rotate(-0.8deg) translateX(-0.5px);
+  }
+
+  100% {
+    transform: rotate(0deg) translateX(0);
+  }
+}
+
+.group:hover .tag-shake {
+  animation: tag-shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  animation-delay: calc(var(--i) * 40ms);
 }

@@ -6,6 +6,7 @@ import { ProjectThumbnail } from "./ProjectThumbnail";
 import { useFullscreen } from "@/context/FullscreenContext";
 import FullscreenVideo from "../Fullscreen/FullscreenVideo";
 import FullscreenCarousel from "../Fullscreen/FullscreenCarousel";
+import ProjectTagSection from "./ProjectTagSection";
 interface ProjectCardProps {
   project: Project;
   reverse?: boolean; // optional prop for zig-zag layout
@@ -15,7 +16,7 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
   const { setContent } = useFullscreen();
   return (
     <div
-      className={`${glass} rounded-4xl w-[95vw] lg:w-[80vw] flex flex-col ${
+      className={`${glass} group rounded-4xl w-[95vw] lg:w-[80vw] flex flex-col ${
         reverse ? "lg:flex-row-reverse" : "lg:flex-row"
       } p-6 lg:p-10 gap-10`}
     >
@@ -40,7 +41,8 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
         <h1 className="text-2xl font-bold">
           {truncateText(project.title, 50)}
         </h1>
-        <p className="mb-4">{truncateText(project.description, 300)}</p>
+        {project.tags && <ProjectTagSection className="" tags={project.tags}/>}
+        <p className="my-4">{truncateText(project.description, 300)}</p>
 
         {/* Bottom div aligned based on reverse */}
         <div
