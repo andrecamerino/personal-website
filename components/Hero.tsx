@@ -50,7 +50,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative lg:my-[35vh] my-40 flex flex-col items-center gap-15 lg:gap-30 text-xl">
+    <div className="relative lg:my-[30vh] my-40 flex flex-col items-center gap-15 lg:gap-30 text-xl">
       <div className="w-full max-w-6xl">
         {/* Top line */}
         <RevealWrapper
