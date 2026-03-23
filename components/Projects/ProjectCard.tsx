@@ -7,6 +7,9 @@ import { useFullscreen } from "@/context/FullscreenContext";
 import FullscreenVideo from "../Fullscreen/FullscreenVideo";
 import FullscreenCarousel from "../Fullscreen/FullscreenCarousel";
 import ProjectTagSection from "./ProjectTagSection";
+import FullscreenProjectDescription from "../Fullscreen/FullscreenProjectDescription";
+import ProjectLinks from "./ProjectLinks";
+import FullscreenProjectLinks from "../Fullscreen/FullscreenProjectLinks";
 interface ProjectCardProps {
   project: Project;
   reverse?: boolean; // optional prop for zig-zag layout
@@ -41,18 +44,32 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
         <h1 className="text-2xl font-bold">
           {truncateText(project.title, 50)}
         </h1>
-        {project.tags && <ProjectTagSection className="" tags={project.tags}/>}
+        {project.tags && <ProjectTagSection className="" tags={project.tags} />}
         <p className="my-4">{truncateText(project.description, 300)}</p>
 
         {/* Bottom div aligned based on reverse */}
-        <div
-          className="flex w-full justify-center lg:justify-start"
-        >
-          {project.link && (
-            <a href={project.link} target="_blank" rel="noopener noreferrer">
-              <Button variant="secondary">Check it out</Button>
-            </a>
+        <div className="flex flex-row flex-wrap w-full justify-center lg:justify-start gap-2 lg:gap-4">
+          <Button
+            onClick={() =>
+              setContent(<FullscreenProjectDescription project={project} />)
+            }
+          >
+            🔎 Read More
+          </Button>
+          {project.links && (
+            <Button
+              onClick={() =>
+                setContent(<FullscreenProjectLinks project={project} />)
+              }
+              className="block lg:hidden"
+              variant="secondary"
+            >
+              🔗
+            </Button>
           )}
+          <div className="hidden lg:flex">
+            <ProjectLinks project={project} />
+          </div>
         </div>
       </div>
     </div>
