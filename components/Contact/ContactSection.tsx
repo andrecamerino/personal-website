@@ -129,11 +129,14 @@ const ContactSection = () => {
           </div>
         </div>
 
+
+        {/* 
+        NOTE: NOT WORKING
         <RevealWrapper>
           <div className="basis-3/5">
             <ContactForm />
           </div>
-        </RevealWrapper>
+        </RevealWrapper> */}
       </div>
     </div>
   );
