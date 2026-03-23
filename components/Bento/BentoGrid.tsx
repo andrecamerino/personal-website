@@ -12,23 +12,21 @@ const BentoGrid = () => {
     <div className="flex flex-col items-center mt-80">
       <SectionTitle>Achievements & Awards</SectionTitle>
 
-      <div className="w-[90vw] sm:w-[70vw] max-w-360 max-h-180 flex flex-col lg:flex-row gap-6 lg:h-[65vh]">
-        
-        {/* Big left box — fixed width on lg */}
+      <div className="w-[90vw] sm:w-[70vw] max-w-360 max-h-180 flex flex-col lg:flex-row gap-6 lg:gap-2 lg:h-[65vh]">
+        {/* Big left box */}
         <div className="lg:w-1/2 h-64 lg:h-full">
           <BentoBox {...achievementsToShow[0]} />
         </div>
 
-        {/* Right column — flex column so children fill height */}
-        <div className="flex flex-col gap-6 lg:w-1/2 lg:h-full">
-          
+        {/* Right column */}
+        <div className="flex flex-col gap-6 lg:gap-2 lg:w-1/2 lg:h-full">
           {/* Top right */}
           <div className="flex-1 min-h-0">
             <BentoBox {...achievementsToShow[1]} />
           </div>
 
           {/* Bottom right split */}
-          <div className="flex flex-row gap-6 flex-1 min-h-0">
+          <div className="flex flex-row gap-6 lg:gap-2 flex-1 min-h-0">
             <div className="flex-1 min-h-0">
               <BentoBox {...achievementsToShow[2]} />
             </div>
@@ -36,7 +34,6 @@ const BentoGrid = () => {
               <BentoBox {...achievementsToShow[3]} />
             </div>
           </div>
-
         </div>
       </div>
     </div>
