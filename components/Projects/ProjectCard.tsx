@@ -16,7 +16,7 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
   const { setContent } = useFullscreen();
   return (
     <div
-      className={`${glass} group rounded-4xl w-[95vw] lg:w-[80vw] flex flex-col ${
+      className={`${glass} group rounded-4xl w-[90vw] lg:w-[80vw] max-w-90 lg:max-w-400 flex flex-col ${
         reverse ? "lg:flex-row-reverse" : "lg:flex-row"
       } p-6 lg:p-10 gap-10`}
     >

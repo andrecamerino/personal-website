@@ -40,7 +40,14 @@ const ProjectSection = () => {
       id="next-section"
       className="flex flex-col justify-center items-center gap-10"
     >
-      <SectionTitle>FEATURED PROJECTS</SectionTitle>
+      <AnimatePresence>
+        <div className="flex flex-col justify-center items-center">
+          <SectionTitle>FEATURED PROJECTS</SectionTitle>
+          <p className="font-extralight text-xs mt-[-70]">
+            Projects page coming soon!
+          </p>
+        </div>
+      </AnimatePresence>
 
       {currentTheme === "light" && (
         <div className="flex flex-col items-center w-[80%]">
@@ -62,7 +69,9 @@ const ProjectSection = () => {
                 🔽
               </span>
             </Button>
-            <p className="font-extralight text-xs text-center mt-1">Click for more options</p>
+            <p className="font-extralight text-xs text-center mt-1">
+              Click for more options
+            </p>
 
             <AnimatePresence>
               {dropdownOpen && (
