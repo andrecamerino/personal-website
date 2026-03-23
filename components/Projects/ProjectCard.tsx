@@ -46,12 +46,14 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
 
         {/* Bottom div aligned based on reverse */}
         <div
-          className="flex w-full justify-center lg:justify-start"
+          className="flex flex-row flex-wrap w-full justify-center lg:justify-start lg:gap-2"
         >
-          {project.link && (
-            <a href={project.link} target="_blank" rel="noopener noreferrer">
-              <Button variant="secondary">Check it out</Button>
+          {project.links && (
+            project.links.map((l, i) => (
+              <a href={l.link} key={i} target="_blank" rel="noopener noreferrer">
+              <Button variant="secondary">🔗 {l.name}</Button>
             </a>
+            ))
           )}
         </div>
       </div>

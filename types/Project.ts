@@ -4,7 +4,12 @@ export interface Project {
   tags?: Tag[];
   images?: string[];
   video?: string;
-  link?: string;
+  links?: ProjectLink[];
+}
+
+export interface ProjectLink {
+  name: string;
+  link: string;
 }
 
 export interface Tag {
