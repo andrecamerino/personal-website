@@ -1,8 +1,9 @@
 import { EmailTemplate } from "@/components/Contact/EmailTemplate";
+import { ConfirmationEmail } from "@/components/Contact/ConfirmationEmail";
 import { Resend } from "resend";
 import { render } from "@react-email/render";
-import { ratelimit } from "@/utils/ratelimit";
-import { ConfirmationEmail } from "@/components/Contact/ConfirmationEmail";
+import { isRateLimited } from "./isRateLimited";
+import { emailContentProps } from "@/types/emailContent";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const SENDER_EMAIL = process.env.SENDER_EMAIL as string;
@@ -13,24 +14,35 @@ if (!SENDER_EMAIL || !RECEIVER_EMAIL) {
 }
 
 export async function POST(req: Request) {
-  const ip = req.headers.get("x-forwarded-for") ?? "anonymous";
-  const { success } = await ratelimit.limit(ip);
-
-  if (!success) {
-    return new Response(
-      JSON.stringify({
-        status: "error",
-        message: "Too many requests. Try again later.",
-      }),
-      { status: 429 },
-    );
-  }
-
   try {
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0] || "unknown";
+    if (isRateLimited(ip)) {
+      return new Response(
+        JSON.stringify({
+          status: "error",
+          message: "Too many requests. Please wait a minute.",
+        }),
+        { status: 429 },
+      );
+    }
+
     const body = await req.json();
     const { email, name, subject, kind, text, phone } = body;
+    const emailContent: emailContentProps = {
+      email,
+      name,
+      subject,
+      kind,
+      text,
+      phone,
+    };
 
-    if (!email || !name || !subject || !text) {
+    if (
+      !emailContent.email ||
+      !emailContent.name ||
+      !emailContent.subject ||
+      !emailContent.text
+    ) {
       return new Response(
         JSON.stringify({
           status: "error",
@@ -40,52 +52,41 @@ export async function POST(req: Request) {
       );
     }
 
-    const adminHtml = await render(
-      <EmailTemplate
-        name={name}
-        kind={kind}
-        text={text}
-        phone={phone}
-        email={email}
-      />,
+    const { adminHtml, confirmationHtml } = await renderEmails(emailContent);
+    const adminRes = await sendAdminEmail(emailContent, adminHtml);
+    await sendConfirmationEmail(
+      emailContent,
+      confirmationHtml,
     );
-
-    const adminEmailData = await resend.emails.send({
-      from: SENDER_EMAIL,
-      to: RECEIVER_EMAIL,
-      subject: subject || `New enquiry from ${name}`,
-      html: adminHtml,
-    });
-
-    const confirmationHtml = await render(
-      <ConfirmationEmail
-        name={name}
-        kind={kind}
-        text={text}
-        phone={phone}
-        email={email}
-      />,
-    );
-
-    const clientEmailData = await resend.emails.send({
-      from: SENDER_EMAIL,
-      to: email,
-      subject: "Thanks for reaching out 👋",
-      html: confirmationHtml,
-    });
 
     return new Response(
       JSON.stringify({
         status: "success",
         message: "Email sent successfully!",
-        details: { adminEmailData, clientEmailData},
+        id: adminRes.data?.id,
       }),
       { status: 200 },
     );
   } catch (err: unknown) {
-    console.error("Resend error:", err);
+    console.error("Error:", err);
+
+    if (
+      typeof err === "object" &&
+      err !== null &&
+      "statusCode" in err &&
+      (err).statusCode === 429
+    ) {
+      return new Response(
+        JSON.stringify({
+          status: "error",
+          message: "Rate limit exceeded. Please try again shortly.",
+        }),
+        { status: 429 },
+      );
+    }
 
     let message = "Something went wrong";
+
     if (err instanceof Error) message = err.message;
     else if (typeof err === "object" && err !== null)
       message = JSON.stringify(err);
@@ -95,9 +96,69 @@ export async function POST(req: Request) {
       JSON.stringify({
         status: "error",
         message,
-        details: err,
       }),
       { status: 500 },
     );
   }
 }
+
+const renderEmails = async (email: emailContentProps) => {
+  const [adminHtml, confirmationHtml] = await Promise.all([
+    render(
+      <EmailTemplate
+        name={email.name}
+        kind={email.kind}
+        text={email.text}
+        phone={email.phone}
+        email={email.email}
+      />,
+    ),
+    render(
+      <ConfirmationEmail
+        name={email.name}
+        kind={email.kind}
+        text={email.text}
+        phone={email.phone}
+        email={email.email}
+      />,
+    ),
+  ]);
+
+  return { adminHtml, confirmationHtml };
+};
+
+const sendAdminEmail = async (
+  emailContent: emailContentProps,
+  adminHtml: string,
+) => {
+  const adminRes = await resend.emails.send({
+    from: SENDER_EMAIL,
+    to: RECEIVER_EMAIL,
+    subject: emailContent.subject || `New enquiry from ${emailContent.name}`,
+    html: adminHtml,
+  });
+
+  if (adminRes.error) {
+    throw adminRes.error;
+  }
+
+  return adminRes;
+};
+
+const sendConfirmationEmail = async (
+  emailContent: emailContentProps,
+  confirmationHtml: string,
+) => {
+  const clientRes = await resend.emails.send({
+    from: SENDER_EMAIL,
+    to: emailContent.email,
+    subject: "Thanks for reaching out 👋",
+    html: confirmationHtml,
+  });
+
+  if (clientRes.error) {
+    console.warn("Client email failed:", clientRes.error);
+  }
+
+  return clientRes;
+};
