@@ -54,7 +54,7 @@ export async function POST(req: Request) {
 
     const { adminHtml, confirmationHtml } = await renderEmails(emailContent);
     const adminRes = await sendAdminEmail(emailContent, adminHtml);
-    const clientRes = await sendConfirmationEmail(
+    await sendConfirmationEmail(
       emailContent,
       confirmationHtml,
     );
