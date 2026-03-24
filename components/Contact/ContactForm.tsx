@@ -4,17 +4,39 @@ import Button from "../Button";
 import { useTheme } from "@/context/ThemeContext";
 import { ApiResponse, Status, FieldErrors } from "@/types/contact";
 import FormInput from "./FormInput";
+import { emailContentProps } from "@/types/emailContent";
 
 const ContactForm = () => {
   const [status, setStatus] = useState<Status>("idle");
   const [loading, setLoading] = useState(false);
+  const [isCooldown, setIsCooldown] = useState(false);
+  const [cooldownTimer, setCooldownTimer] = useState(0);
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [apiMessage, setApiMessage] = useState<string | null>(null);
 
   const { currentTheme } = useTheme();
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+  const startCooldown = (seconds: number) => {
+    setIsCooldown(true);
+    setCooldownTimer(seconds);
+
+    let remaining = seconds;
+
+    const interval = setInterval(() => {
+      remaining--;
+
+      if (remaining <= 0) {
+        clearInterval(interval);
+        setIsCooldown(false);
+        setCooldownTimer(0);
+      } else {
+        setCooldownTimer(remaining);
+      }
+    }, 1000);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setStatus("idle");
@@ -22,7 +44,7 @@ const ContactForm = () => {
     setApiMessage(null);
 
     const formData = new FormData(e.currentTarget);
-    const data = {
+    const data: emailContentProps = {
       name: String(formData.get("name") ?? ""),
       phone: String(formData.get("phone") ?? ""),
       email: String(formData.get("email") ?? ""),
@@ -32,7 +54,21 @@ const ContactForm = () => {
     };
 
     try {
-      const res = await fetch("/api/contact", {
+      await sendEmails(data);
+    } catch (err: unknown) {
+      setStatus("error");
+      if (err instanceof Error) {
+        setApiMessage(err.message);
+      } else {
+        setApiMessage("Network error. Please try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const sendEmails = async (data: emailContentProps) => {
+    const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -63,19 +99,10 @@ const ContactForm = () => {
         setStatus("success");
         setApiMessage(result.message || "Message sent successfully!");
         formRef.current?.reset();
-      }
-    } catch (err: unknown) {
-      setStatus("error");
 
-      if (err instanceof Error) {
-        setApiMessage(err.message);
-      } else {
-        setApiMessage("Network error. Please try again.");
+        startCooldown(10); // 🔥 cooldown duration
       }
-    } finally {
-      setLoading(false);
-    }
-  };
+  }
 
   return (
     <form
@@ -154,13 +181,19 @@ const ContactForm = () => {
 
       {/* Submit */}
       <div className="flex flex-row-reverse items-center justify-between mt-2 min-h-7">
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading || isCooldown}>
           <Button className="group">
-            {loading ? "Sending..." : "Submit"}&nbsp;
+            {loading
+              ? "Sending..."
+              : isCooldown
+              ? `Wait ${cooldownTimer}s`
+              : "Submit"}
+            &nbsp;
             <span className="hidden group-hover:block">📬</span>
             <span className="block group-hover:hidden">📭</span>
           </Button>
         </button>
+
         {apiMessage && (
           <div className="text-sm font-medium mb-2">
             <span
