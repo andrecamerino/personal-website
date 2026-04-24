@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { glass } from "@/styles/glass";
 import { useTheme } from "@/context/ThemeContext";
 import { truncateText } from "@/utils/truncateText";
