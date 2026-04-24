@@ -20,7 +20,7 @@ const ResumeSection = () => {
                 className="group"
                 variant={currentTheme === "light" ? "secondary" : "primary"}
               >
-                Download Developer Resume &nbsp;
+                View Developer Resume &nbsp;
                 <span className="hidden group-hover:inline">🔋</span>
                 <span className="inline group-hover:hidden">🪫</span>
               </Button>
