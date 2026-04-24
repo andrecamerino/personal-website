@@ -16,6 +16,8 @@ const ProjectSection = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
+  const projectsTypeText = currentTheme === "dark" ? "developer" : "creative";
+
   const currentProjects =
     currentTheme === "dark" ? projects.developer : projects.creative[activeTab];
 
@@ -41,9 +43,9 @@ const ProjectSection = () => {
       className="flex flex-col justify-center items-center gap-10"
     >
       <AnimatePresence>
-        <div className="flex flex-col justify-center items-center">
-          <SectionTitle>FEATURED PROJECTS</SectionTitle>
-          <p className="font-extralight text-xs mt-[-70]">
+        <div className="flex flex-col justify-center items-center text-center">
+          <SectionTitle>FEATURED {projectsTypeText.toUpperCase()} PROJECTS</SectionTitle>
+          <p className="font-extralight text-xs mt-[-70] mb-10">
             Projects page coming soon!
           </p>
         </div>
