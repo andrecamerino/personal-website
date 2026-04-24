@@ -9,6 +9,7 @@ interface BentoBoxProps {
   desc: string;
   imgSrc?: string;
   link?: string;
+  titleEffect?: boolean;
   maxTitleLength?: number;
   maxDescLength?: number;
 }
@@ -18,6 +19,7 @@ const BentoBox = ({
   desc = "",
   imgSrc,
   link,
+  titleEffect,
   maxTitleLength = 50,
   maxDescLength = 100,
 }: BentoBoxProps) => {
@@ -51,7 +53,10 @@ const BentoBox = ({
         {/* Title */}
         <RevealWrapper>
           <h1
-            className="text-2xl sm:text-4xl font-medium tracking-tighter"
+            className={`text-2xl sm:text-4xl font-medium tracking-tighter
+            transform transition-all duration-500 ease-out
+            ${titleEffect && "group-hover:-translate-y-12 group-hover:opacity-50"}
+            `}
             style={{ textShadow: titleShadow }}
           >
             {truncateText(title, maxTitleLength)}

@@ -28,10 +28,10 @@ const BentoGrid = () => {
           {/* Bottom right split */}
           <div className="flex flex-row gap-6 lg:gap-2 flex-1 min-h-0">
             <div className="flex-1 min-h-0">
-              <BentoBox {...achievementsToShow[2]} />
+              <BentoBox {...achievementsToShow[2]} titleEffect/>
             </div>
             <div className="flex-1 min-h-0">
-              <BentoBox {...achievementsToShow[3]} />
+              <BentoBox {...achievementsToShow[3]} titleEffect/>
             </div>
           </div>
         </div>
