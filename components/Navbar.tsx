@@ -2,10 +2,14 @@
 
 import Button from "./Button";
 import { scrollToSection } from "@/utils/scrollToSection";
+import { useTheme } from "@/context/ThemeContext";
 
 const Navbar = () => {
+    const { currentTheme } = useTheme();
+    const emoji = currentTheme == "dark" ? "</>" : "📸"
   return (
-    <div className="h-16 flex justify-end items-center px-4">
+    <div className="h-16 flex justify-between items-center px-4">
+      <p className="text-2xl">{emoji}</p>
       <Button
         className="group"
         variant="primary"
