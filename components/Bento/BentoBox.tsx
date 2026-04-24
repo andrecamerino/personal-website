@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { glass } from "@/styles/glass";
 import { useTheme } from "@/context/ThemeContext";
 import { truncateText } from "@/utils/truncateText";
@@ -9,6 +9,7 @@ interface BentoBoxProps {
   desc: string;
   imgSrc?: string;
   link?: string;
+  titleEffect?: boolean;
   maxTitleLength?: number;
   maxDescLength?: number;
 }
@@ -18,6 +19,7 @@ const BentoBox = ({
   desc = "",
   imgSrc,
   link,
+  titleEffect,
   maxTitleLength = 50,
   maxDescLength = 100,
 }: BentoBoxProps) => {
@@ -51,7 +53,10 @@ const BentoBox = ({
         {/* Title */}
         <RevealWrapper>
           <h1
-            className="text-2xl sm:text-4xl font-medium tracking-tighter"
+            className={`text-2xl sm:text-4xl font-medium tracking-tighter
+            transform transition-all duration-500 ease-out
+            ${titleEffect && "group-hover:-translate-y-50 group-hover:opacity-50"}
+            `}
             style={{ textShadow: titleShadow }}
           >
             {truncateText(title, maxTitleLength)}
@@ -68,7 +73,7 @@ const BentoBox = ({
             ${active ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"}
 
             /* LARGE SCREENS: hover animation */
-            sm:translate-y-12 sm:opacity-0 group-hover:translate-y-0 group-hover:opacity-100
+            sm:translate-y-30 sm:opacity-0 ${titleEffect ? "group-hover:-translate-y-30": "group-hover:translate-y-0"} group-hover:opacity-100
           `}
           style={{ textShadow: titleShadow }}
         >
