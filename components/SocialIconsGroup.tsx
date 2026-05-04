@@ -17,7 +17,7 @@ const iconMap: Record<string, IconType> = {
 };
 
 interface SocialIconsGroupProps {
-  layout?: "row" | "column";
+  layout?: "row" | "column" | "grid";
   iconSize?: number;
   className?: string;
 }
@@ -45,13 +45,20 @@ const SocialIconsGroup: React.FC<SocialIconsGroupProps> = ({
     />
   );
 
-  const isColumn = layout === "column";
+  const usePairLayout = layout === "column" || layout === "grid";
+
+  const containerClass =
+    layout === "grid"
+      ? "grid grid-cols-2 gap-3 justify-items-start"
+      : layout === "column"
+      ? "flex flex-col gap-3 items-start"
+      : "flex flex-row gap-3";
 
   return (
-    <div className={`flex ${isColumn ? "flex-col gap-3 items-start" : "flex-row gap-3"} ${className}`}>
+    <div className={`${containerClass} ${className}`}>
       {always.map(renderIcon)}
 
-      {isColumn ? (
+      {usePairLayout ? (
         darkLinks.map((dark, i) => {
           const light = lightLinks[i];
           return (

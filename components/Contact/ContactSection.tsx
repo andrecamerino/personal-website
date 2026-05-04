@@ -81,7 +81,7 @@ const ContactSection = () => {
           </h1>
 
           <div className="flex flex-col gap-6 mt-8 basis-2/5">
-            <SocialIconsGroup layout={useIsMobile() ? "row" : "column"} iconSize={22} />
+            <SocialIconsGroup layout={useIsMobile() ? "row" : "grid"} iconSize={22} />
           </div>
         </div>
         
