@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { descriptiveWords as words } from "@/data/descriptiveWords";
 import Button from "./Button";
+import SocialIconsGroup from "./SocialIconsGroup";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { useTheme } from "@/context/ThemeContext";
 import { RevealWrapper } from "./RevealWrapper";
@@ -130,6 +131,16 @@ const Hero = () => {
             <span className="inline group-hover:hidden">📷</span>
           </Button>
         </div>
+      </RevealWrapper>
+
+      {/* Social Icons */}
+      <RevealWrapper
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        delay={0.6}
+        transition={smoothEase}
+      >
+        <SocialIconsGroup layout="row" iconSize={22} />
       </RevealWrapper>
 
       {/* Scroll Hint Arrow BELOW buttons */}
