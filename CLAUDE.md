@@ -10,11 +10,13 @@ Andre Camerino's personal portfolio website. Showcases developer and creative pr
 
 ## Development
 
+- use pnpm instead of npm where possible
+
 ```bash
-npm run dev     # start dev server
-npm run build   # production build
-npm run start   # serve production build
-npm run lint    # ESLint check
+pnpm run dev     # start dev server
+pnpm run build   # production build
+pnpm run start   # serve production build
+pnpm run lint    # ESLint check
 ```
 
 No test suite exists in this project.
