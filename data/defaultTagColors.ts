@@ -1,6 +1,7 @@
 export const defaultTagColors = {
   nextjs: "bg-white/30",
   tailwind: "bg-blue-400/50",
+  typescript: "bg-blue-800/50",
   redis: "bg-red-500/50",
   mongodb: "bg-green-400/50",
   "payload cms": "bg-purple-400/50",
