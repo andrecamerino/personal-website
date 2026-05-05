@@ -11,6 +11,31 @@ export type Projects = {
 export const projects: Projects = {
   developer: [
     {
+      title: "Slidedown",
+      description:
+        "A client-side PDF and PPTX converter built to make lecture slides LLM-ready. Engineered parsers using pdfjs-dist and JSZip, processing files up to 50MB with real-time per-page progress tracking. Features a split-pane UI with live stats — word count, byte reduction, and page count — across markdown and plaintext output formats. Reduces slide payloads by ~70%, compressing 30+ decks from MBs to KBs to fit within LLM free-tier context limits.",
+      tags: [
+        { name: "TypeScript" },
+        { name: "NextJS" },
+        { name: "pdfjs-dist" },
+        { name: "JSZip" },
+      ],
+      images: [
+        "/developer/slidedown/Screenshot_2026-05-05_at_5_39_32_PM.jpg",
+        "/developer/slidedown/Screenshot_2026-05-05_at_5_39_55_PM.jpg",
+        "/developer/slidedown/Screenshot_2026-05-05_at_5_40_00_PM.jpg",
+        "/developer/slidedown/Screenshot_2026-05-05_at_5_40_06_PM.jpg",
+        "/developer/slidedown/Screenshot_2026-05-05_at_5_40_29_PM.jpg",
+        "/developer/slidedown/Screenshot_2026-05-05_at_5_40_32_PM.jpg",
+      ],
+      links: [
+        {
+          name: "Slidedown App",
+          link: "https://slidedown-andre.vercel.app/convert",
+        },
+      ],
+    },
+    {
       title: "UOA Investment Club Website as Project Lead",
       description:
         "Lead the development of the UOA Investment Club platform as Project Lead within WDCC. Direct a cross-functional team to deliver a modern web application featuring live stock data integration, secure Stripe payments, and a Payload CMS-powered admin system. Oversee technical architecture, feature prioritisation, and deployment to ensure scalability and long-term maintainability.",
@@ -79,23 +104,6 @@ export const projects: Projects = {
         {
           name: "GitHub Repository",
           link: "https://github.com/UoA-CS-Sindhwani-CS235-S2-2025/cs235-s2-2025-recipeswebapp-scho616-eau465-rcam301",
-        },
-      ],
-    },
-    {
-      title: "Slidedown",
-      description:
-        "A client-side PDF and PPTX converter built to make lecture slides LLM-ready. Engineered parsers using pdfjs-dist and JSZip, processing files up to 50MB with real-time per-page progress tracking. Features a split-pane UI with live stats (word count, byte reduction, page count) across markdown and plaintext output formats. Reduces slide payloads by ~70%, compressing 30+ slide decks from MBs to KBs to fit within LLM free-tier context limits.",
-      tags: [
-        { name: "TypeScript" },
-        { name: "NextJS" },
-        { name: "pdfjs-dist" },
-        { name: "JSZip" },
-      ],
-      links: [
-        {
-          name: "Slidedown App",
-          link: "https://slidedown-andre.vercel.app/convert",
         },
       ],
     },
