@@ -28,6 +28,12 @@ export const projects: Projects = {
         "/developer/slidedown/Screenshot_2026-05-05_at_5_40_29_PM.jpg",
         "/developer/slidedown/Screenshot_2026-05-05_at_5_40_32_PM.jpg",
       ],
+      links: [
+        {
+          name: "Slidedown Website",
+          link: "https://slidedown-andre.vercel.app",
+        },
+      ],
     },
     {
       title: "UOA Investment Club Website as Project Lead",
