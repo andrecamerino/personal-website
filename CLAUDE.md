@@ -8,9 +8,10 @@ Andre Camerino's personal portfolio website. Showcases developer and creative pr
 
 ---
 
-## Development
+## Development & Git
 
 - use pnpm instead of npm where possible
+- ensure commits are smaller and meaningful, rather than larger one-time commits
 
 ```bash
 pnpm run dev     # start dev server

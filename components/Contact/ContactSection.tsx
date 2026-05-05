@@ -1,8 +1,9 @@
-import ContactLink from "@/components/Contact/ContactLink";
 import ContactForm from "./ContactForm";
 import { useTheme } from "@/context/ThemeContext";
 import Button from "../Button";
 import { RevealWrapper } from "../RevealWrapper";
+import SocialIconsGroup from "@/components/SocialIconsGroup";
+import { useIsMobile } from "@/hooks/isMobile";
 
 const ContactSection = () => {
   const { currentTheme, setTheme } = useTheme();
@@ -79,52 +80,19 @@ const ContactSection = () => {
             Let&apos;s Get in Touch
           </h1>
 
-          <div className="flex flex-col gap-6 mt-8 basis-2/5">
-            <ContactLink title="Phone" text="+64 027 531 4977" isPhone />
-            <ContactLink title="Email" text="camerinoandre@gmail.com" />
-
-            {/* Row 3 — LinkedIn vs TikTok: render both, hide one */}
-            <div className="relative">
-              <div
-                className={`transition-opacity duration-300 ${currentTheme === "dark" ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
+          <div className="flex flex-col gap-4 mt-8 basis-2/5">
+            <SocialIconsGroup layout={useIsMobile() ? "row" : "grid"} iconSize={22} />
+            <div
+              className={`transition-opacity duration-300 ${currentTheme === "dark" ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
+            >
+              <a
+                href="/resume/andre-developer-resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center h-8 px-5 rounded-3xl text-xs font-semibold select-none cursor-pointer border border-(--color-primary) text-(--color-primary) transition-all duration-300 hover:shadow-[0_0_10px_2px_var(--color-primary),0_0_30px_8px_var(--color-primary)] active:shadow-[0_0_14px_4px_var(--color-primary),0_0_40px_12px_var(--color-primary)] active:brightness-110"
               >
-                <ContactLink
-                  title="Linkedin"
-                  text="https://www.linkedin.com/in/andre-camerino-3504912a4/"
-                  isLink
-                />
-              </div>
-              <div
-                className={`transition-opacity duration-300 absolute inset-0 ${currentTheme === "light" ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
-              >
-                <ContactLink
-                  title="Tiktok"
-                  text="https://www.tiktok.com/@andrecamerino?_r=1&_t=ZS-93snsifz7Fl"
-                  isLink
-                />
-              </div>
-            </div>
-
-            {/* Row 4 — Github vs Instagram: render both, hide one */}
-            <div className="relative">
-              <div
-                className={`transition-opacity duration-300 ${currentTheme === "dark" ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
-              >
-                <ContactLink
-                  title="Github"
-                  text="https://github.com/andrecamerino"
-                  isLink
-                />
-              </div>
-              <div
-                className={`transition-opacity duration-300 absolute inset-0 ${currentTheme === "light" ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
-              >
-                <ContactLink
-                  title="Instagram"
-                  text="https://www.instagram.com/andrecamerino_?igsh=ZXgzN3R1MW83bGVz&utm_source=qr"
-                  isLink
-                />
-              </div>
+                View CV &nbsp;📄
+              </a>
             </div>
           </div>
         </div>
