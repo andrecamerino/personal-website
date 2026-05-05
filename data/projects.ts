@@ -83,6 +83,23 @@ export const projects: Projects = {
       ],
     },
     {
+      title: "Slidedown",
+      description:
+        "A client-side PDF and PPTX converter built to make lecture slides LLM-ready. Engineered parsers using pdfjs-dist and JSZip, processing files up to 50MB with real-time per-page progress tracking. Features a split-pane UI with live stats (word count, byte reduction, page count) across markdown and plaintext output formats. Reduces slide payloads by ~70%, compressing 30+ slide decks from MBs to KBs to fit within LLM free-tier context limits.",
+      tags: [
+        { name: "TypeScript" },
+        { name: "NextJS" },
+        { name: "pdfjs-dist" },
+        { name: "JSZip" },
+      ],
+      links: [
+        {
+          name: "Slidedown App",
+          link: "https://slidedown-andre.vercel.app/convert",
+        },
+      ],
+    },
+    {
       title: "Personal Portfolio Website",
       description:
         "Designed and built this full-stack portfolio using Next.js, React, TypeScript, and Tailwind. Powered by Framer Motion animations, Redis with Upstash, and Resend for email handling, dynamically showcasing both my developer and creative work.",
