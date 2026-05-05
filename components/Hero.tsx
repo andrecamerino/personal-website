@@ -133,14 +133,28 @@ const Hero = () => {
         </div>
       </RevealWrapper>
 
-      {/* Social Icons */}
+      {/* Social Icons + CV */}
       <RevealWrapper
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         delay={0.6}
         transition={smoothEase}
       >
-        <SocialIconsGroup layout="row" iconSize={22} />
+        <div className="flex flex-col items-center gap-4">
+          <SocialIconsGroup layout="row" iconSize={22} />
+          <div
+            className={`transition-opacity duration-300 ${currentTheme === "dark" ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
+          >
+            <a
+              href="/resume/andre-developer-resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center h-8 px-5 rounded-3xl text-xs font-semibold select-none cursor-pointer border border-(--color-primary) text-(--color-primary) transition-all duration-300 hover:shadow-[0_0_10px_2px_var(--color-primary),0_0_30px_8px_var(--color-primary)] active:shadow-[0_0_14px_4px_var(--color-primary),0_0_40px_12px_var(--color-primary)] active:brightness-110"
+            >
+              View CV &nbsp;📄
+            </a>
+          </div>
+        </div>
       </RevealWrapper>
 
       {/* Scroll Hint Arrow BELOW buttons */}
