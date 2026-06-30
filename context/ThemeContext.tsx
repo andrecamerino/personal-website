@@ -22,6 +22,19 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   // Load persisted state after first render
   useEffect(() => {
     try {
+      const params = new URLSearchParams(window.location.search)
+      const viewParam = params.get('view')
+      if (viewParam === 'creative') {
+        setCurrentTheme('light')
+        setHydrated(true)
+        return
+      }
+      if (viewParam === 'dev' || viewParam === 'developer') {
+        setCurrentTheme('dark')
+        setHydrated(true)
+        return
+      }
+
       const savedTheme = localStorage.getItem('currentView') as Theme
       const savedForm = localStorage.getItem('formData')
       if (savedTheme) setCurrentTheme(savedTheme)
