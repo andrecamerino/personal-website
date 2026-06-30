@@ -46,14 +46,37 @@ export const projects: Projects = {
         { name: "MongoDB" },
         { name: "Payload CMS" },
       ],
+      links: [
+        {
+          name: "uaic.wdcc.co.nz",
+          link: "https://uaic.wdcc.co.nz"
+        }
+      ],
       images: [
-        "/developer/uaic/uaic-1.png",
-        "/developer/uaic/uaic-4.png",
-        "/developer/uaic/uaic-6.png",
-        "/developer/uaic/uaic-7.png",
-        "/developer/uaic/uaic-2.png",
-        "/developer/uaic/uaic-3.png",
-        "/developer/uaic/uaic-5.png",
+        "/developer/uaic2026/homepage_1.png",
+        "/developer/uaic2026/homepage_2.png",
+        "/developer/uaic2026/homepage_3.png",
+        "/developer/uaic2026/homepage_4.png",
+        "/developer/uaic2026/graph.png",
+      ],
+    },
+    {
+      title: "Concert Booking System",
+      description:
+        "Built a full backend for a Ticketmaster-style concert booking platform using JAX-RS and JPA. Designed RESTful endpoints for event listings, seat selection, and booking management, with persistent entity relationships handling venues, events, and reservations. Implemented as part of CS331 (Web Services).",
+      tags: [
+        { name: "Java" },
+        { name: "JAX-RS" },
+        { name: "JPA" },
+      ],
+      images: [
+        "/developer/concert-booking/repo.png",
+      ],
+      links: [
+        {
+          name: "GitHub Repository",
+          link: "", // add your repo link if public
+        },
       ],
     },
     {
@@ -126,6 +149,16 @@ export const projects: Projects = {
           name: "GitHub Repository",
           link: "https://github.com/andrecamerino/personal-website",
         },
+      ],
+    },
+    {
+      title: "Intersem Break Roblox Game (Attempt)",
+      description:
+        "Just an attempt, hopefully some good fun. If it the game gets somewhere them hopefully its good enough to put here 😂.",
+      tags: [
+        { name: "Luau" },
+        { name: "Lua" },
+        { name: "Rojo" },
       ],
     },
   ],
