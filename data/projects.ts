@@ -168,6 +168,26 @@ export const projects: Projects = {
           { name: "Storytelling", color: "bg-yellow-400/50" },
         ],
       },
+      {
+        title: "Short Form Video Editing",
+        description: "A collection of short-form reels and podcast cuts edited for clients including UOACS, Burst Digital, and Glide Media - one reel was reposted by UFC champion Israel Adesanya!!! (Showcase video coming soon)",
+        video: "",
+        links: [
+          {
+            name: "@UOACS",
+            link: "https://www.instagram.com/uoacompsci", // add their channel/page link
+          },
+          {
+            name: "@GlideMedia",
+            link: "https://www.instagram.com/glidemedia_/", // add their channel/page link
+          },
+        ],
+        tags: [
+          { name: "Short Form", color: "bg-purple-400/50" },
+          { name: "Social Media", color: "bg-yellow-400/50" },
+          { name: "Retention Optimisation", color: "bg-yellow-400/50" },
+        ],
+      }
     ],
     videography: [
       {
@@ -279,6 +299,17 @@ export const projects: Projects = {
           { name: "Event", color: "bg-green-400/50" },
           { name: "Corporate", color: "bg-blue-400/50" },
           { name: "Competition", color: "bg-red-400/50" },
+        ],
+      },
+        {
+        title: "LinkedIn Headshot Photography Event",
+        description: "Designed and ran a professional headshot event in collaboration with SciSA, handling the full shoot and Lightroom editing workflow for attendees. (Showcase photos coming soon.)",
+        images: [],
+        links: [],
+        tags: [
+          { name: "Event", color: "bg-green-400/50" },
+          { name: "Portrait", color: "bg-blue-400/50" },
+          { name: "Photography", color: "bg-yellow-400/50" },
         ],
       },
       {
