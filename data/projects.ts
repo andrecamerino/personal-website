@@ -134,7 +134,7 @@ export const projects: Projects = {
     editing: [
       {
         title: "Podcast Editing",
-        description: "6K multicam podcast editing.",
+        description: "4K multicam podcast editing for The Morning Marketer, including full episode cuts, intros, and short-form reels.",
         video: "/creative/videos/podcasts_V1.mp4",
         links: [
           {
@@ -154,7 +154,7 @@ export const projects: Projects = {
       },
       {
         title: "Short Documentary Editing",
-        description: "Story-driven documentary edits.",
+        description: "Story-driven documentary edits focused on narrative pacing and cinematic visuals, built to capture a founder's journey from concept to screen.",
         video: "/creative/videos/rpm.mov",
         links: [
           {
@@ -209,7 +209,8 @@ export const projects: Projects = {
       },
       {
         title: "Brand Promo Videography",
-        description: "Short-form commercial content for UOACS.",
+        description:
+          "A polished, fast-paced commercial promo for UOACS, combining dynamic camera movement and motion graphics to drive hype for club events and the upcoming hackathon. (Showcase video update coming soon)",
         video: "/creative/videos/uoacs_V1.mp4",
         links: [
           {
@@ -225,7 +226,8 @@ export const projects: Projects = {
       },
       {
         title: "Music Videography",
-        description: "Cinematic music visuals featuring Joseph Pod.",
+        description:
+          "A cinematic music video shot and edited for artist Joseph Pod, blending slow-motion visuals with mood-driven color grading to match the track's tone. (Showcase video update coming soon)",
         video: "/creative/videos/music_videos_V1.mp4",
         links: [
           {
@@ -241,7 +243,8 @@ export const projects: Projects = {
       },
       {
         title: "Hype Videography",
-        description: "High-impact sports and event edits.",
+        description:
+          "Fast-paced, high-energy edits built to capture the adrenaline of live sports and events, using quick cuts and dynamic pacing to keep viewers locked in.",
         video: "/creative/videos/spc_V1.mp4",
         links: [
           {
@@ -260,7 +263,8 @@ export const projects: Projects = {
     photography: [
       {
         title: "Corporate Event Photography",
-        description: "Professional UOACS event coverage.",
+        description:
+          "Professional photo coverage of UOACS workshops and panel events, capturing speakers, attendees, and key moments for the club's marketing and recap content. (Showcase photo update coming soon)",
         images: [
           "/creative/uoacs-photos/elective-1.jpg",
           "/creative/uoacs-photos/elective-2.jpg",
@@ -283,7 +287,8 @@ export const projects: Projects = {
       },
       {
         title: "Corporate Competition Photography",
-        description: "Hackathon coverage.",
+        description:
+          "Full-day photo coverage of the UOACS x WDCC hackathon, capturing teams in action, judging moments, and the overall competition atmosphere.",
         images: [
           "/creative/uoacs-photos/hackathon-1.jpg",
           "/creative/uoacs-photos/hackathon-2.jpg",
@@ -301,11 +306,11 @@ export const projects: Projects = {
           { name: "Competition", color: "bg-red-400/50" },
         ],
       },
-        {
+      {
         title: "LinkedIn Headshot Photography Event",
-        description: "Designed and ran a professional headshot event in collaboration with SciSA, handling the full shoot and Lightroom editing workflow for attendees. (Showcase photos coming soon.)",
-        images: [],
-        links: [],
+        description: "Designed and ran a professional headshot event in collaboration with SciSA, handling the full shoot and Lightroom editing workflow for attendees. (Showcase photos coming soon)",
+        // images: [],
+        // links: [],
         tags: [
           { name: "Event", color: "bg-green-400/50" },
           { name: "Portrait", color: "bg-blue-400/50" },
