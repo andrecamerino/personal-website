@@ -12,7 +12,7 @@ import { glass } from "@/styles/glass";
 
 const ProjectSection = () => {
   const { currentTheme } = useTheme();
-  const [activeTab, setActiveTab] = useState<CreativeCategory>("videography");
+  const [activeTab, setActiveTab] = useState<CreativeCategory>("editing");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -108,6 +108,12 @@ const ProjectSection = () => {
           {/* Desktop Buttons */}
           <div className="hidden lg:flex flex-row gap-2">
             <Button
+              onClick={() => setActiveTab("editing")}
+              variant={activeTab === "editing" ? "primary" : "secondary"}
+            >
+              Editing
+            </Button>
+            <Button
               onClick={() => setActiveTab("videography")}
               variant={activeTab === "videography" ? "primary" : "secondary"}
             >
@@ -118,12 +124,6 @@ const ProjectSection = () => {
               variant={activeTab === "photography" ? "primary" : "secondary"}
             >
               Photography
-            </Button>
-            <Button
-              onClick={() => setActiveTab("editing")}
-              variant={activeTab === "editing" ? "primary" : "secondary"}
-            >
-              Editing
             </Button>
           </div>
         </div>

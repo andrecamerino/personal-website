@@ -131,6 +131,44 @@ export const projects: Projects = {
   ],
 
   creative: {
+    editing: [
+      {
+        title: "Podcast Editing",
+        description: "6K multicam podcast editing.",
+        video: "/creative/videos/podcasts_V1.mp4",
+        links: [
+          {
+            name: "Burst Digital Instagram Profile",
+            link: "https://www.instagram.com/burstdigitalnz/",
+          },
+          {
+            name: "Roiinmarketing Instagram Profile",
+            link: "https://www.instagram.com/roiinmarketing/reels",
+          },
+        ],
+        tags: [
+          { name: "Podcast", color: "bg-blue-400/50" },
+          { name: "Multicam", color: "bg-purple-400/50" },
+          { name: "Audio", color: "bg-red-400/50" },
+        ],
+      },
+      {
+        title: "Short Documentary Editing",
+        description: "Story-driven documentary edits.",
+        video: "/creative/videos/rpm.mov",
+        links: [
+          {
+            name: "Aspiring Founder YouTube Channel",
+            link: "http://youtube.com/channel/UCsLRWiu_gpB45TGxFRskADQ",
+          },
+        ],
+        tags: [
+          { name: "Documentary", color: "bg-purple-400/50" },
+          { name: "Cinematic", color: "bg-purple-400/50" },
+          { name: "Storytelling", color: "bg-yellow-400/50" },
+        ],
+      },
+    ],
     videography: [
       {
         title: "Night Events Videography",
@@ -250,45 +288,6 @@ export const projects: Projects = {
           { name: "Event", color: "bg-green-400/50" },
           { name: "Elegant", color: "bg-purple-400/50" },
           { name: "Portrait", color: "bg-yellow-400/50" },
-        ],
-      },
-    ],
-
-    editing: [
-      {
-        title: "Podcast Editing",
-        description: "6K multicam podcast editing.",
-        video: "/creative/videos/podcasts_V1.mp4",
-        links: [
-          {
-            name: "Burst Digital Instagram Profile",
-            link: "https://www.instagram.com/burstdigitalnz/",
-          },
-          {
-            name: "Roiinmarketing Instagram Profile",
-            link: "https://www.instagram.com/roiinmarketing/reels",
-          },
-        ],
-        tags: [
-          { name: "Podcast", color: "bg-blue-400/50" },
-          { name: "Multicam", color: "bg-purple-400/50" },
-          { name: "Audio", color: "bg-red-400/50" },
-        ],
-      },
-      {
-        title: "Short Documentary Editing",
-        description: "Story-driven documentary edits.",
-        video: "/creative/videos/rpm.mov",
-        links: [
-          {
-            name: "Aspiring Founder YouTube Channel",
-            link: "http://youtube.com/channel/UCsLRWiu_gpB45TGxFRskADQ",
-          },
-        ],
-        tags: [
-          { name: "Documentary", color: "bg-purple-400/50" },
-          { name: "Cinematic", color: "bg-purple-400/50" },
-          { name: "Storytelling", color: "bg-yellow-400/50" },
         ],
       },
     ],
