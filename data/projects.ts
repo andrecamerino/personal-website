@@ -46,14 +46,37 @@ export const projects: Projects = {
         { name: "MongoDB" },
         { name: "Payload CMS" },
       ],
+      links: [
+        {
+          name: "uaic.wdcc.co.nz",
+          link: "https://uaic.wdcc.co.nz"
+        }
+      ],
       images: [
-        "/developer/uaic/uaic-1.png",
-        "/developer/uaic/uaic-4.png",
-        "/developer/uaic/uaic-6.png",
-        "/developer/uaic/uaic-7.png",
-        "/developer/uaic/uaic-2.png",
-        "/developer/uaic/uaic-3.png",
-        "/developer/uaic/uaic-5.png",
+        "/developer/uaic2026/homepage_1.png",
+        "/developer/uaic2026/homepage_2.png",
+        "/developer/uaic2026/homepage_3.png",
+        "/developer/uaic2026/homepage_4.png",
+        "/developer/uaic2026/graph.png",
+      ],
+    },
+    {
+      title: "Concert Booking System",
+      description:
+        "Built a full backend for a Ticketmaster-style concert booking platform using JAX-RS and JPA. Designed RESTful endpoints for event listings, seat selection, and booking management, with persistent entity relationships handling venues, events, and reservations. Implemented as part of CS331 (Web Services).",
+      tags: [
+        { name: "Java" },
+        { name: "JAX-RS" },
+        { name: "JPA" },
+      ],
+      images: [
+        "/developer/concert-booking/repo.png",
+      ],
+      links: [
+        {
+          name: "GitHub Repository",
+          link: "", // add your repo link if public
+        },
       ],
     },
     {
@@ -128,9 +151,77 @@ export const projects: Projects = {
         },
       ],
     },
+    {
+      title: "Intersem Break Roblox Game (Attempt)",
+      description:
+        "Just an attempt, hopefully some good fun. If it the game gets somewhere them hopefully its good enough to put here 😂.",
+      tags: [
+        { name: "Luau" },
+        { name: "Lua" },
+        { name: "Rojo" },
+      ],
+    },
   ],
 
   creative: {
+    editing: [
+      {
+        title: "Podcast Editing",
+        description: "4K multicam podcast editing for The Morning Marketer, including full episode cuts, intros, and short-form reels.",
+        video: "/creative/videos/podcasts_V1.mp4",
+        links: [
+          {
+            name: "Burst Digital Instagram Profile",
+            link: "https://www.instagram.com/burstdigitalnz/",
+          },
+          {
+            name: "Roiinmarketing Instagram Profile",
+            link: "https://www.instagram.com/roiinmarketing/reels",
+          },
+        ],
+        tags: [
+          { name: "Podcast", color: "bg-blue-400/50" },
+          { name: "Multicam", color: "bg-purple-400/50" },
+          { name: "Audio", color: "bg-red-400/50" },
+        ],
+      },
+      {
+        title: "Short Documentary Editing",
+        description: "Story-driven documentary edits focused on narrative pacing and cinematic visuals, built to capture a founder's journey from concept to screen.",
+        video: "/creative/videos/rpm.mov",
+        links: [
+          {
+            name: "Aspiring Founder YouTube Channel",
+            link: "http://youtube.com/channel/UCsLRWiu_gpB45TGxFRskADQ",
+          },
+        ],
+        tags: [
+          { name: "Documentary", color: "bg-purple-400/50" },
+          { name: "Cinematic", color: "bg-purple-400/50" },
+          { name: "Storytelling", color: "bg-yellow-400/50" },
+        ],
+      },
+      {
+        title: "Short Form Video Editing",
+        description: "A collection of short-form reels and podcast cuts edited for clients including UOACS, Burst Digital, and Glide Media - one reel was reposted by UFC champion Israel Adesanya!!! (Showcase video coming soon)",
+        video: "",
+        links: [
+          {
+            name: "@UOACS",
+            link: "https://www.instagram.com/uoacompsci", // add their channel/page link
+          },
+          {
+            name: "@GlideMedia",
+            link: "https://www.instagram.com/glidemedia_/", // add their channel/page link
+          },
+        ],
+        tags: [
+          { name: "Short Form", color: "bg-purple-400/50" },
+          { name: "Social Media", color: "bg-yellow-400/50" },
+          { name: "Retention Optimisation", color: "bg-yellow-400/50" },
+        ],
+      }
+    ],
     videography: [
       {
         title: "Night Events Videography",
@@ -151,7 +242,8 @@ export const projects: Projects = {
       },
       {
         title: "Brand Promo Videography",
-        description: "Short-form commercial content for UOACS.",
+        description:
+          "A polished, fast-paced commercial promo for UOACS, combining dynamic camera movement and motion graphics to drive hype for club events and the upcoming hackathon. (Showcase video update coming soon)",
         video: "/creative/videos/uoacs_V1.mp4",
         links: [
           {
@@ -167,7 +259,8 @@ export const projects: Projects = {
       },
       {
         title: "Music Videography",
-        description: "Cinematic music visuals featuring Joseph Pod.",
+        description:
+          "A cinematic music video shot and edited for artist Joseph Pod, blending slow-motion visuals with mood-driven color grading to match the track's tone. (Showcase video update coming soon)",
         video: "/creative/videos/music_videos_V1.mp4",
         links: [
           {
@@ -183,7 +276,8 @@ export const projects: Projects = {
       },
       {
         title: "Hype Videography",
-        description: "High-impact sports and event edits.",
+        description:
+          "Fast-paced, high-energy edits built to capture the adrenaline of live sports and events, using quick cuts and dynamic pacing to keep viewers locked in.",
         video: "/creative/videos/spc_V1.mp4",
         links: [
           {
@@ -202,7 +296,8 @@ export const projects: Projects = {
     photography: [
       {
         title: "Corporate Event Photography",
-        description: "Professional UOACS event coverage.",
+        description:
+          "Professional photo coverage of UOACS workshops and panel events, capturing speakers, attendees, and key moments for the club's marketing and recap content. (Showcase photo update coming soon)",
         images: [
           "/creative/uoacs-photos/elective-1.jpg",
           "/creative/uoacs-photos/elective-2.jpg",
@@ -225,7 +320,8 @@ export const projects: Projects = {
       },
       {
         title: "Corporate Competition Photography",
-        description: "Hackathon coverage.",
+        description:
+          "Full-day photo coverage of the UOACS x WDCC hackathon, capturing teams in action, judging moments, and the overall competition atmosphere.",
         images: [
           "/creative/uoacs-photos/hackathon-1.jpg",
           "/creative/uoacs-photos/hackathon-2.jpg",
@@ -244,51 +340,23 @@ export const projects: Projects = {
         ],
       },
       {
+        title: "LinkedIn Headshot Photography Event",
+        description: "Designed and ran a professional headshot event in collaboration with SciSA, handling the full shoot and Lightroom editing workflow for attendees. (Showcase photos coming soon)",
+        // images: [],
+        // links: [],
+        tags: [
+          { name: "Event", color: "bg-green-400/50" },
+          { name: "Portrait", color: "bg-blue-400/50" },
+          { name: "Photography", color: "bg-yellow-400/50" },
+        ],
+      },
+      {
         title: "Elegant Event Photography",
         description: "Refined milestone event coverage.",
         tags: [
           { name: "Event", color: "bg-green-400/50" },
           { name: "Elegant", color: "bg-purple-400/50" },
           { name: "Portrait", color: "bg-yellow-400/50" },
-        ],
-      },
-    ],
-
-    editing: [
-      {
-        title: "Podcast Editing",
-        description: "6K multicam podcast editing.",
-        video: "/creative/videos/podcasts_V1.mp4",
-        links: [
-          {
-            name: "Burst Digital Instagram Profile",
-            link: "https://www.instagram.com/burstdigitalnz/",
-          },
-          {
-            name: "Roiinmarketing Instagram Profile",
-            link: "https://www.instagram.com/roiinmarketing/reels",
-          },
-        ],
-        tags: [
-          { name: "Podcast", color: "bg-blue-400/50" },
-          { name: "Multicam", color: "bg-purple-400/50" },
-          { name: "Audio", color: "bg-red-400/50" },
-        ],
-      },
-      {
-        title: "Short Documentary Editing",
-        description: "Story-driven documentary edits.",
-        video: "/creative/videos/rpm.mov",
-        links: [
-          {
-            name: "Aspiring Founder YouTube Channel",
-            link: "http://youtube.com/channel/UCsLRWiu_gpB45TGxFRskADQ",
-          },
-        ],
-        tags: [
-          { name: "Documentary", color: "bg-purple-400/50" },
-          { name: "Cinematic", color: "bg-purple-400/50" },
-          { name: "Storytelling", color: "bg-yellow-400/50" },
         ],
       },
     ],

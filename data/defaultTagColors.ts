@@ -9,4 +9,5 @@ export const defaultTagColors = {
   pytest: "bg-yellow-200/50",
   flask: "bg-orange-400/50",
   sqlite: "bg-blue-200/50",
+  java: "bg-orange-600/80"
 } as const;
