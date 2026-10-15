@@ -1,4 +1,5 @@
 import type { Project } from "@/types/Project";
+import imageManifest from "@/data/imageManifest.json";
 
 export type ProjectCategory = "developer" | "creative";
 export type CreativeCategory = "videography" | "photography" | "editing";
@@ -8,7 +9,32 @@ export type Projects = {
   creative: Record<CreativeCategory, Project[]>;
 };
 
-export const projects: Projects = {
+// `images` can be a folder under public/projects (uses every image directly
+// inside it, in filename order) or an explicit list of image paths
+type ProjectEntry = Omit<Project, "images"> & { images?: string | string[] };
+
+type ProjectEntries = {
+  developer: ProjectEntry[];
+  creative: Record<CreativeCategory, ProjectEntry[]>;
+};
+
+const manifest: Record<string, string[]> = imageManifest;
+
+const resolveImages = (images: ProjectEntry["images"]) => {
+  if (typeof images !== "string") return images;
+  const folder = images.replace(/\/$/, "");
+  if (!manifest[folder]) {
+    console.warn(`No images found in public/projects${folder}`);
+  }
+  return manifest[folder] ?? [];
+};
+
+const resolveProject = (project: ProjectEntry): Project => ({
+  ...project,
+  images: resolveImages(project.images),
+});
+
+const projectEntries: ProjectEntries = {
   developer: [
     {
       title: "Slidedown",
@@ -20,14 +46,7 @@ export const projects: Projects = {
         { name: "pdfjs-dist" },
         { name: "JSZip" },
       ],
-      images: [
-        "/developer/slidedown/Screenshot_2026-05-05_at_5_39_32_PM.jpg",
-        "/developer/slidedown/Screenshot_2026-05-05_at_5_39_55_PM.jpg",
-        "/developer/slidedown/Screenshot_2026-05-05_at_5_40_00_PM.jpg",
-        "/developer/slidedown/Screenshot_2026-05-05_at_5_40_06_PM.jpg",
-        "/developer/slidedown/Screenshot_2026-05-05_at_5_40_29_PM.jpg",
-        "/developer/slidedown/Screenshot_2026-05-05_at_5_40_32_PM.jpg",
-      ],
+      images: "/developer/slidedown",
       links: [
         {
           name: "Slidedown Website",
@@ -46,12 +65,7 @@ export const projects: Projects = {
         { name: "PostgreSQL" },
         { name: "Turborepo" },
       ],
-      images: [
-        "/developer/ccca/ccca-home.jpg",
-        "/developer/ccca/ccca-about.jpg",
-        "/developer/ccca/ccca-register.jpg",
-        "/developer/ccca/ccca-login.jpg",
-      ],
+      images: "/developer/ccca",
       links: [
         {
           name: "GitHub Repository",
@@ -76,13 +90,7 @@ export const projects: Projects = {
           link: "https://uaic.wdcc.co.nz"
         }
       ],
-      images: [
-        "/developer/uaic2026/homepage_1.png",
-        "/developer/uaic2026/homepage_2.png",
-        "/developer/uaic2026/homepage_3.png",
-        "/developer/uaic2026/homepage_4.png",
-        "/developer/uaic2026/graph.png",
-      ],
+      images: "/developer/uaic2026",
     },
     {
       title: "Concert Booking System",
@@ -93,9 +101,7 @@ export const projects: Projects = {
         { name: "JAX-RS" },
         { name: "JPA" },
       ],
-      images: [
-        "/developer/concert-booking/repo.png",
-      ],
+      images: "/developer/concert-booking",
       links: [
         {
           name: "GitHub Repository",
@@ -112,15 +118,7 @@ export const projects: Projects = {
         { name: "Tailwind" },
         { name: "Payload CMS" },
       ],
-      images: [
-        "/developer/uaic/uaic-1.png",
-        "/developer/uaic/uaic-2.png",
-        "/developer/uaic/uaic-3.png",
-        "/developer/uaic/uaic-4.png",
-        "/developer/uaic/uaic-5.png",
-        "/developer/uaic/uaic-6.png",
-        "/developer/uaic/uaic-7.png",
-      ],
+      images: "/developer/uaic",
       links: [
         {
           name: "WDCC UAIC Project 2025",
@@ -164,9 +162,7 @@ export const projects: Projects = {
         { name: "HTML" },
         { name: "CSS" },
       ],
-      images: [
-        "/developer/robin/robin-faq.jpg",
-      ],
+      images: "/developer/robin",
       links: [
         {
           name: "GitHub Repository",
@@ -183,11 +179,7 @@ export const projects: Projects = {
         { name: "HTML" },
         { name: "CSS" },
       ],
-      images: [
-        "/developer/findr/findr-home.jpg",
-        "/developer/findr/findr-saved.jpg",
-        "/developer/findr/findr-profile.jpg",
-      ],
+      images: "/developer/findr",
       links: [
         {
           name: "GitHub Repository",
@@ -205,10 +197,7 @@ export const projects: Projects = {
         { name: "Redis" },
         { name: "Resend" },
       ],
-      images: [
-        "/developer/website/website-light.png",
-        "/developer/website/website-dark.png",
-      ],
+      images: "/developer/website",
       links: [
         {
           name: "GitHub Repository",
@@ -425,5 +414,13 @@ export const projects: Projects = {
         ],
       },
     ],
+  },
+};
+export const projects: Projects = {
+  developer: projectEntries.developer.map(resolveProject),
+  creative: {
+    videography: projectEntries.creative.videography.map(resolveProject),
+    photography: projectEntries.creative.photography.map(resolveProject),
+    editing: projectEntries.creative.editing.map(resolveProject),
   },
 };

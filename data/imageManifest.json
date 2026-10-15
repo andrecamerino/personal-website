@@ -1,0 +1,69 @@
+{
+  "/creative/uoacs-photos": [
+    "/creative/uoacs-photos/elective-1.jpg",
+    "/creative/uoacs-photos/elective-2.jpg",
+    "/creative/uoacs-photos/elective-3.jpg",
+    "/creative/uoacs-photos/hackathon-1.jpg",
+    "/creative/uoacs-photos/hackathon-2.jpg",
+    "/creative/uoacs-photos/hackathon-3.jpg",
+    "/creative/uoacs-photos/potentia-1.jpg",
+    "/creative/uoacs-photos/potentia-2.jpg",
+    "/creative/uoacs-photos/potentia-3.jpg"
+  ],
+  "/developer/bindr": [
+    "/developer/bindr/bindr-1.png",
+    "/developer/bindr/bindr-2.png",
+    "/developer/bindr/bindr-3.png",
+    "/developer/bindr/bindr-4.png",
+    "/developer/bindr/bindr-5.png",
+    "/developer/bindr/bindr-6.png",
+    "/developer/bindr/bindr-7.png",
+    "/developer/bindr/bindr-8.png",
+    "/developer/bindr/bindr-9.png"
+  ],
+  "/developer/ccca": [
+    "/developer/ccca/01-home.jpg",
+    "/developer/ccca/02-about.jpg",
+    "/developer/ccca/03-register.jpg",
+    "/developer/ccca/04-login.jpg"
+  ],
+  "/developer/concert-booking": [
+    "/developer/concert-booking/repo.png"
+  ],
+  "/developer/findr": [
+    "/developer/findr/01-home.jpg",
+    "/developer/findr/02-saved.jpg",
+    "/developer/findr/03-profile.jpg"
+  ],
+  "/developer/robin": [
+    "/developer/robin/robin-faq.jpg"
+  ],
+  "/developer/slidedown": [
+    "/developer/slidedown/Screenshot_2026-05-05_at_5_39_32_PM.jpg",
+    "/developer/slidedown/Screenshot_2026-05-05_at_5_39_55_PM.jpg",
+    "/developer/slidedown/Screenshot_2026-05-05_at_5_40_00_PM.jpg",
+    "/developer/slidedown/Screenshot_2026-05-05_at_5_40_06_PM.jpg",
+    "/developer/slidedown/Screenshot_2026-05-05_at_5_40_29_PM.jpg",
+    "/developer/slidedown/Screenshot_2026-05-05_at_5_40_32_PM.jpg"
+  ],
+  "/developer/uaic": [
+    "/developer/uaic/uaic-1.png",
+    "/developer/uaic/uaic-2.png",
+    "/developer/uaic/uaic-3.png",
+    "/developer/uaic/uaic-4.png",
+    "/developer/uaic/uaic-5.png",
+    "/developer/uaic/uaic-6.png",
+    "/developer/uaic/uaic-7.png"
+  ],
+  "/developer/uaic2026": [
+    "/developer/uaic2026/homepage_1.png",
+    "/developer/uaic2026/homepage_2.png",
+    "/developer/uaic2026/homepage_3.png",
+    "/developer/uaic2026/homepage_4.png",
+    "/developer/uaic2026/homepage_5_graph.png"
+  ],
+  "/developer/website": [
+    "/developer/website/website-dark.png",
+    "/developer/website/website-light.png"
+  ]
+}
