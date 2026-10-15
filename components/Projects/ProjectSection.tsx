@@ -45,9 +45,6 @@ const ProjectSection = () => {
       <AnimatePresence>
         <div className="flex flex-col justify-center items-center text-center">
           <SectionTitle>FEATURED {projectsTypeText.toUpperCase()} PROJECTS</SectionTitle>
-          <p className="font-extralight text-xs mt-[-70] mb-10">
-            Projects page coming soon!
-          </p>
         </div>
       </AnimatePresence>
 

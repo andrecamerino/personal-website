@@ -1,4 +1,5 @@
 import type { Project } from "@/types/Project";
+import imageManifest from "@/data/imageManifest.json";
 
 export type ProjectCategory = "developer" | "creative";
 export type CreativeCategory = "videography" | "photography" | "editing";
@@ -8,33 +9,33 @@ export type Projects = {
   creative: Record<CreativeCategory, Project[]>;
 };
 
-export const projects: Projects = {
+// `images` can be a folder under public/projects (uses every image directly
+// inside it, in filename order) or an explicit list of image paths
+type ProjectEntry = Omit<Project, "images"> & { images?: string | string[] };
+
+type ProjectEntries = {
+  developer: ProjectEntry[];
+  creative: Record<CreativeCategory, ProjectEntry[]>;
+};
+
+const manifest: Record<string, string[]> = imageManifest;
+
+const resolveImages = (images: ProjectEntry["images"]) => {
+  if (typeof images !== "string") return images;
+  const folder = images.replace(/\/$/, "");
+  if (!manifest[folder]) {
+    console.warn(`No images found in public/projects${folder}`);
+  }
+  return manifest[folder] ?? [];
+};
+
+const resolveProject = (project: ProjectEntry): Project => ({
+  ...project,
+  images: resolveImages(project.images),
+});
+
+const projectEntries: ProjectEntries = {
   developer: [
-    {
-      title: "Slidedown",
-      description:
-        "Engineered client-side PDF and PPTX parsers using pdfjs-dist and JSZip, supporting files up to 50MB. Built a split-pane converter UI with live word count, byte reduction, and page count stats. Reduced slide payloads by ~70%, compressing 30+ decks from MBs to KBs to fit LLM free-tier context limits.",
-      tags: [
-        { name: "TypeScript" },
-        { name: "NextJS" },
-        { name: "pdfjs-dist" },
-        { name: "JSZip" },
-      ],
-      images: [
-        "/developer/slidedown/Screenshot_2026-05-05_at_5_39_32_PM.jpg",
-        "/developer/slidedown/Screenshot_2026-05-05_at_5_39_55_PM.jpg",
-        "/developer/slidedown/Screenshot_2026-05-05_at_5_40_00_PM.jpg",
-        "/developer/slidedown/Screenshot_2026-05-05_at_5_40_06_PM.jpg",
-        "/developer/slidedown/Screenshot_2026-05-05_at_5_40_29_PM.jpg",
-        "/developer/slidedown/Screenshot_2026-05-05_at_5_40_32_PM.jpg",
-      ],
-      links: [
-        {
-          name: "Slidedown Website",
-          link: "https://slidedown-andre.vercel.app",
-        },
-      ],
-    },
     {
       title: "UOA Investment Club Website as Project Lead",
       description:
@@ -52,55 +53,42 @@ export const projects: Projects = {
           link: "https://uaic.wdcc.co.nz"
         }
       ],
-      images: [
-        "/developer/uaic2026/homepage_1.png",
-        "/developer/uaic2026/homepage_2.png",
-        "/developer/uaic2026/homepage_3.png",
-        "/developer/uaic2026/homepage_4.png",
-        "/developer/uaic2026/graph.png",
-      ],
+      images: "/developer/uaic2026",
     },
     {
-      title: "Concert Booking System",
+      title: "CCCA - Computing Capstone Community Australasia",
       description:
-        "Built a full backend for a Ticketmaster-style concert booking platform using JAX-RS and JPA. Designed RESTful endpoints for event listings, seat selection, and booking management, with persistent entity relationships handling venues, events, and reservations. Implemented as part of CS331 (Web Services).",
+        "COMPSCI 399 capstone with Team 25, a platform for academics across Australia and New Zealand to share capstone course data, post research proposals, and find co-investigators. Built a shared shadcn/Base UI component library with Storybook, the capstone courses flow, the institution logo ticker, and mobile-responsive layouts across the app.",
       tags: [
-        { name: "Java" },
-        { name: "JAX-RS" },
-        { name: "JPA" },
+        { name: "NextJS" },
+        { name: "TypeScript" },
+        { name: "Payload CMS" },
+        { name: "PostgreSQL" },
+        { name: "Turborepo" },
       ],
-      images: [
-        "/developer/concert-booking/repo.png",
-      ],
+      images: "/developer/ccca",
       links: [
         {
           name: "GitHub Repository",
-          link: "", // add your repo link if public
+          link: "https://github.com/uoa-compsci399-s2-2026-anna/team-25-project",
         },
       ],
     },
     {
-      title: "UOA Investment Club Website as Developer",
+      title: "Slidedown",
       description:
-        "Built as part of WDCC (Web Development Consulting Club), where I worked as a developer and co-designer. Delivered a modern platform featuring live stock data integration, Stripe payments, and a Payload CMS-powered admin system.",
+        "Engineered client-side PDF and PPTX parsers using pdfjs-dist and JSZip, supporting files up to 50MB. Built a split-pane converter UI with live word count, byte reduction, and page count stats. Reduced slide payloads by ~70%, compressing 30+ decks from MBs to KBs to fit LLM free-tier context limits.",
       tags: [
+        { name: "TypeScript" },
         { name: "NextJS" },
-        { name: "Tailwind" },
-        { name: "Payload CMS" },
+        { name: "pdfjs-dist" },
+        { name: "JSZip" },
       ],
-      images: [
-        "/developer/uaic/uaic-1.png",
-        "/developer/uaic/uaic-2.png",
-        "/developer/uaic/uaic-3.png",
-        "/developer/uaic/uaic-4.png",
-        "/developer/uaic/uaic-5.png",
-        "/developer/uaic/uaic-6.png",
-        "/developer/uaic/uaic-7.png",
-      ],
+      images: "/developer/slidedown",
       links: [
         {
-          name: "WDCC UAIC Project 2025",
-          link: "https://wdcc.co.nz/projects/uaic/2025",
+          name: "Slidedown Website",
+          link: "https://slidedown-andre.vercel.app",
         },
       ],
     },
@@ -114,19 +102,86 @@ export const projects: Projects = {
         { name: "SQLite" },
         { name: "Pytest" },
       ],
-      images: [
-        "/developer/bindr/bindr-1.png",
-        "/developer/bindr/bindr-2.png",
-        "/developer/bindr/bindr-3.png",
-        "/developer/bindr/bindr-4.png",
-        "/developer/bindr/bindr-5.png",
-        "/developer/bindr/bindr-6.png",
-        "/developer/bindr/bindr-7.png",
-      ],
+      images: "/developer/bindr",
       links: [
         {
           name: "GitHub Repository",
           link: "https://github.com/UoA-CS-Sindhwani-CS235-S2-2025/cs235-s2-2025-recipeswebapp-scho616-eau465-rcam301",
+        },
+      ],
+    },
+    {
+      title: "Concert Booking System",
+      description:
+        "Built a full backend for a Ticketmaster-style concert booking platform using JAX-RS and JPA. Designed RESTful endpoints for event listings, seat selection, and booking management, with persistent entity relationships handling venues, events, and reservations. Implemented as part of COMPSCI 331 (Web Services), so the source code is kept private as university coursework.",
+      tags: [
+        { name: "Java" },
+        { name: "JAX-RS" },
+        { name: "JPA" },
+      ],
+      images: "/developer/concert-booking",
+    },
+    {
+      title: "CryptoCritters - Web3 Hackathon Kiawana Prize Winner",
+      description:
+        "A pixel-art Web3 game where you collect New Zealand's endangered animals. Buy Critter Coins with ETH through a Solidity smart contract that routes a 5% fee to a conservation wallet, hatch common, uncommon, and rare eggs to unlock critters with real species facts, and earn more coins in minigames like Critter Scavenge. Led a team of 4 to win the Kiawana Prize for Best NZ-Centric Solution ($3K) at the Web3 Hackathon 2025.",
+      tags: [
+        { name: "NextJS" },
+        { name: "TypeScript" },
+        { name: "Solidity" },
+        { name: "Hardhat" },
+      ],
+      images: "/developer/cryptocritters",
+      links: [
+        {
+          name: "GitHub Repository",
+          link: "https://github.com/andrecamerino/CryptoCritters",
+        },
+      ],
+    },
+    {
+      title: "Robin - Sustainability Hackathon Exec Choice Award",
+      description:
+        "An AI-powered smart bin assistant that tells you which bin your rubbish belongs in. Hold an item up to the camera and Robin detects it in real time with TensorFlow.js (COCO-SSD), then sorts it into recycling, waste, or compost to cut down on contamination. Built in under 24 hours with a team of 5 and won the Exec Choice Award at the Sustainability Hackathon 2025.",
+      tags: [
+        { name: "JavaScript" },
+        { name: "TensorFlow.js" },
+        { name: "HTML" },
+        { name: "CSS" },
+      ],
+      images: "/developer/robin",
+      links: [
+        {
+          name: "GitHub Repository",
+          link: "https://github.com/andrecamerino/Robin",
+        },
+      ],
+    },
+    {
+      title: "Food Catcher - Roblox Game",
+      description:
+        "A Roblox game built with friends over the intersemester break and still in active development. Catch food of random sizes and mutations at catch zones around the map, then sell it at the shop or stock your own player-owned stall so NPC customers buy from you passively. Includes stall upgrades, a food mutation system, auto-catch, a hotbar inventory, and a Cookbook that tracks every food and mutation you've discovered.",
+      tags: [
+        { name: "Luau" },
+        { name: "Lua" },
+        { name: "Rojo" },
+      ],
+      images: "/developer/catch-food",
+    },
+    {
+      title: "Findr - SESA x WDCC Hackathon Prize Winner",
+      description:
+        "A Tinder-style mobile web app for the 'Escaping Earth' theme. Swipe through planet cards with stats like humidity, temperature, and population, save the ones you'd escape to, and race a countdown before Earth runs out of time. My first hackathon, built with a team of 6, and won the Secret Category prize for Most Entertaining Solution at the SESA x WDCC Hackathon 2024.",
+      tags: [
+        { name: "JavaScript" },
+        { name: "HTML" },
+        { name: "CSS" },
+      ],
+      images: "/developer/findr",
+      links: [
+        {
+          name: "GitHub Repository",
+          link: "https://github.com/evanautianle/HACKATHON2024-print-Hello-World-",
         },
       ],
     },
@@ -140,10 +195,7 @@ export const projects: Projects = {
         { name: "Redis" },
         { name: "Resend" },
       ],
-      images: [
-        "/developer/website/website-light.png",
-        "/developer/website/website-dark.png",
-      ],
+      images: "/developer/website",
       links: [
         {
           name: "GitHub Repository",
@@ -152,13 +204,20 @@ export const projects: Projects = {
       ],
     },
     {
-      title: "Intersem Break Roblox Game (Attempt)",
+      title: "UOA Investment Club Website as Developer",
       description:
-        "Just an attempt, hopefully some good fun. If it the game gets somewhere them hopefully its good enough to put here 😂.",
+        "Built as part of WDCC (Web Development Consulting Club), where I worked as a developer and co-designer. Delivered a modern platform featuring live stock data integration, Stripe payments, and a Payload CMS-powered admin system.",
       tags: [
-        { name: "Luau" },
-        { name: "Lua" },
-        { name: "Rojo" },
+        { name: "NextJS" },
+        { name: "Tailwind" },
+        { name: "Payload CMS" },
+      ],
+      images: "/developer/uaic",
+      links: [
+        {
+          name: "WDCC UAIC Project 2025",
+          link: "https://wdcc.co.nz/projects/uaic/2025",
+        },
       ],
     },
   ],
@@ -360,5 +419,13 @@ export const projects: Projects = {
         ],
       },
     ],
+  },
+};
+export const projects: Projects = {
+  developer: projectEntries.developer.map(resolveProject),
+  creative: {
+    videography: projectEntries.creative.videography.map(resolveProject),
+    photography: projectEntries.creative.photography.map(resolveProject),
+    editing: projectEntries.creative.editing.map(resolveProject),
   },
 };

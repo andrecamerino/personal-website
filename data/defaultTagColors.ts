@@ -9,5 +9,17 @@ export const defaultTagColors = {
   pytest: "bg-yellow-200/50",
   flask: "bg-orange-400/50",
   sqlite: "bg-blue-200/50",
-  java: "bg-orange-600/80"
+  java: "bg-orange-600/80",
+  javascript: "bg-yellow-300/50",
+  html: "bg-orange-500/50",
+  css: "bg-sky-500/50",
+  "tensorflow.js": "bg-amber-500/50",
+  postgresql: "bg-cyan-700/50",
+  turborepo: "bg-pink-500/50",
+  stripe: "bg-indigo-500/50",
+  luau: "bg-cyan-400/50",
+  lua: "bg-blue-600/50",
+  rojo: "bg-red-400/50",
+  solidity: "bg-slate-400/50",
+  hardhat: "bg-yellow-500/50",
 } as const;
