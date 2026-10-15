@@ -217,9 +217,9 @@ export const projects: Projects = {
       ],
     },
     {
-      title: "Intersem Break Roblox Game (Attempt)",
+      title: "Food Catcher - Roblox Game",
       description:
-        "Just an attempt, hopefully some good fun. If it the game gets somewhere them hopefully its good enough to put here 😂.",
+        "A Roblox game built with friends over the intersemester break and still in active development. Catch food of random sizes and mutations at catch zones around the map, then sell it at the shop or stock your own player-owned stall so NPC customers buy from you passively. Includes stall upgrades, a food mutation system, auto-catch, a hotbar inventory, and a Cookbook that tracks every food and mutation you've discovered.",
       tags: [
         { name: "Luau" },
         { name: "Lua" },
