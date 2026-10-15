@@ -36,7 +36,7 @@ const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
           }
           className="shrink-0"
         >
-          <ProjectThumbnail images={project.images} video={project.video} />
+          <ProjectThumbnail images={project.images} video={project.video} alt={project.title} />
         </div>
       )}
 

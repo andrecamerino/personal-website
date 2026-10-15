@@ -1,8 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { BiFullscreen } from "react-icons/bi";
+import ProjectImage from "./ProjectImage";
+import { getPoster } from "@/utils/projectMedia";
+
+const SIZES = "400px";
 
 interface ProjectMediaProps {
   images?: string[];
@@ -24,14 +28,22 @@ export const ProjectThumbnail = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(-1);
   const [hovered, setHovered] = useState(false);
+  // Indexes of images that have finished loading, so rotation never lands on a blank one
+  const loadedIndexes = useRef(new Set<number>());
 
-  // Auto-rotate images every 6s
+  const nextIndex = images && images.length > 1 ? (currentIndex + 1) % images.length : null;
+  const poster = video ? getPoster(video) : undefined;
+
+  // Auto-rotate images every 6s, skipping a tick if the next image isn't loaded yet
   useEffect(() => {
     if (!images || images.length <= 1) return;
 
     const interval = setInterval(() => {
       setDirection(-1);
-      setCurrentIndex((prev) => (prev + 1) % images.length);
+      setCurrentIndex((prev) => {
+        const next = (prev + 1) % images.length;
+        return loadedIndexes.current.has(next) ? next : prev;
+      });
     }, 6000);
 
     return () => clearInterval(interval);
@@ -47,27 +59,53 @@ export const ProjectThumbnail = ({
       onMouseLeave={() => setHovered(false)}
     >
       {video ? (
-        <video
-          src={`/projects${video}`}
-          muted
-          loop
-          autoPlay
-          playsInline
-          className="w-full h-full object-cover rounded-3xl"
-        />
-      ) : images && images.length > 0 ? (
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={currentIndex}
-            src={`/projects${images[currentIndex]}`}
-            alt={alt}
-            initial={{ opacity: 0, x: direction * 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -direction * 20 }}
-            transition={{ duration: 0.2 }}
-            className="w-full h-full object-cover rounded-3xl"
+        <div className="absolute inset-0 overflow-hidden rounded-3xl">
+          {/* Poster (or shimmer) shows through until the video has a frame to paint */}
+          {poster ? (
+            <ProjectImage src={poster} alt={alt} sizes={SIZES} />
+          ) : (
+            <div aria-hidden className="absolute inset-0 shimmer" />
+          )}
+          <video
+            src={`/projects${video}`}
+            muted
+            loop
+            autoPlay
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
           />
-        </AnimatePresence>
+        </div>
+      ) : images && images.length > 0 ? (
+        <>
+          {/* Preload the next image underneath, invisible */}
+          {nextIndex !== null && (
+            <ProjectImage
+              key={`preload-${nextIndex}`}
+              src={images[nextIndex]}
+              alt=""
+              sizes={SIZES}
+              className="opacity-0 pointer-events-none"
+              onLoad={() => loadedIndexes.current.add(nextIndex)}
+            />
+          )}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: direction * 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -direction * 20 }}
+              transition={{ duration: 0.2 }}
+              className="absolute inset-0 rounded-3xl overflow-hidden"
+            >
+              <ProjectImage
+                src={images[currentIndex]}
+                alt={alt}
+                sizes={SIZES}
+                onLoad={() => loadedIndexes.current.add(currentIndex)}
+              />
+            </motion.div>
+          </AnimatePresence>
+        </>
       ) : null}
 
       {/* Hover overlay */}
