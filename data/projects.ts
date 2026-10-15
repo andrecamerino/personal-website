@@ -232,6 +232,7 @@ const projectEntries: ProjectEntries = {
         { name: "Lua" },
         { name: "Rojo" },
       ],
+      images: "/developer/catch-food",
     },
   ],
 
