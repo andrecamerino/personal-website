@@ -102,15 +102,7 @@ const projectEntries: ProjectEntries = {
         { name: "SQLite" },
         { name: "Pytest" },
       ],
-      images: [
-        "/developer/bindr/bindr-1.png",
-        "/developer/bindr/bindr-2.png",
-        "/developer/bindr/bindr-3.png",
-        "/developer/bindr/bindr-4.png",
-        "/developer/bindr/bindr-5.png",
-        "/developer/bindr/bindr-6.png",
-        "/developer/bindr/bindr-7.png",
-      ],
+      images: "/developer/bindr",
       links: [
         {
           name: "GitHub Repository",
@@ -121,19 +113,13 @@ const projectEntries: ProjectEntries = {
     {
       title: "Concert Booking System",
       description:
-        "Built a full backend for a Ticketmaster-style concert booking platform using JAX-RS and JPA. Designed RESTful endpoints for event listings, seat selection, and booking management, with persistent entity relationships handling venues, events, and reservations. Implemented as part of CS331 (Web Services).",
+        "Built a full backend for a Ticketmaster-style concert booking platform using JAX-RS and JPA. Designed RESTful endpoints for event listings, seat selection, and booking management, with persistent entity relationships handling venues, events, and reservations. Implemented as part of COMPSCI 331 (Web Services), so the source code is kept private as university coursework.",
       tags: [
         { name: "Java" },
         { name: "JAX-RS" },
         { name: "JPA" },
       ],
       images: "/developer/concert-booking",
-      links: [
-        {
-          name: "GitHub Repository",
-          link: "", // add your repo link if public
-        },
-      ],
     },
     {
       title: "CryptoCritters - Web3 Hackathon Kiawana Prize Winner",
