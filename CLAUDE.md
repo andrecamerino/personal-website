@@ -14,11 +14,16 @@ Andre Camerino's personal portfolio website. Showcases developer and creative pr
 - ensure commits are smaller and meaningful, rather than larger one-time commits
 
 ```bash
-pnpm run dev     # start dev server
-pnpm run build   # production build
+pnpm run dev     # compress images + regenerate image manifest, then start dev server
+pnpm run build   # regenerate image manifest, then production build
 pnpm run start   # serve production build
 pnpm run lint    # ESLint check
+pnpm images      # compress everything under public/projects + regenerate manifest
+pnpm compress <folder...> [--recursive] [--jpg]   # compress images in any folder, in place
 ```
+
+- Pass extra Next.js flags directly, e.g. `pnpm dev -p 3001` (pnpm 11 passes a literal `--` through, which breaks `next dev`)
+- pnpm 11 blocks dependency build scripts unless approved: `sharp` and `unrs-resolver` are approved under `allowBuilds` in `pnpm-workspace.yaml`. Approve any new ones there (or via `pnpm approve-builds`), otherwise every `pnpm` script fails its install check
 
 No test suite exists in this project.
 
@@ -43,6 +48,7 @@ data/             Static content — projects, achievements, testimonials, etc.
 hooks/            useTypewriter, isMobile
 types/            TypeScript interfaces for all data shapes
 utils/            scrollToSection, getDefaultTagColor, truncateText, ratelimit
+scripts/          Image tooling: compress-images, generate-image-manifest (Node, run via pnpm)
 styles/           Shared style objects (glassmorphism)
 public/           Static assets — images, backgrounds, resume PDF, icons
 ```
@@ -110,7 +116,17 @@ All content lives in `data/` as TypeScript files — edit these to update portfo
 | `scrollContent.ts` | Marquee scroll section content |
 | `descriptiveWords.ts` | Typewriter words in Hero |
 | `emailText.ts` | Email template copy |
-| `defaultTagColors.ts` | Color map for project technology tags |
+| `defaultTagColors.ts` | Color map for project technology tags (keys are lowercase tag names) |
+| `imageManifest.json` | **Generated** by `scripts/generate-image-manifest.mjs` — maps each folder under `public/projects` to its images. Don't edit by hand |
+
+### Project images
+
+- Images live in `public/projects/<category>/<project>/`; paths in `projects.ts` are relative to `public/projects` (e.g. `/developer/slidedown`)
+- `images` can be a **folder** (`images: "/developer/slidedown"`) — uses every image directly inside it (not subfolders), sorted by filename — or an explicit array of paths (use this when a folder is shared between projects, e.g. `creative/uoacs-photos`)
+- Control display order with numeric filename prefixes (`01-home.jpg`, `02-about.jpg`); the first image is the card thumbnail
+- After adding images run `pnpm compress <folder> --jpg` (screenshots/photos) or `pnpm compress <folder>` (keep PNG). Images are resized to ≤1920px wide; `--jpg` converts PNG/WebP to JPG and deletes the original, so only use it on folder-referenced projects
+- The manifest regenerates on `dev`/`build`; run `pnpm images` to refresh it while the dev server is already running
+- Keep files well under GitHub's limits (warns at 50MB, rejects at 100MB) — the compress script warns about anything over 25MB
 
 ---
 
