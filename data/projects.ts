@@ -171,6 +171,24 @@ const projectEntries: ProjectEntries = {
       ],
     },
     {
+      title: "CryptoCritters - Web3 Hackathon Kiawana Prize Winner",
+      description:
+        "A pixel-art Web3 game where you collect New Zealand's endangered animals. Buy Critter Coins with ETH through a Solidity smart contract that routes a 5% fee to a conservation wallet, hatch common, uncommon, and rare eggs to unlock critters with real species facts, and earn more coins in minigames like Critter Scavenge. Led a team of 4 to win the Kiawana Prize for Best NZ-Centric Solution ($3K) at the Web3 Hackathon 2025.",
+      tags: [
+        { name: "NextJS" },
+        { name: "TypeScript" },
+        { name: "Solidity" },
+        { name: "Hardhat" },
+      ],
+      images: "/developer/cryptocritters",
+      links: [
+        {
+          name: "GitHub Repository",
+          link: "https://github.com/andrecamerino/CryptoCritters",
+        },
+      ],
+    },
+    {
       title: "Findr - SESA x WDCC Hackathon Prize Winner",
       description:
         "A Tinder-style mobile web app for the 'Escaping Earth' theme. Swipe through planet cards with stats like humidity, temperature, and population, save the ones you'd escape to, and race a countdown before Earth runs out of time. My first hackathon, built with a team of 6, and won the Secret Category prize for Most Entertaining Solution at the SESA x WDCC Hackathon 2024.",

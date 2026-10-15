@@ -20,4 +20,6 @@ export const defaultTagColors = {
   luau: "bg-cyan-400/50",
   lua: "bg-blue-600/50",
   rojo: "bg-red-400/50",
+  solidity: "bg-slate-400/50",
+  hardhat: "bg-yellow-500/50",
 } as const;
