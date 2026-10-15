@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "images": "node scripts/compress-images.mjs && node scripts/generate-image-manifest.mjs",
+    "images": "node scripts/compress-images.mjs && node scripts/generate-video-posters.mjs && node scripts/generate-image-manifest.mjs",
     "compress": "node scripts/compress-images.mjs",
     "dev": "pnpm run images && next dev",
     "build": "node scripts/generate-image-manifest.mjs && next build",

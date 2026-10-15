@@ -3,7 +3,7 @@
 import { Project } from "@/types/Project";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import ProjectImage from "../Projects/ProjectImage";
 import Button from "../Button";
 import ArrowNarrowLeftIcon from "../AnimatedIcons/ArrowNarrowLeftIcon";
 import ArrowNarrowRightIcon from "../AnimatedIcons/ArrowNarrowRightIcon";
@@ -35,11 +35,11 @@ const FullscreenCarousel = ({ project }: { project: Project }) => {
             exit={{ scale: 0.98 }}
             transition={{ duration: 0.2 }}
           >
-            <Image
-              src={`/projects${images[currentIndex]}`}
+            <ProjectImage
+              src={images[currentIndex]}
               alt={project.title}
-              fill
-              className="object-contain" // <-- maintains ratio
+              sizes="(min-width: 1024px) 1152px, 92vw"
+              fit="contain" // <-- maintains ratio
             />
           </motion.div>
         </AnimatePresence>
@@ -69,11 +69,9 @@ const FullscreenCarousel = ({ project }: { project: Project }) => {
                   : "opacity-60 hover:opacity-100"
               }`}
             >
-              <Image
-                src={`/projects${img}`}
+              <ProjectImage
+                src={img}
                 alt={`${project.title} thumbnail`}
-                fill
-                className="object-cover"
                 sizes="128px"
               />
             </button>
@@ -104,11 +102,9 @@ const FullscreenCarousel = ({ project }: { project: Project }) => {
                   : "opacity-60 hover:opacity-100"
               }`}
             >
-              <Image
-                src={`/projects${img}`}
+              <ProjectImage
+                src={img}
                 alt={`${project.title} thumbnail`}
-                fill
-                className="object-cover"
                 sizes="96px"
               />
             </button>
