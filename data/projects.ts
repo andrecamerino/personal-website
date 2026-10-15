@@ -36,6 +36,30 @@ export const projects: Projects = {
       ],
     },
     {
+      title: "CCCA - Computing Capstone Community Australasia",
+      description:
+        "COMPSCI 399 capstone with Team 25, a platform for academics across Australia and New Zealand to share capstone course data, post research proposals, and find co-investigators. Built a shared shadcn/Base UI component library with Storybook, the capstone courses flow, the institution logo ticker, and mobile-responsive layouts across the app.",
+      tags: [
+        { name: "NextJS" },
+        { name: "TypeScript" },
+        { name: "Payload CMS" },
+        { name: "PostgreSQL" },
+        { name: "Turborepo" },
+      ],
+      images: [
+        "/developer/ccca/ccca-home.jpg",
+        "/developer/ccca/ccca-about.jpg",
+        "/developer/ccca/ccca-register.jpg",
+        "/developer/ccca/ccca-login.jpg",
+      ],
+      links: [
+        {
+          name: "GitHub Repository",
+          link: "https://github.com/uoa-compsci399-s2-2026-anna/team-25-project",
+        },
+      ],
+    },
+    {
       title: "UOA Investment Club Website as Project Lead",
       description:
         "Lead the development of the UOA Investment Club platform as Project Lead within WDCC. Direct a cross-functional team to deliver a modern web application featuring live stock data integration, secure Stripe payments, and a Payload CMS-powered admin system. Oversee technical architecture, feature prioritisation, and deployment to ensure scalability and long-term maintainability.",
