@@ -14,11 +14,11 @@ Andre Camerino's personal portfolio website. Showcases developer and creative pr
 - ensure commits are smaller and meaningful, rather than larger one-time commits
 
 ```bash
-pnpm run dev     # compress images + regenerate image manifest, then start dev server
+pnpm run dev     # compress images, generate video posters + regenerate image manifest, then start dev server
 pnpm run build   # regenerate image manifest, then production build
 pnpm run start   # serve production build
 pnpm run lint    # ESLint check
-pnpm images      # compress everything under public/projects + regenerate manifest
+pnpm images      # compress everything under public/projects, generate video posters + regenerate manifest
 pnpm compress <folder...> [--recursive] [--jpg]   # compress images in any folder, in place
 ```
 
@@ -48,7 +48,7 @@ data/             Static content — projects, achievements, testimonials, etc.
 hooks/            useTypewriter, isMobile
 types/            TypeScript interfaces for all data shapes
 utils/            scrollToSection, getDefaultTagColor, truncateText, ratelimit
-scripts/          Image tooling: compress-images, generate-image-manifest (Node, run via pnpm)
+scripts/          Image tooling: compress-images, generate-video-posters, generate-image-manifest (Node, run via pnpm)
 styles/           Shared style objects (glassmorphism)
 public/           Static assets — images, backgrounds, resume PDF, icons
 ```
@@ -118,6 +118,7 @@ All content lives in `data/` as TypeScript files — edit these to update portfo
 | `emailText.ts` | Email template copy |
 | `defaultTagColors.ts` | Color map for project technology tags (keys are lowercase tag names) |
 | `imageManifest.json` | **Generated** by `scripts/generate-image-manifest.mjs` — maps each folder under `public/projects` to its images. Don't edit by hand |
+| `imagePlaceholders.json` | **Generated** alongside the manifest — tiny blurred preview (data URL) of every project image, shown while it loads. Don't edit by hand |
 
 ### Project images
 
@@ -126,6 +127,8 @@ All content lives in `data/` as TypeScript files — edit these to update portfo
 - Control display order with numeric filename prefixes (`01-home.jpg`, `02-about.jpg`); the first image is the card thumbnail
 - After adding images run `pnpm compress <folder> --jpg` (screenshots/photos) or `pnpm compress <folder>` (keep PNG). Images are resized to ≤1920px wide; `--jpg` converts PNG/WebP to JPG and deletes the original, so only use it on folder-referenced projects
 - The manifest regenerates on `dev`/`build`; run `pnpm images` to refresh it while the dev server is already running
+- Project media renders through `components/Projects/ProjectImage.tsx` (`next/image` + blurred preview, shimmer fallback, fade-in); use it for any new project image
+- Video posters: `pnpm images` grabs a frame from each project video with ffmpeg into a `posters/` folder next to it (e.g. `creative/videos/posters/uoacs_V1.jpg`). Vercel has no ffmpeg, so **commit the posters**; regenerate by deleting one or updating the video
 - Keep files well under GitHub's limits (warns at 50MB, rejects at 100MB) — the compress script warns about anything over 25MB
 
 ---
