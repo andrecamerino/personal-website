@@ -37,22 +37,23 @@ const resolveProject = (project: ProjectEntry): Project => ({
 const projectEntries: ProjectEntries = {
   developer: [
     {
-      title: "Slidedown",
+      title: "UOA Investment Club Website as Project Lead",
       description:
-        "Engineered client-side PDF and PPTX parsers using pdfjs-dist and JSZip, supporting files up to 50MB. Built a split-pane converter UI with live word count, byte reduction, and page count stats. Reduced slide payloads by ~70%, compressing 30+ decks from MBs to KBs to fit LLM free-tier context limits.",
+        "Lead the development of the UOA Investment Club platform as Project Lead within WDCC. Direct a cross-functional team to deliver a modern web application featuring live stock data integration, secure Stripe payments, and a Payload CMS-powered admin system. Oversee technical architecture, feature prioritisation, and deployment to ensure scalability and long-term maintainability.",
       tags: [
-        { name: "TypeScript" },
         { name: "NextJS" },
-        { name: "pdfjs-dist" },
-        { name: "JSZip" },
+        { name: "Tailwind" },
+        { name: "Stripe" },
+        { name: "MongoDB" },
+        { name: "Payload CMS" },
       ],
-      images: "/developer/slidedown",
       links: [
         {
-          name: "Slidedown Website",
-          link: "https://slidedown-andre.vercel.app",
-        },
+          name: "uaic.wdcc.co.nz",
+          link: "https://uaic.wdcc.co.nz"
+        }
       ],
+      images: "/developer/uaic2026",
     },
     {
       title: "CCCA - Computing Capstone Community Australasia",
@@ -74,55 +75,20 @@ const projectEntries: ProjectEntries = {
       ],
     },
     {
-      title: "UOA Investment Club Website as Project Lead",
+      title: "Slidedown",
       description:
-        "Lead the development of the UOA Investment Club platform as Project Lead within WDCC. Direct a cross-functional team to deliver a modern web application featuring live stock data integration, secure Stripe payments, and a Payload CMS-powered admin system. Oversee technical architecture, feature prioritisation, and deployment to ensure scalability and long-term maintainability.",
+        "Engineered client-side PDF and PPTX parsers using pdfjs-dist and JSZip, supporting files up to 50MB. Built a split-pane converter UI with live word count, byte reduction, and page count stats. Reduced slide payloads by ~70%, compressing 30+ decks from MBs to KBs to fit LLM free-tier context limits.",
       tags: [
+        { name: "TypeScript" },
         { name: "NextJS" },
-        { name: "Tailwind" },
-        { name: "Stripe" },
-        { name: "MongoDB" },
-        { name: "Payload CMS" },
+        { name: "pdfjs-dist" },
+        { name: "JSZip" },
       ],
+      images: "/developer/slidedown",
       links: [
         {
-          name: "uaic.wdcc.co.nz",
-          link: "https://uaic.wdcc.co.nz"
-        }
-      ],
-      images: "/developer/uaic2026",
-    },
-    {
-      title: "Concert Booking System",
-      description:
-        "Built a full backend for a Ticketmaster-style concert booking platform using JAX-RS and JPA. Designed RESTful endpoints for event listings, seat selection, and booking management, with persistent entity relationships handling venues, events, and reservations. Implemented as part of CS331 (Web Services).",
-      tags: [
-        { name: "Java" },
-        { name: "JAX-RS" },
-        { name: "JPA" },
-      ],
-      images: "/developer/concert-booking",
-      links: [
-        {
-          name: "GitHub Repository",
-          link: "", // add your repo link if public
-        },
-      ],
-    },
-    {
-      title: "UOA Investment Club Website as Developer",
-      description:
-        "Built as part of WDCC (Web Development Consulting Club), where I worked as a developer and co-designer. Delivered a modern platform featuring live stock data integration, Stripe payments, and a Payload CMS-powered admin system.",
-      tags: [
-        { name: "NextJS" },
-        { name: "Tailwind" },
-        { name: "Payload CMS" },
-      ],
-      images: "/developer/uaic",
-      links: [
-        {
-          name: "WDCC UAIC Project 2025",
-          link: "https://wdcc.co.nz/projects/uaic/2025",
+          name: "Slidedown Website",
+          link: "https://slidedown-andre.vercel.app",
         },
       ],
     },
@@ -153,20 +119,19 @@ const projectEntries: ProjectEntries = {
       ],
     },
     {
-      title: "Robin - Sustainability Hackathon Exec Choice Award",
+      title: "Concert Booking System",
       description:
-        "An AI-powered smart bin assistant that tells you which bin your rubbish belongs in. Hold an item up to the camera and Robin detects it in real time with TensorFlow.js (COCO-SSD), then sorts it into recycling, waste, or compost to cut down on contamination. Built in under 24 hours with a team of 5 and won the Exec Choice Award at the Sustainability Hackathon 2025.",
+        "Built a full backend for a Ticketmaster-style concert booking platform using JAX-RS and JPA. Designed RESTful endpoints for event listings, seat selection, and booking management, with persistent entity relationships handling venues, events, and reservations. Implemented as part of CS331 (Web Services).",
       tags: [
-        { name: "JavaScript" },
-        { name: "TensorFlow.js" },
-        { name: "HTML" },
-        { name: "CSS" },
+        { name: "Java" },
+        { name: "JAX-RS" },
+        { name: "JPA" },
       ],
-      images: "/developer/robin",
+      images: "/developer/concert-booking",
       links: [
         {
           name: "GitHub Repository",
-          link: "https://github.com/andrecamerino/Robin",
+          link: "", // add your repo link if public
         },
       ],
     },
@@ -187,6 +152,35 @@ const projectEntries: ProjectEntries = {
           link: "https://github.com/andrecamerino/CryptoCritters",
         },
       ],
+    },
+    {
+      title: "Robin - Sustainability Hackathon Exec Choice Award",
+      description:
+        "An AI-powered smart bin assistant that tells you which bin your rubbish belongs in. Hold an item up to the camera and Robin detects it in real time with TensorFlow.js (COCO-SSD), then sorts it into recycling, waste, or compost to cut down on contamination. Built in under 24 hours with a team of 5 and won the Exec Choice Award at the Sustainability Hackathon 2025.",
+      tags: [
+        { name: "JavaScript" },
+        { name: "TensorFlow.js" },
+        { name: "HTML" },
+        { name: "CSS" },
+      ],
+      images: "/developer/robin",
+      links: [
+        {
+          name: "GitHub Repository",
+          link: "https://github.com/andrecamerino/Robin",
+        },
+      ],
+    },
+    {
+      title: "Food Catcher - Roblox Game",
+      description:
+        "A Roblox game built with friends over the intersemester break and still in active development. Catch food of random sizes and mutations at catch zones around the map, then sell it at the shop or stock your own player-owned stall so NPC customers buy from you passively. Includes stall upgrades, a food mutation system, auto-catch, a hotbar inventory, and a Cookbook that tracks every food and mutation you've discovered.",
+      tags: [
+        { name: "Luau" },
+        { name: "Lua" },
+        { name: "Rojo" },
+      ],
+      images: "/developer/catch-food",
     },
     {
       title: "Findr - SESA x WDCC Hackathon Prize Winner",
@@ -224,15 +218,21 @@ const projectEntries: ProjectEntries = {
       ],
     },
     {
-      title: "Food Catcher - Roblox Game",
+      title: "UOA Investment Club Website as Developer",
       description:
-        "A Roblox game built with friends over the intersemester break and still in active development. Catch food of random sizes and mutations at catch zones around the map, then sell it at the shop or stock your own player-owned stall so NPC customers buy from you passively. Includes stall upgrades, a food mutation system, auto-catch, a hotbar inventory, and a Cookbook that tracks every food and mutation you've discovered.",
+        "Built as part of WDCC (Web Development Consulting Club), where I worked as a developer and co-designer. Delivered a modern platform featuring live stock data integration, Stripe payments, and a Payload CMS-powered admin system.",
       tags: [
-        { name: "Luau" },
-        { name: "Lua" },
-        { name: "Rojo" },
+        { name: "NextJS" },
+        { name: "Tailwind" },
+        { name: "Payload CMS" },
       ],
-      images: "/developer/catch-food",
+      images: "/developer/uaic",
+      links: [
+        {
+          name: "WDCC UAIC Project 2025",
+          link: "https://wdcc.co.nz/projects/uaic/2025",
+        },
+      ],
     },
   ],
 
