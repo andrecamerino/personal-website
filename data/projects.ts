@@ -175,6 +175,27 @@ export const projects: Projects = {
       ],
     },
     {
+      title: "Findr - SESA x WDCC Hackathon Prize Winner",
+      description:
+        "A Tinder-style mobile web app for the 'Escaping Earth' theme. Swipe through planet cards with stats like humidity, temperature, and population, save the ones you'd escape to, and race a countdown before Earth runs out of time. My first hackathon, built with a team of 6, and won the Secret Category prize for Most Entertaining Solution at the SESA x WDCC Hackathon 2024.",
+      tags: [
+        { name: "JavaScript" },
+        { name: "HTML" },
+        { name: "CSS" },
+      ],
+      images: [
+        "/developer/findr/findr-home.jpg",
+        "/developer/findr/findr-saved.jpg",
+        "/developer/findr/findr-profile.jpg",
+      ],
+      links: [
+        {
+          name: "GitHub Repository",
+          link: "https://github.com/evanautianle/HACKATHON2024-print-Hello-World-",
+        },
+      ],
+    },
+    {
       title: "Personal Portfolio Website",
       description:
         "Designed and built this full-stack portfolio using Next.js, React, TypeScript, and Tailwind. Powered by Framer Motion animations, Redis with Upstash, and Resend for email handling, dynamically showcasing both my developer and creative work.",
