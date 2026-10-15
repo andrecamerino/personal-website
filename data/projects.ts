@@ -155,6 +155,26 @@ export const projects: Projects = {
       ],
     },
     {
+      title: "Robin - Sustainability Hackathon Exec Choice Award",
+      description:
+        "An AI-powered smart bin assistant that tells you which bin your rubbish belongs in. Hold an item up to the camera and Robin detects it in real time with TensorFlow.js (COCO-SSD), then sorts it into recycling, waste, or compost to cut down on contamination. Built in under 24 hours with a team of 5 and won the Exec Choice Award at the Sustainability Hackathon 2025.",
+      tags: [
+        { name: "JavaScript" },
+        { name: "TensorFlow.js" },
+        { name: "HTML" },
+        { name: "CSS" },
+      ],
+      images: [
+        "/developer/robin/robin-faq.jpg",
+      ],
+      links: [
+        {
+          name: "GitHub Repository",
+          link: "https://github.com/andrecamerino/Robin",
+        },
+      ],
+    },
+    {
       title: "Personal Portfolio Website",
       description:
         "Designed and built this full-stack portfolio using Next.js, React, TypeScript, and Tailwind. Powered by Framer Motion animations, Redis with Upstash, and Resend for email handling, dynamically showcasing both my developer and creative work.",
