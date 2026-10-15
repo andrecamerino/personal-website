@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "images": "node scripts/compress-images.mjs && node scripts/generate-image-manifest.mjs",
+    "compress": "node scripts/compress-images.mjs",
     "dev": "pnpm run images && next dev",
     "build": "node scripts/generate-image-manifest.mjs && next build",
     "start": "next start",
