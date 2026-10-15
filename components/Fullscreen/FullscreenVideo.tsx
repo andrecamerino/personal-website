@@ -1,6 +1,9 @@
 import { Project } from "@/types/Project";
+import { getPoster } from "@/utils/projectMedia";
 
 const FullscreenVideo = ({ project }: { project: Project }) => {
+  const poster = project.video ? getPoster(project.video) : undefined;
+
   return (
     <div className="flex flex-col gap-2 items-center">
       <h3
@@ -11,6 +14,7 @@ const FullscreenVideo = ({ project }: { project: Project }) => {
       </h3>
       <video
         src={`projects/${project.video}`}
+        poster={poster && `/projects${poster}`}
         loop
         autoPlay
         playsInline
