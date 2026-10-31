@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@/components/Button";
-import { useTheme } from "@/context/ThemeContext";
+import { useMode } from "@/context/ModeContext";
 import SectionTitle from "./SectionTitle";
 import { RevealWrapper } from "./RevealWrapper";
 
@@ -8,7 +8,7 @@ const developerResume = "/resume/andre-developer-resume.pdf";
 const creativeResume = null;
 
 const ResumeSection = () => {
-  const { currentTheme } = useTheme();
+  const { isDev } = useMode();
   return (
     <div className="mt-60 lg:mt-80 flex flex-col items-center gap-6">
       <SectionTitle>Resume / CV</SectionTitle>
@@ -18,7 +18,7 @@ const ResumeSection = () => {
             <a href={developerResume} target="_blank">
               <Button
                 className="group"
-                variant={currentTheme === "light" ? "secondary" : "primary"}
+                variant={isDev ? "primary" : "secondary"}
               >
                 View Developer Resume &nbsp;
                 <span className="hidden group-hover:inline">🔋</span>
@@ -30,7 +30,7 @@ const ResumeSection = () => {
             <a href={creativeResume} target="_blank">
               <Button
                 className="group"
-                variant={currentTheme === "dark" ? "secondary" : "primary"}
+                variant={isDev ? "secondary" : "primary"}
               >
                 Download Creative Resume &nbsp;
                 <span className="hidden group-hover:inline">📸</span>

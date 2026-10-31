@@ -4,22 +4,20 @@ import { useState, useRef, useEffect } from "react";
 import { projects, CreativeCategory } from "@/data/projects";
 import SectionTitle from "@/components/SectionTitle";
 import ProjectCard from "@/components/Projects/ProjectCard";
-import { useTheme } from "@/context/ThemeContext";
+import { useMode } from "@/context/ModeContext";
 import { RevealWrapper } from "@/components/RevealWrapper";
 import Button from "@/components/Button";
 import { motion, AnimatePresence } from "motion/react";
 import { glass } from "@/styles/glass";
 
 const ProjectSection = () => {
-  const { currentTheme } = useTheme();
+  const { mode, isDev } = useMode();
   const [activeTab, setActiveTab] = useState<CreativeCategory>("editing");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const projectsTypeText = currentTheme === "dark" ? "developer" : "creative";
-
   const currentProjects =
-    currentTheme === "dark" ? projects.developer : projects.creative[activeTab];
+    isDev ? projects.developer : projects.creative[activeTab];
 
   // Close dropdown if clicked outside
   useEffect(() => {
@@ -44,11 +42,11 @@ const ProjectSection = () => {
     >
       <AnimatePresence>
         <div className="flex flex-col justify-center items-center text-center">
-          <SectionTitle>FEATURED {projectsTypeText.toUpperCase()} PROJECTS</SectionTitle>
+          <SectionTitle>FEATURED {mode.toUpperCase()} PROJECTS</SectionTitle>
         </div>
       </AnimatePresence>
 
-      {currentTheme === "light" && (
+      {!isDev && (
         <div className="flex flex-col items-center w-[80%]">
           {/* Mobile Custom Dropdown */}
           <div
@@ -128,7 +126,7 @@ const ProjectSection = () => {
 
       {/* Project Cards */}
       {currentProjects.map((p, index) => (
-        <RevealWrapper key={`${currentTheme}-${activeTab}-${p.title}`}>
+        <RevealWrapper key={`${mode}-${activeTab}-${p.title}`}>
           <ProjectCard project={p} reverse={index % 2 === 1} />
         </RevealWrapper>
       ))}

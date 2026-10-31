@@ -3,7 +3,7 @@
 import React from "react";
 import { FaPhone, FaEnvelope, FaLinkedin, FaGithub, FaTiktok, FaInstagram } from "react-icons/fa6";
 import { IconType } from "react-icons/lib";
-import { useTheme } from "@/context/ThemeContext";
+import { useMode } from "@/context/ModeContext";
 import { socialLinks, SocialLink } from "@/data/socialLinks";
 import SocialIconButton from "./SocialIconButton";
 
@@ -27,13 +27,11 @@ const SocialIconsGroup: React.FC<SocialIconsGroupProps> = ({
   iconSize = 22,
   className = "",
 }) => {
-  const { currentTheme } = useTheme();
-  const isDark = currentTheme === "dark";
-  const isLight = !isDark;
+  const { isDev } = useMode();
 
   const always = socialLinks.filter((l) => l.visibility === "always");
-  const darkLinks = socialLinks.filter((l) => l.visibility === "dark");
-  const lightLinks = socialLinks.filter((l) => l.visibility === "light");
+  const devLinks = socialLinks.filter((l) => l.visibility === "developer");
+  const creativeLinks = socialLinks.filter((l) => l.visibility === "creative");
 
   const renderIcon = (link: SocialLink) => (
     <SocialIconButton
@@ -59,18 +57,18 @@ const SocialIconsGroup: React.FC<SocialIconsGroupProps> = ({
       {always.map(renderIcon)}
 
       {usePairLayout ? (
-        darkLinks.map((dark, i) => {
-          const light = lightLinks[i];
+        devLinks.map((dark, i) => {
+          const light = creativeLinks[i];
           return (
             <div key={dark.id} className="relative">
               <div
-                className={`transition-opacity duration-300 ${isDark ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
+                className={`transition-opacity duration-300 ${isDev ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
               >
                 {renderIcon(dark)}
               </div>
               {light && (
                 <div
-                  className={`transition-opacity duration-300 absolute inset-0 ${isLight ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
+                  className={`transition-opacity duration-300 absolute inset-0 ${isDev ? "opacity-0 pointer-events-none select-none" : "opacity-100"}`}
                 >
                   {renderIcon(light)}
                 </div>
@@ -81,14 +79,14 @@ const SocialIconsGroup: React.FC<SocialIconsGroupProps> = ({
       ) : (
         <div className="relative flex">
           <div
-            className={`flex gap-3 transition-opacity duration-300 ${isDark ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
+            className={`flex gap-3 transition-opacity duration-300 ${isDev ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
           >
-            {darkLinks.map(renderIcon)}
+            {devLinks.map(renderIcon)}
           </div>
           <div
-            className={`flex gap-3 transition-opacity duration-300 absolute inset-0 ${isLight ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
+            className={`flex gap-3 transition-opacity duration-300 absolute inset-0 ${isDev ? "opacity-0 pointer-events-none select-none" : "opacity-100"}`}
           >
-            {lightLinks.map(renderIcon)}
+            {creativeLinks.map(renderIcon)}
           </div>
         </div>
       )}

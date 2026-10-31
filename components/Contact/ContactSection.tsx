@@ -1,12 +1,12 @@
 import ContactForm from "./ContactForm";
-import { useTheme } from "@/context/ThemeContext";
+import { useMode } from "@/context/ModeContext";
 import Button from "../Button";
 import { RevealWrapper } from "../RevealWrapper";
 import SocialIconsGroup from "@/components/SocialIconsGroup";
 import { useIsMobile } from "@/hooks/isMobile";
 
 const ContactSection = () => {
-  const { currentTheme, setTheme } = useTheme();
+  const { isDev, setMode } = useMode();
 
   return (
     <div id="contact" className="mt-80 flex flex-col justify-center items-center pb-20">
@@ -24,7 +24,7 @@ const ContactSection = () => {
             className="font-black text-5xl lg:text-7xl tracking-[-4] text-center m-0 transition-opacity duration-300 absolute inset-0 flex items-center justify-center"
             style={{
               transform: "scaleY(0.8)",
-              opacity: currentTheme === "dark" ? 1 : 0,
+              opacity: isDev ? 1 : 0,
             }}
           >
             Ready to Build?
@@ -33,7 +33,7 @@ const ContactSection = () => {
             className="font-black text-5xl lg:text-7xl tracking-[-4] text-center m-0 transition-opacity duration-300 absolute inset-0 flex items-center justify-center"
             style={{
               transform: "scaleY(0.8)",
-              opacity: currentTheme === "light" ? 1 : 0,
+              opacity: isDev ? 0 : 1,
             }}
           >
             Ready for the Attention?
@@ -52,8 +52,8 @@ const ContactSection = () => {
         <div className="flex lg:flex-row flex-col lg:gap-16 gap-4 pt-18">
           <Button
             className="group"
-            onClick={() => setTheme("dark")}
-            variant={currentTheme === "light" ? "secondary" : "primary"}
+            onClick={() => setMode("developer")}
+            variant={isDev ? "primary" : "secondary"}
           >
             I&apos;m looking for a developer &nbsp;
             <span className="hidden group-hover:inline">🔋</span>
@@ -61,8 +61,8 @@ const ContactSection = () => {
           </Button>
           <Button
             className="group"
-            onClick={() => setTheme("light")}
-            variant={currentTheme === "dark" ? "secondary" : "primary"}
+            onClick={() => setMode("creative")}
+            variant={isDev ? "secondary" : "primary"}
           >
             I&apos;m looking for a creative &nbsp;
             <span className="hidden group-hover:inline">📸</span>
@@ -83,7 +83,7 @@ const ContactSection = () => {
           <div className="flex flex-col gap-4 mt-8 basis-2/5">
             <SocialIconsGroup layout={useIsMobile() ? "row" : "grid"} iconSize={22} />
             <div
-              className={`transition-opacity duration-300 ${currentTheme === "dark" ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
+              className={`transition-opacity duration-300 ${isDev ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
             >
               <a
                 href="/resume/andre-developer-resume.pdf"

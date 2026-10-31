@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { useTheme } from "@/context/ThemeContext";
+import { useMode } from "@/context/ModeContext";
 import { useIsMobile } from "@/hooks/isMobile";
 
 interface ParallaxWrapperProps {
@@ -18,7 +18,7 @@ const ParallaxWrapper = ({ children }: ParallaxWrapperProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useTransform(scrollYProgress, [0, 1], [0, 200 * SPEED]);
-  const { currentTheme } = useTheme();
+  const { isDev } = useMode();
   
   let darkBackground: string, lightBackground: string;
 
@@ -30,7 +30,7 @@ const ParallaxWrapper = ({ children }: ParallaxWrapperProps) => {
     lightBackground = "/backgrounds/lg-light.jpg"
   }
 
-  const background = currentTheme == 'dark' ? darkBackground : lightBackground;
+  const background = isDev ? darkBackground : lightBackground;
 
   // Two-layer stack for fade
   const [bgLayers, setBgLayers] = useState([background, background]);

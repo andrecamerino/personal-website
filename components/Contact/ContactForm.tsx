@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { glass } from "@/styles/glass";
 import Button from "../Button";
-import { useTheme } from "@/context/ThemeContext";
+import { useMode } from "@/context/ModeContext";
 import { ApiResponse, Status, FieldErrors } from "@/types/contact";
 import FormInput from "./FormInput";
 import { emailContentProps } from "@/types/emailContent";
@@ -14,7 +14,7 @@ const ContactForm = () => {
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [apiMessage, setApiMessage] = useState<string | null>(null);
 
-  const { currentTheme } = useTheme();
+  const { mode, isDev } = useMode();
   const formRef = useRef<HTMLFormElement>(null);
 
   const startCooldown = (seconds: number) => {
@@ -50,7 +50,7 @@ const ContactForm = () => {
       email: String(formData.get("email") ?? ""),
       subject: String(formData.get("subject") ?? ""),
       text: String(formData.get("text") ?? ""),
-      kind: currentTheme === "dark" ? "developer" : "creative",
+      kind: mode,
     };
 
     try {
@@ -146,7 +146,7 @@ const ContactForm = () => {
         label="Subject*"
         type="text"
         placeholder={
-          currentTheme === "dark"
+          isDev
             ? "e.g. Software Inquiry"
             : "e.g. Creative Inquiry"
         }
@@ -164,7 +164,7 @@ const ContactForm = () => {
           name="text"
           required
           placeholder={
-            currentTheme === "dark"
+            isDev
               ? "Describe your upcoming project or idea..."
               : "What would you like to bring to life?"
           }

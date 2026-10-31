@@ -4,12 +4,12 @@ import { useMemo, useState, useEffect } from "react";
 import Marquee from "react-fast-marquee";
 import Testimonial from "./Testimonial";
 import SectionTitle from "../SectionTitle";
-import { useTheme } from "@/context/ThemeContext";
+import { useMode } from "@/context/ModeContext";
 import { testimonials } from "@/data/testimonials";
 import { useFullscreen } from "@/context/FullscreenContext";
 
 const TestimonialSection = () => {
-  const { currentTheme } = useTheme();
+  const { mode } = useMode();
   const { setContent } = useFullscreen();
   const [isMobile, setIsMobile] = useState(false);
 
@@ -21,8 +21,7 @@ const TestimonialSection = () => {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const testimonialContent =
-    currentTheme === "dark" ? testimonials.developer : testimonials.creative;
+  const testimonialContent = testimonials[mode];
 
   // Shuffle helper
   const shuffle = <T,>(array: T[]): T[] =>

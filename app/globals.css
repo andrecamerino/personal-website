@@ -14,7 +14,7 @@
   /* <-- dark mode background */
 }
 
-[data-theme='light'] {
+[data-mode='creative'] {
   --color-bg: var(--color-white);
   --color-primary: var(--color-black);
   --color-secondary: var(--color-white);
