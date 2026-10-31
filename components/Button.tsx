@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { useTheme } from "@/context/ThemeContext";
+import { useMode } from "@/context/ModeContext";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -21,9 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   className = "",
   disabled = false,
 }) => {
-  const { currentTheme } = useTheme();
-
-  const isDark = currentTheme === "dark";
+  const { isDev } = useMode();
 
   const variantClasses = {
     primary: `
@@ -35,7 +33,7 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   // 👇 Theme-based hover effect
-  const hoverAndActiveEffect = isDark
+  const hoverAndActiveEffect = isDev
   ? `
     hover:shadow-[0_0_10px_2px_var(--color-primary),0_0_30px_8px_var(--color-primary)]
     active:shadow-[0_0_14px_4px_var(--color-primary),0_0_40px_12px_var(--color-primary)]

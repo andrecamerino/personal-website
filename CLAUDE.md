@@ -43,7 +43,7 @@ No test suite exists in this project.
 ```
 app/              Next.js App Router (layout, page, API routes)
 components/       All UI components, grouped by section
-context/          ThemeContext (light/dark) + FullscreenContext (modal)
+context/          ModeContext (developer/creative) + FullscreenContext (modal)
 data/             Static content — projects, achievements, testimonials, etc.
 hooks/            useTypewriter, isMobile
 types/            TypeScript interfaces for all data shapes
@@ -57,21 +57,21 @@ public/           Static assets — images, backgrounds, resume PDF, icons
 
 1. **Navbar** — emoji theme toggle, "Get In Touch" CTA
 2. **Hero** — typewriter animation, theme-based layout
-3. **Projects** — tab-switched: Developer (dark mode) / Creative (light mode)
+3. **Projects** — switched by mode: Developer (dark visuals) / Creative (light visuals, with category tabs)
 4. **Scroll1** — infinite marquee scroll section
 5. **BentoGrid** — feature highlight grid
 6. **Testimonials** — quote/review section
-7. **ResumeSection** — dark mode only
+7. **ResumeSection** — developer mode only
 8. **ContactSection** — validated form with rate limiting + email notification
 
 ---
 
 ## Theme System
 
-- Toggled via `ThemeContext` (`context/ThemeContext.tsx`)
+- Toggled via `ModeContext` (`context/ModeContext.tsx`): `useMode()` returns `mode` (`'developer' | 'creative'`), `isDev` and `setMode`. Index mode-keyed data with `data[mode]` instead of branching
 - Persisted to `localStorage` key `'currentView'`
-- Applied as `data-theme` attribute on `<html>` — CSS variables switch in `globals.css`
-- Dark mode is default; light mode shows creative projects and hides resume
+- Applied as `data-mode` attribute on `<html>` — CSS variables switch in `globals.css`
+- Developer mode is the default (dark visuals); creative mode uses light visuals, shows creative projects and hides the resume
 - Backgrounds swap between `public/backgrounds/lg-dark.jpg` / `lg-light.jpg` (and `sm-*` variants)
 
 ---
@@ -139,7 +139,7 @@ All content lives in `data/` as TypeScript files — edit these to update portfo
 - **No separate `tailwind.config.*`** — Tailwind v4 uses CSS-first config
 - **Glassmorphism** — shared style object at `styles/glass.ts`, apply via spread
 - **Animations** — Framer Motion (`framer-motion`) for component animations; `motion` package as alternative
-- **Theme-aware** — use `[data-theme='light']` CSS selector for theme-specific overrides
+- **Theme-aware** — use `[data-mode='creative']` CSS selector for creative-mode overrides
 
 ---
 

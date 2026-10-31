@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/context/ThemeContext";
+import { ModeProvider } from "@/context/ModeContext";
 import { FullscreenProvider } from "@/context/FullscreenContext";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -30,9 +30,9 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} antialiased scroll-smooth bg-(--color-secondary)`}
       >
-        <ThemeProvider>
+        <ModeProvider>
           <FullscreenProvider>{children}</FullscreenProvider>
-        </ThemeProvider>
+        </ModeProvider>
         <Analytics />
         <SpeedInsights />
       </body>

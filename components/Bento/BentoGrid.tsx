@@ -1,12 +1,11 @@
 import { achievements } from "@/data/achievements";
-import { useTheme } from "@/context/ThemeContext";
+import { useMode } from "@/context/ModeContext";
 import BentoBox from "@/components/Bento/BentoBox";
 import SectionTitle from "@/components/SectionTitle";
 
 const BentoGrid = () => {
-  const { currentTheme } = useTheme();
-  const achievementsToShow =
-    currentTheme === "dark" ? achievements.developer : achievements.creative;
+  const { mode } = useMode();
+  const achievementsToShow = achievements[mode];
 
   return (
     <div className="flex flex-col items-center mt-80">

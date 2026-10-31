@@ -5,12 +5,12 @@ import { descriptiveWords as words } from "@/data/descriptiveWords";
 import Button from "./Button";
 import SocialIconsGroup from "./SocialIconsGroup";
 import { useTypewriter } from "@/hooks/useTypewriter";
-import { useTheme } from "@/context/ThemeContext";
+import { useMode } from "@/context/ModeContext";
 import { RevealWrapper } from "./RevealWrapper";
 import { Transition } from "framer-motion";
 
 const Hero = () => {
-  const { currentTheme, setTheme } = useTheme();
+  const { mode, isDev, setMode } = useMode();
   const typedText = useTypewriter(words, 100, 3000);
 
   const [showScrollHint, setShowScrollHint] = useState(false);
@@ -55,7 +55,7 @@ const Hero = () => {
       <div className="w-full max-w-6xl">
         {/* Top line */}
         <RevealWrapper
-          key={`top-${currentTheme}`}
+          key={`top-${mode}`}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={smoothEase}
@@ -67,7 +67,7 @@ const Hero = () => {
 
         {/* Name */}
         <RevealWrapper
-          key={`name-${currentTheme}`}
+          key={`name-${mode}`}
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           delay={0.15}
@@ -89,7 +89,7 @@ const Hero = () => {
 
         {/* Bottom line */}
         <RevealWrapper
-          key={`bottom-${currentTheme}`}
+          key={`bottom-${mode}`}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           delay={0.3}
@@ -113,8 +113,8 @@ const Hero = () => {
         <div className="flex lg:flex-row flex-col lg:gap-16 gap-4">
           <Button
             className="group"
-            onClick={() => setTheme("dark")}
-            variant={currentTheme === "light" ? "secondary" : "primary"}
+            onClick={() => setMode("developer")}
+            variant={isDev ? "primary" : "secondary"}
           >
             I&apos;m looking for a developer &nbsp;
             <span className="hidden group-hover:inline">🔋</span>
@@ -123,8 +123,8 @@ const Hero = () => {
 
           <Button
             className="group"
-            onClick={() => setTheme("light")}
-            variant={currentTheme === "dark" ? "secondary" : "primary"}
+            onClick={() => setMode("creative")}
+            variant={isDev ? "secondary" : "primary"}
           >
             I&apos;m looking for a creative &nbsp;
             <span className="hidden group-hover:inline">📸</span>
@@ -143,7 +143,7 @@ const Hero = () => {
         <div className="flex flex-col items-center gap-4">
           <SocialIconsGroup layout="row" iconSize={22} />
           <div
-            className={`transition-opacity duration-300 ${currentTheme === "dark" ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
+            className={`transition-opacity duration-300 ${isDev ? "opacity-100" : "opacity-0 pointer-events-none select-none"}`}
           >
             <a
               href="/resume/andre-developer-resume.pdf"

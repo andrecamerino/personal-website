@@ -1,15 +1,15 @@
 "use client";
 import Button from "./Button";
 import { scrollToSection } from "@/utils/scrollToSection";
-import { useTheme } from "@/context/ThemeContext";
+import { useMode } from "@/context/ModeContext";
 
 const Navbar = () => {
-  const { currentTheme, setTheme } = useTheme();
+  const { isDev, setMode } = useMode();
   
-  const emoji = currentTheme === "dark" ? "</>" : "📸";
+  const emoji = isDev ? "</>" : "📸";
   
   const handleEmojiButton = () => {
-    setTheme(currentTheme === "dark" ? "light" : "dark");
+    setMode(isDev ? "creative" : "developer");
   };
 
   return (

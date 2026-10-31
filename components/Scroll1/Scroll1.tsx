@@ -5,15 +5,14 @@ import { useMemo } from "react";
 import Marquee from "react-fast-marquee";
 import Scroll1Card from "./Scroll1Card";
 import SectionTitle from "../SectionTitle";
-import { useTheme } from "@/context/ThemeContext";
+import { useMode } from "@/context/ModeContext";
 import { useIsMobile } from "@/hooks/isMobile";
 
 const Scroll1 = () => {
-  const { currentTheme } = useTheme();
+  const { mode, isDev } = useMode();
   const isMobile = useIsMobile();
 
-  const content =
-    currentTheme === "dark" ? scrollContent.developer : scrollContent.creative;
+  const content = scrollContent[mode];
 
   // shuffle once per theme (stable)
   const shuffledContent = useMemo(() => [...content], [content]);
@@ -31,7 +30,7 @@ const Scroll1 = () => {
   return (
     <div className="flex flex-col items-center mt-60 lg:mt-80 gap-2">
       <SectionTitle>
-        {currentTheme === "dark" ? "Tech Stack" : "Common Deliverables"}
+        {isDev ? "Tech Stack" : "Common Deliverables"}
       </SectionTitle>
 
       {/* Top marquee */}
@@ -48,7 +47,7 @@ const Scroll1 = () => {
       </div>
 
       {/* Bottom marquee */}
-      {(currentTheme === "light" || isMobile) && (
+      {(!isDev || isMobile) && (
         <div className="w-full overflow-hidden">
           <Marquee direction="left" speed={22} pauseOnHover gradient={false}>
             {row2.map((e, i) => (

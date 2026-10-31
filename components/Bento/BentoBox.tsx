@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { glass } from "@/styles/glass";
-import { useTheme } from "@/context/ThemeContext";
+import { useMode } from "@/context/ModeContext";
 import { truncateText } from "@/utils/truncateText";
 import { RevealWrapper } from "../RevealWrapper";
 
@@ -23,13 +23,13 @@ const BentoBox = ({
   maxTitleLength = 50,
   maxDescLength = 100,
 }: BentoBoxProps) => {
-  const { currentTheme } = useTheme();
+  const { isDev } = useMode();
   const [active, setActive] = useState(false); // mobile click state
 
   const titleShadow =
-    currentTheme === "light"
-      ? "2px 2px 8px rgba(255,255,255,0.9)"
-      : "2px 2px 8px rgba(0,0,0,0.8)";
+    isDev
+      ? "2px 2px 8px rgba(0,0,0,0.8)"
+      : "2px 2px 8px rgba(255,255,255,0.9)";
 
   return (
     <div
@@ -39,7 +39,7 @@ const BentoBox = ({
       {/* Background image */}
       {imgSrc && (
         <div
-          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-300 ${currentTheme === "dark" ? "opacity-60 group-hover:opacity-30" : "opacity-70 group-hover:opacity-30"}`}
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-300 ${isDev ? "opacity-60 group-hover:opacity-30" : "opacity-70 group-hover:opacity-30"}`}
           style={{ backgroundImage: `url(/achievements${imgSrc})` }}
         />
       )}
